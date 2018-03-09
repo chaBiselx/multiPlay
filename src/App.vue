@@ -18,7 +18,7 @@
 import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
 import PlaylistPage from './components/PlaylistPage'
-import About from './components/PlaylistPage'
+import About from './components/About'
 
 
 

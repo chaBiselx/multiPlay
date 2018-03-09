@@ -42,8 +42,8 @@ export default new Vuex.Store({
       },
       getters: {
         getMainList(){
-          return this.data.list
-          //return "coco"
+          //return this.data.list
+          return "coco"
         }
       },
       mutations: {

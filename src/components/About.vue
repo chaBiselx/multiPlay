@@ -9,8 +9,15 @@
       <div class="center">À propos</div>
     </v-ons-toolbar>
 
-    <div class="center">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div class="center text">
+      <h1>Multiplay</h1>
+      <p>Cette application est un projet étudiant réalisé en 2018 par Charles BISELX en License professionnelle Concepteur
+      et Intégrateur Système Internet/Intranet pour l'Entreprise.</p>
+      <p>Ce projet avait pour but de comprendre et de dévelloper une application mobile.</p>
+      <p>MultiPlay est un application permetant de créer des playlists regroupant des playlists de musique secondaire</p>
+      <p>code source du projet : <a href="https://github.com/chaBiselx/multiPlay"> ici</a></p>
+
+
     </div>
   </v-ons-page>
 </template>
@@ -57,5 +64,8 @@ ons-card {
 
 ons-list-item, ons-card {
   cursor: pointer;
+}
+.text{
+  margin: 15px;
 }
 </style>
