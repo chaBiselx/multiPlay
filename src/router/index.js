@@ -7,8 +7,10 @@ import store from '@/store'
 
 import HomePage from '@/components/HomePage'
 import MenuPage from '@/components/MenuPage'
-import PlaylistPage from '@/components/PlaylistPage'
 import About from '@/components/About'
+import PlaylistPage from '@/components/PlaylistPage'
+import ListMusic from '@/components/ListMusic'
+
 
 Vue.use(Router)
 
@@ -23,6 +25,18 @@ export default new Router({
       path: '/About',
       name: 'About',
       component: About,
+
+    },
+    {
+      path: '/PlaylistPage',
+      name: 'PlaylistPage',
+      component: PlaylistPage,
+
+    },
+    {
+      path: '/ListMusic',
+      name: 'ListMusic',
+      component: ListMusic,
 
     },
     {

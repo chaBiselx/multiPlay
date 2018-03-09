@@ -66,7 +66,7 @@
   import store from '@/store'
 
 export default {
-  name: 'home',
+  name: 'homePage',
   data () {
     return {
       namePlaylist: "",
@@ -112,6 +112,7 @@ export default {
       console.log("lance le lecteur de musique "+id);
     },
     goToSubPlaylist(){
+      this.$router.push({'name': 'PlaylistPage'})
       console.log("go to subPlaylist "+this.memID);
     },
   },

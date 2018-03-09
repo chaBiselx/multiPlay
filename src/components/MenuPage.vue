@@ -40,11 +40,8 @@ export default {
   },
   methods: {
     goTo (url) {
-      console.log(url);
-
       switch (url) {
         case 'About':
-
           this.$router.push({'name': 'About'})
           break;
         default:
