@@ -7,6 +7,9 @@ import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'
 import store from './store'
 import App from './App'
+import router from './router'
+
+
 
 Vue.config.productionTip = false
 
@@ -16,6 +19,7 @@ Vue.use(VueOnsen)
 new Vue({
   el: '#app',
   store,
+  router,
   template: '<App/>',
   components: { App }
 })

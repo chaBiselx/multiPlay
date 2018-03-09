@@ -44,15 +44,13 @@ export default {
 
       switch (url) {
         case 'About':
-          //router.push(About)
-          //this.$router.push(About)
-          //$router.push(About)
-          //router.go(About)
 
-          window.location.href = About ;
+          this.$router.push({'name': 'About'})
           break;
         default:
           //redirect home
+          this.$router.push({'name': 'HomePage'})
+
       }
 
     }
