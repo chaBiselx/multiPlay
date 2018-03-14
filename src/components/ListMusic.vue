@@ -12,6 +12,16 @@
     <v-ons-list-title>Liste des musiques</v-ons-list-title>
     <v-ons-list>
 
+      <v-ons-list-item  v-for="item in listMusic"  :key="item.link">
+        <label class="label_music">
+
+          <ons-checkbox id="item.link" name="item.name"></ons-checkbox>
+          {{item.name}}
+          <div class="left">
+            <small>{{item.artist}}</small>
+          </div>
+
+        </label>
       </v-ons-list-item>
 
     </v-ons-list>
@@ -29,14 +39,27 @@ export default {
   name: 'listMusic',
   data () {
     return {
-
+      listMusic: [],
     }
   },
   methods: {
 
   },
   created(){
-
+    this.listMusic = [
+      {name: "name1",
+      artist:"artist",
+      link: "link1"},
+      {name: "name2",
+      artist:"artist",
+      link: "link2"},
+      {name: "name3",
+      artist:"artist",
+      link: "link3"},
+      {name: "name4",
+      artist:"artist",
+      link: "link4"},
+    ]
 	}
 }
 </script>
@@ -61,5 +84,12 @@ ons-card {
 
 ons-list-item, ons-card {
   cursor: pointer;
+}
+.label_music{
+  display: block;
+  width: 100%;
+}
+.label_music .left{
+  text-align: right;
 }
 </style>

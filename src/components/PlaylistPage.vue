@@ -13,11 +13,14 @@
     <v-ons-list>
       <v-ons-list-item  v-for="item in secondList"  :key="item.id">
 
+        <label >
+          <div class="center">
 
-        <div class="center">
-          <ons-checkbox input-id="item.id" ng-model="page.apples"></ons-checkbox></v-ons-icon>
-          {{item.name}}
-        </div>
+            <ons-checkbox id="item.id" ng-model="page.id"></ons-checkbox></v-ons-icon>
+            {{item.name}}
+
+          </div>
+        </label>
         <div class="right optionButton" @click="option(item.id)">
           >
         </div>
@@ -74,7 +77,6 @@ export default {
       actionSheetVisible: false ,
       addPlaylistVisible: false ,
       memID : "",
-      imgPlay: "",
       imgPlus: "",
     }
   },
