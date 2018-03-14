@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import store from '@/store'
   import About from '@/components/PlaylistPage'
 
 export default {
@@ -43,10 +44,16 @@ export default {
       switch (url) {
         case 'About':
           this.$router.push({'name': 'About'})
+          store.commit('splitter/toggle')
+          break;
+        case 'Home':
+          this.$router.push({'name': 'HomePage'})
+          store.commit('splitter/toggle')
           break;
         default:
           //redirect home
           this.$router.push({'name': 'HomePage'})
+          store.commit('splitter/toggle')
 
       }
 

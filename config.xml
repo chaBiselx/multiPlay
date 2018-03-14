@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>multyplay</name>
+    <name>multiplay</name>
     <description>
       Vue.js + Onsen UI + Cordova sample app
     </description>
@@ -23,4 +23,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <engine name="android" spec="^7.1.0" />
 </widget>

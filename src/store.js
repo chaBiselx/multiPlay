@@ -20,29 +20,29 @@ export default new Vuex.Store({
         }
       }
     },
-    mainPlaylist: {
-      data:{
-        list: [
-          {
-            id: "123789456",
-            name: "name1",
-            subPlaylist: [],
-          },
-          {
-            id: "987654321",
-            name: "name2",
-            subPlaylist: [],
-          },
-          {
-            id: "123456789",
-            name: "name3",
-            subPlaylist: [],
-          }
-        ],
-      },
+    data:{
+      mainList: [
+        {
+          id: "123789456",
+          name: "name1",
+          subPlaylist: [],
+        },
+        {
+          id: "987654321",
+          name: "name2",
+          subPlaylist: [],
+        },
+        {
+          id: "123456789",
+          name: "name3",
+          subPlaylist: [],
+        }
+      ],
+      secondList:[],
+
       getters: {
         getMainList(){
-          //return this.data.list
+          //return this.data.mainList
           return "coco"
         }
       },
@@ -52,9 +52,16 @@ export default new Vuex.Store({
         },
         deleteInMainList(id){
 
-        },
+        }
       }
-    },
+    }
+
+
+
+
+
+
+
 
   },
 
