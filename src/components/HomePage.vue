@@ -151,9 +151,9 @@ ons-list-item, ons-card {
   overflow: scroll;
 }
 .buttonPlay{
-  padding-right: 10px;
+  padding: 7px 15px 7px 0;
 }
 .optionButton{
-  padding-left: 15px;
+  padding: 7px 15px 7px 15px;
 }
 </style>
