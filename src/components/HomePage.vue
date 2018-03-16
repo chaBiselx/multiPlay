@@ -87,12 +87,9 @@ export default {
       this.addPlaylistVisible = true
     },
     deletePlaylist(){
-      // get index of object with id
-      let removeIndex = this.MainList.map(function(item) { return item.id; }).indexOf(this.memID)
+      store.commit('deleteInMainList',this.memID)
       this.actionSheetVisible = false
       this.memID = ""
-      // remove object
-      this.MainList.splice(removeIndex, 1)
     },
     addPlaylist(n){
       if (n != '') {

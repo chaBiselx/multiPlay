@@ -49,7 +49,10 @@ export default new Vuex.Store({
       state.mainList.push(json)
     },
     deleteInMainList(state , id){
-
+      // get index of object with id
+      let removeIndex = state.mainList.map(function(item) { return state.mainList.id; }).indexOf(id)
+      // remove object
+      state.mainList.splice(removeIndex, 1)
     },
   }
 
