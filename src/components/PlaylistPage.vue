@@ -6,11 +6,16 @@
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>
       </div>
+      <div class="right">
+        <v-ons-toolbar-button @click="goingBack()">
+          <v-ons-icon icon="ion-arrow-return-left"></v-ons-icon>
+        </v-ons-toolbar-button>
+      </div>
       <div class="center">MultiPlay</div>
     </v-ons-toolbar>
 
     <v-ons-list-title>Sous-playlist</v-ons-list-title>
-    <v-ons-list>
+    <v-ons-list id='listID'>
       <v-ons-list-item  v-for="item in secondList"  :key="item.id">
 
         <label >
@@ -46,6 +51,13 @@
       @click="showAddPlaylist()"
     >
       <v-ons-icon icon="md-plus"></v-ons-icon>
+    </v-ons-fab>
+    <v-ons-fab
+      position="bottom left"
+      :visible=true
+      @click="savePlaylist()"
+    >
+      <v-ons-icon icon="md-save"></v-ons-icon>
     </v-ons-fab>
 
     <v-ons-action-sheet
@@ -91,12 +103,10 @@ export default {
       this.addPlaylistVisible = true
     },
     deletePlaylist(){
-      // get index of object with id
-      let removeIndex = this.secondList.map(function(item) { return item.id; }).indexOf(this.memID)
+      store.commit('deleteInSecondList',this.memID)
       this.actionSheetVisible = false
       this.memID = ""
-      // remove object
-      this.secondList.splice(removeIndex, 1)
+
     },
     addPlaylist(n){
       if (n != '') {
@@ -107,28 +117,44 @@ export default {
           subPlaylist: [],
         }
         this.addPlaylistVisible = false
-        this.secondList.push(json)
         this.namePlaylist = ""
         this.addPlaylistVisible = false
+        store.commit('addInSecondList',json)
       }
     },
-    play( id ){
-      console.log("lance le lecteur de musique "+id);
-    },
     goToListMusic(){
+      store.commit('changeMemSecondListID',this.memID)
       this.$router.push({'name': 'ListMusic'})
     },
+    savePlaylist(){
+      let array = []
+
+      for (let i in this.secondList ) {
+        if (document.getElementById( this.secondList[i].id ).checked) {
+          array.push(this.secondList[i].id)
+        }
+      }
+      store.commit('changeMainListPlaylist',array)
+    },
+    goingBack(){
+      this.$router.push({'name': 'HomePage'})
+      store.commit('removeMemMainListID')
+    }
   },
   created(){
     if (store.state.memMainListID == "") {
       this.$router.push({'name': 'HomePage'})
+      store.commit('removeMemMainListID')
     }
 	},
   mounted(){
-    let select = store.state.mainList[store.state.mainList.map(function(item) { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
-    for (let i in select) {
-      document.getElementById( select[i] ).checked = true
+    if (store.state.memMainListID != "") {
+      let select = store.state.mainList[store.state.mainList.map(function(item) { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
+      for (let i in select) {
+        document.getElementById( select[i] ).checked = true
+      }
     }
+
 
   }
 }

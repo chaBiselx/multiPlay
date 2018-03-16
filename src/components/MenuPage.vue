@@ -51,22 +51,26 @@ export default {
           this.$router.push({'name': 'MusicPlayerPage'})
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
+          store.commit('removeMemSecondListID')
           break;
         case 'About':
           this.$router.push({'name': 'About'})
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
+          store.commit('removeMemSecondListID')
           break;
         case 'Home':
           this.$router.push({'name': 'HomePage'})
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
+          store.commit('removeMemSecondListID')
           break;
         default:
           //redirect home
           this.$router.push({'name': 'HomePage'})
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
+          store.commit('removeMemSecondListID')
 
 
       }

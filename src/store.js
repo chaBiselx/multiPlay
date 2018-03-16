@@ -58,7 +58,8 @@ export default new Vuex.Store({
         name: "subname3",
         subPlaylist: [],
       },
-    ]
+    ],
+    memSecondListID: "",
 
 
   },
@@ -68,7 +69,7 @@ export default new Vuex.Store({
     },
     deleteInMainList(state , id){
       // get index of object with id
-      let removeIndex = state.mainList.map(function(item) { return state.mainList.id; }).indexOf(id)
+      let removeIndex = state.mainList.map(function(item) { return item.id; }).indexOf(id)
       // remove object
       state.mainList.splice(removeIndex, 1)
     },
@@ -77,6 +78,26 @@ export default new Vuex.Store({
     },
     changeMemMainListID(state , id){
       state.memMainListID = id
+    },
+    addInSecondList(state, json){
+      state.secondList.push(json)
+    },
+    deleteInSecondList(state , id){
+      // get index of object with id
+      let removeIndex = state.secondList.map(function(item) { return item.id; }).indexOf(id)
+      // remove object
+      state.secondList.splice(removeIndex, 1)
+    },
+    removeMemSecondListID(state){
+      state.memSecondListID = ""
+    },
+    changeMemSecondListID(state , id){
+      state.memSecondListID = id
+    },
+    changeMainListPlaylist(state , array){
+      let playlist = state.mainList.map(function(item) { return item.id }).indexOf(state.memMainListID)
+      state.mainList[playlist].subPlaylist = array
+
     },
   }
 
