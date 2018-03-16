@@ -30,7 +30,7 @@
     <v-ons-action-sheet
         :visible.sync="actionSheetVisible"
         cancelable
-        title="option"
+        :title='namePlaylist'
     >
       <v-ons-action-sheet-button @click="goToSubPlaylist()">Modifier sous-playlist</v-ons-action-sheet-button>
       <v-ons-action-sheet-button modifier="destructive" @click="deletePlaylist()" >Supprimer</v-ons-action-sheet-button>
@@ -73,17 +73,18 @@ export default {
       actionSheetVisible: false ,
       addPlaylistVisible: false ,
       memID : "",
-      imgPlay: "",
-      imgPlus: "",
-      MainList: [],
+      MainList: store.state.mainList,
     }
   },
   methods: {
     option(id){
       this.actionSheetVisible = true
       this.memID = id
+      this.namePlaylist =  this.MainList[this.MainList.map(function(item) { return item.id; }).indexOf(this.memID)].name
+
     },
     showAddPlaylist(){
+      this.namePlaylist = ""
       this.addPlaylistVisible = true
     },
     deletePlaylist(){
@@ -114,7 +115,6 @@ export default {
     },
   },
   created(){
-    this.MainList = store.state.mainList
 	}
 }
 </script>
