@@ -8,7 +8,8 @@ export default new Vuex.Store({
     splitter: {
       namespaced: true,
       state: {
-        open: false
+        open: false,
+
       },
       mutations: {
         toggle (state, shouldOpen) {
@@ -17,52 +18,40 @@ export default new Vuex.Store({
           } else {
             state.open = !state.open
           }
-        }
+        },
       }
     },
-    data:{
-      mainList: [
-        {
-          id: "123789456",
-          name: "name1",
-          subPlaylist: [],
-        },
-        {
-          id: "987654321",
-          name: "name2",
-          subPlaylist: [],
-        },
-        {
-          id: "123456789",
-          name: "name3",
-          subPlaylist: [],
-        }
-      ],
-      secondList:[],
 
-      getters: {
-        getMainList(){
-          //return this.data.mainList
-          return "coco"
-        }
+  },
+  state:{
+    mainList: [
+      {
+        id: "123789456",
+        name: "name1",
+        subPlaylist: [],
       },
-      mutations: {
-        addInMainList(json){
-
-        },
-        deleteInMainList(id){
-
-        }
+      {
+        id: "987654321",
+        name: "name2",
+        subPlaylist: [],
+      },
+      {
+        id: "123456789",
+        name: "name3",
+        subPlaylist: [],
       }
-    }
-
-
-
-
-
-
+    ],
 
 
   },
+  mutations: {
+    addInMainList(state, json){
+      state.mainList.push(json)
+    },
+    deleteInMainList(state , id){
+
+    },
+  }
+
 
 })

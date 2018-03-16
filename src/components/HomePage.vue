@@ -103,9 +103,9 @@ export default {
           subPlaylist: [],
         }
         this.addPlaylistVisible = false
-        this.MainList.push(json)
         this.namePlaylist = ""
         this.addPlaylistVisible = false
+        store.commit('addInMainList',json)
       }
     },
     play( id ){
@@ -117,8 +117,7 @@ export default {
     },
   },
   created(){
-    //this.MainList = store.getters['getMainList']
-    console.log(store.getters['getMainList'])
+    this.MainList = store.state.mainList
 	}
 }
 </script>
