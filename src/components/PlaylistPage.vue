@@ -33,7 +33,7 @@
     <v-ons-action-sheet
         :visible.sync="actionSheetVisible"
         cancelable
-        title="option"
+        :title="namePlaylist"
     >
       <v-ons-action-sheet-button @click="goToListMusic()">Voir la liste des musiques</v-ons-action-sheet-button>
       <v-ons-action-sheet-button modifier="destructive" @click="deletePlaylist()" >Supprimer</v-ons-action-sheet-button>
@@ -51,7 +51,7 @@
     <v-ons-action-sheet
         :visible.sync="addPlaylistVisible"
         cancelable
-        title="Ajouter sous-playlist"
+        title="Ajouter playlist"
     >
       <v-ons-action-sheet-button >
         <v-ons-input placeholder="Input your sub-playlist name" float
@@ -72,20 +72,22 @@ export default {
   name: 'playlistPage',
   data () {
     return {
-      secondList: [],
+      memID : "",
       namePlaylist: "",
       actionSheetVisible: false ,
       addPlaylistVisible: false ,
-      memID : "",
-      imgPlus: "",
+      secondList: [],
+
     }
   },
   methods: {
     option(id){
       this.actionSheetVisible = true
       this.memID = id
+      this.namePlaylist =  this.secondList[this.secondList.map(function(item) { return item.id; }).indexOf(this.memID)].name
     },
     showAddPlaylist(){
+      this.namePlaylist = ""
       this.addPlaylistVisible = true
     },
     deletePlaylist(){

@@ -69,10 +69,10 @@ export default {
   name: 'homePage',
   data () {
     return {
+      memID : "",
       namePlaylist: "",
       actionSheetVisible: false ,
       addPlaylistVisible: false ,
-      memID : "",
       MainList: store.state.mainList,
     }
   },
@@ -151,9 +151,9 @@ ons-list-item, ons-card {
   overflow: scroll;
 }
 .buttonPlay{
-  margin-right: 10px;
+  padding-right: 10px;
 }
 .optionButton{
-  margin-left: 15px;
+  padding-left: 15px;
 }
 </style>
