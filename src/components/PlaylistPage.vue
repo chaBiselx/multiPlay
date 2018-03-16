@@ -16,7 +16,7 @@
         <label >
           <div class="center">
 
-            <ons-checkbox id="item.id" ng-model="page.id"></ons-checkbox></v-ons-icon>
+            <ons-checkbox :id="item.id" ng-model="page.id"></ons-checkbox></v-ons-icon>
             {{item.name}}
 
           </div>
@@ -76,7 +76,7 @@ export default {
       namePlaylist: "",
       actionSheetVisible: false ,
       addPlaylistVisible: false ,
-      secondList: [],
+      secondList: store.state.secondList,
 
     }
   },
@@ -120,9 +120,17 @@ export default {
     },
   },
   created(){
-    //this.MainList = store.getters['getMainList']
-    //console.log(store.getters['getMainList'])
-	}
+    if (store.state.memMainListID == "") {
+      this.$router.push({'name': 'HomePage'})
+    }
+	},
+  mounted(){
+    let select = store.state.mainList[store.state.mainList.map(function(item) { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
+    for (let i in select) {
+      document.getElementById( select[i] ).checked = true
+    }
+
+  }
 }
 </script>
 

@@ -110,8 +110,8 @@ export default {
       console.log("lance le lecteur de musique "+id);
     },
     goToSubPlaylist(){
+      store.commit('changeMemMainListID',this.memID)
       this.$router.push({'name': 'PlaylistPage'})
-      console.log("go to subPlaylist "+this.memID);
     },
   },
   created(){
