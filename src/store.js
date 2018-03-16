@@ -73,8 +73,7 @@ export default new Vuex.Store({
   },
   getters:{
     nextMusic(state){
-      let n = Math.floor((Math.random() * state.listMusic.length) )
-      return state.listMusic[n]
+      return state.listMusic
     },
   },
   mutations: {

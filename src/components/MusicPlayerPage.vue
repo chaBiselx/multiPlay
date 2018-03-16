@@ -49,13 +49,10 @@ export default {
   name: 'homePage',
   data () {
     return {
-      actualMusicTitle: "test",
+      actualMusicTitle: "",
       actualMusicUrl: "",
       player: false ,
-      audio: {} ,
-      playlist: [
-
-      ],
+      playlist: [],
 
     }
   },
@@ -64,7 +61,10 @@ export default {
       console.log('backward');
     },
     forward(){
-      this.actualMusicUrl = store.getters['nextMusic'] //retourne la même musique
+      console.log('forward');
+      //document.getElementById('audio').abort()
+      this.randomMusic() //source doesn't change
+      //document.getElementById('audio').play()
     },
     go(){
       this.player = true
@@ -74,13 +74,20 @@ export default {
       this.player = false
       document.getElementById('audio').pause()
     },
+    randomMusic(){
+      let n = Math.floor((Math.random() * this.playlist.length) )
+      this.actualMusicUrl = this.playlist[n]
+      let array = this.actualMusicUrl.split("/")
+      this.actualMusicTitle = array[array.length-1]
+    }
 
 
   },
   created(){
-    this.actualMusicUrl = store.getters['nextMusic']
+    this.playlist = store.getters['nextMusic']
 	},
   mounted(){
+    this.randomMusic()
     this.player = true
     document.getElementById('audio').play()
   }
