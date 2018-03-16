@@ -60,8 +60,22 @@ export default new Vuex.Store({
       },
     ],
     memSecondListID: "",
+    listMusic:[
+      "/static/temp/2CELLOS - Wake Me Up - Avicii [OFFICIAL VIDEO].mp3",
+      "/static/temp/2080.mp3",
+      "/static/temp/Borderlands 2 Theme song _No place for a hero_ LYRICS.mp3",
+      "/static/temp/Dschinghis Khan - Moskau.mp3",
+      "/static/temp/Hey Pachuco-The Mask Soundtrack.mp3",
+      "/static/temp/Inglourious Basterds OST #14- End Credits.mp3",
+    ]
 
 
+  },
+  getters:{
+    nextMusic(state){
+      let n = Math.floor((Math.random() * state.listMusic.length) )
+      return state.listMusic[n]
+    },
   },
   mutations: {
     addInMainList(state, json){
@@ -97,7 +111,6 @@ export default new Vuex.Store({
     changeMainListPlaylist(state , array){
       let playlist = state.mainList.map(function(item) { return item.id }).indexOf(state.memMainListID)
       state.mainList[playlist].subPlaylist = array
-
     },
   }
 

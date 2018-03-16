@@ -13,7 +13,7 @@
       <span class="title">{{actualMusicTitle}}</span>
 
       <audio id="audio" controls>
-        <source src="@/assets/temp/2080.mp3" type="audio/mp3 audio/ogg audio/wav">
+        <source :src="actualMusicUrl" type="audio/mp3 audio/ogg audio/wav">
       </audio>
       <div class="center">
         <div id="timeline">
@@ -50,7 +50,7 @@ export default {
   data () {
     return {
       actualMusicTitle: "test",
-      actualMusicUrl: "@/assets/temp/2080.mp3",
+      actualMusicUrl: "",
       player: false ,
       audio: {} ,
       playlist: [
@@ -64,7 +64,7 @@ export default {
       console.log('backward');
     },
     forward(){
-      console.log('forward');
+      this.actualMusicUrl = store.getters['nextMusic'] //retourne la même musique
     },
     go(){
       this.player = true
@@ -78,9 +78,12 @@ export default {
 
   },
   created(){
-//http://alexkatz.me/posts/building-a-custom-html5-audio-player-with-javascript/
-
-	}
+    this.actualMusicUrl = store.getters['nextMusic']
+	},
+  mounted(){
+    this.player = true
+    document.getElementById('audio').play()
+  }
 }
 
 
