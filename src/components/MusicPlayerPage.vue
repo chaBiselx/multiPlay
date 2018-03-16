@@ -15,11 +15,11 @@
       <audio id="audio" controls>
         <source src="@/assets/temp/2080.mp3" type="audio/mp3 audio/ogg audio/wav">
       </audio>
-      <!--div class="center">
+      <div class="center">
         <div id="timeline">
         	<div id="playhead"></div>
         </div>
-      </div-->
+      </div>
 
       <div class="btn-list">
         <span class="btn-left">
@@ -78,22 +78,8 @@ export default {
 
   },
   created(){
-    /*
+//http://alexkatz.me/posts/building-a-custom-html5-audio-player-with-javascript/
 
-http://alexkatz.me/posts/building-a-custom-html5-audio-player-with-javascript/
-
-    var duration;
-    var music = document.getElementById('playhead');
-    music.addEventListener("timeupdate", timeUpdate, false);
-
-    function timeUpdate() {
-    	var playPercent = 100 * (music.currentTime / duration);
-    	playhead.style.marginLeft = playPercent + "%";
-    }
-
-    music.addEventListener("canplaythrough", function () {
-    	duration = music.duration;
-    }, false);*/
 	}
 }
 
@@ -151,13 +137,13 @@ ons-list-item, ons-card {
 
 }
 #timeline{
-	width: 80%;
-	height: 20px;
-	background: grey;
+	width: 76%;
+	height: 15px;
+	background: lightgrey;
 	margin-top: 20px;
 
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 12%;
+  margin-right: 12%;
 
 	float: left;
 	border-radius: 15px;
@@ -165,8 +151,8 @@ ons-list-item, ons-card {
 }
 
 #playhead{
-	width: 18px;
-	height: 18px;
+	width: 13px;
+	height: 13px;
 	border-radius: 50%;
 	margin-top: 1px;
 	background: #cc3399;
