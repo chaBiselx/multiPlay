@@ -7,6 +7,11 @@
         </v-ons-toolbar-button>
       </div>
       <div class="center">MultiPlay</div>
+      <div class="right">
+        <v-ons-toolbar-button @click="goingBack()">
+          <v-ons-icon icon="ion-arrow-return-left"></v-ons-icon>
+        </v-ons-toolbar-button>
+      </div>
     </v-ons-toolbar>
 
     <v-ons-list-title>Liste des musiques</v-ons-list-title>
@@ -27,7 +32,13 @@
     </v-ons-list>
 
 
-
+    <v-ons-fab
+      position="bottom left"
+      :visible=true
+      @click="savePlaylist()"
+    >
+      <v-ons-icon icon="md-save"></v-ons-icon>
+    </v-ons-fab>
 
   </v-ons-page>
 </template>
@@ -43,7 +54,20 @@ export default {
     }
   },
   methods: {
-
+    savePlaylist(){
+      let array = []
+      /*
+      for (let i in this.secondList ) {
+        if (document.getElementById( this.secondList[i].id ).checked) {
+          array.push(this.secondList[i].id)
+        }
+      }
+      store.commit('changeMainListPlaylist',array)*/
+    },
+    goingBack(){
+      this.$router.push({'name': 'PlaylistPage'})
+      store.commit('removeMemSecondListID')
+    }
   },
   created(){
     this.listMusic = [
