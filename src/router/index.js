@@ -10,6 +10,7 @@ import MenuPage from '@/components/MenuPage'
 import About from '@/components/About'
 import PlaylistPage from '@/components/PlaylistPage'
 import ListMusic from '@/components/ListMusic'
+import MusicPlayerPage from '@/components/MusicPlayerPage'
 
 
 Vue.use(Router)
@@ -37,6 +38,12 @@ export default new Router({
       path: '/ListMusic',
       name: 'ListMusic',
       component: ListMusic,
+
+    },
+    {
+      path: '/MusicPlayerPage',
+      name: 'MusicPlayerPage',
+      component: MusicPlayerPage,
 
     },
     {

@@ -35,6 +35,11 @@ export default {
           link: 'About',
           icon: 'fa-book'
         },
+        {
+          label: 'Lecteur',
+          link: 'MusicPlayer',
+          icon: 'ion-play'
+        },
 
       ]
     }
@@ -42,6 +47,10 @@ export default {
   methods: {
     goTo (url) {
       switch (url) {
+        case 'MusicPlayer':
+          this.$router.push({'name': 'MusicPlayerPage'})
+          store.commit('splitter/toggle')
+          break;
         case 'About':
           this.$router.push({'name': 'About'})
           store.commit('splitter/toggle')
