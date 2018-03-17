@@ -10,12 +10,18 @@
     </v-ons-toolbar>
 
     <div class="text-center">
-      <span class="title">{{actualMusicTitle}}</span>
+      <div class="title">{{actualMusicTitle}}</div>
 
       <audio id="audio" controls>
         <source :src="actualMusicUrl" type="audio/mp3 audio/ogg audio/wav">
       </audio>
       <div class="center">
+        <div class="float_left">
+          {{actualTime}}
+        </div>
+        <div class="float_right">
+          {{actualDuration}}
+        </div>
         <div id="timeline">
         	<div id="playhead"></div>
         </div>
@@ -53,6 +59,8 @@ export default {
     return {
       actualMusicTitle: "",
       actualMusicUrl: "",
+      actualDuration: "duration",
+      actualTime: "time",
       player: false ,
       playlist: [],
       stackPrev: [],
@@ -172,7 +180,7 @@ ons-list-item, ons-card {
   text-align: center;
 }
 .btn-list{
-  margin-top: 16%;
+  margin-top: 18%;
   margin-left:  10%;
   margin-right: 10%;
   border: solid;
@@ -188,11 +196,23 @@ ons-list-item, ons-card {
   height: 30px;
 
 }
+.title{
+  height: 3em;
+}
+.float_left{
+  float: left;
+  padding-left: 10%;
+}
+.float_right{
+  float: right;
+  padding-right: 10%
+}
+
 #timeline{
 	width: 76%;
 	height: 15px;
 	background: lightgrey;
-	margin-top: 20px;
+	margin-top: 10px;
 
   margin-left: 12%;
   margin-right: 12%;
