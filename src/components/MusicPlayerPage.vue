@@ -87,7 +87,7 @@ export default {
     randomMusic(){
       let lastMusic = this.actualMusicUrl
       this.stackPrev.push(lastMusic)
-      let boolRepeat = false
+      let boolRepeat
       do {
         boolRepeat = false
         let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - this.noRepeat , 1))
@@ -97,7 +97,7 @@ export default {
             boolRepeat = true
           }
         }
-
+        console.log(musicUrl);
         this.actualMusicUrl = musicUrl
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
@@ -106,7 +106,7 @@ export default {
         //no infinte boucle
         if ( this.playlist.length <= 1) { break; }
 
-      } while ( lastMusic == this.actualMusicUrl && boolRepeat  );
+      } while ( lastMusic == this.actualMusicUrl || boolRepeat  );
       this.verifStack()
       return this.actualMusicUrl
     },
