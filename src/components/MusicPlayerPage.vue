@@ -56,15 +56,17 @@ export default {
       player: false ,
       playlist: [],
       stackPrev: [],
+      prevNumber: 0,
 
     }
   },
   methods: {
     backward(){
-      console.log('backward');
+      document.getElementById('audio').setAttribute('src',this.prevMusic())
+      document.getElementById('audio').play()
     },
     forward(){
-      document.getElementById('audio').setAttribute('src',this.randomMusic())
+      document.getElementById('audio').setAttribute('src',this.nextMusic())
       document.getElementById('audio').play()
     },
     go(){
@@ -77,15 +79,43 @@ export default {
     },
     randomMusic(){
       let lastMusic = this.actualMusicUrl
+      this.stackPrev.push(lastMusic)
       do {
         let n = Math.floor((Math.random() * this.playlist.length) )
         this.actualMusicUrl = this.playlist[n]
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
       } while ( lastMusic == this.actualMusicUrl );
-      this.stackPrev.push(this.actualMusicUrl)
       this.verifStack()
       return this.actualMusicUrl
+    },
+    nextMusic(){
+      let ret
+      if (this.prevNumber <= 0 ) {
+        this.prevNumber = 0
+        ret = this.randomMusic()
+      }else {
+        this.prevNumber--
+        ret = this.stackPrev[this.stackPrev.length - this.prevNumber - 1]
+        let array = ret.split("/")
+        this.actualMusicTitle = array[array.length-1]
+      }
+      return ret
+
+    },
+    prevMusic(){
+      let n = (this.stackPrev.length - this.prevNumber)-1
+      if ( n < 0 ) {
+        n = 0
+        this.prevNumber = this.stackPrev.length
+      }else{
+        this.prevNumber++
+      }
+      this.actualMusicUrl = this.stackPrev[n]
+      let array = this.actualMusicUrl.split("/")
+      this.actualMusicTitle = array[array.length-1]
+      return this.actualMusicUrl
+
     },
     verifStack(){
       while (this.stackPrev.length > STACKLIMIT) {
