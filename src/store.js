@@ -24,8 +24,8 @@ export default new Vuex.Store({
 
   },
   state:{
-    stackLimit: 25,
-    noRepeat: 10,
+    stackLimit: "25",
+    noRepeat: "10",
     mainList: [
       {
         id: "123789456",
@@ -130,6 +130,12 @@ export default new Vuex.Store({
     },
     changePlaylist(state , array){
       state.listMusic = array
+    },
+    changeStackLimit(state , value){
+      state.stackLimit = value
+    },
+    changeNoRepeat(state , value){
+      state.noRepeat = value
     },
   }
 
