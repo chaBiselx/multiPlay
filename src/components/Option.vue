@@ -13,11 +13,11 @@
       <h1>Option</h1>
       <form class="" action="index.html" method="post">
         <div class="form-group center">
-          <label for="stackLimit"> Nombre de musique précedente possible</label>
+          <label for="stackLimit"> Nombre de retour en arrière dans la playlist possible</label>
           <input type="number" name="stackLimit" v-model="stackLimit" min="1">
         </div>
         <div class="form-group center">
-          <label for="noRepeat"> Nombre de musique avant une possibilité de l'écouter</label>
+          <label for="noRepeat"> Nombre de musique avant une possibilité de réécouter la musique actuelle</label>
           <input type="number" name="noRepeat" v-model="noRepeat" min="1">
         </div>
         <div class="form-group end">
