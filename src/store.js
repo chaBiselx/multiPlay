@@ -27,7 +27,7 @@ export default new Vuex.Store({
     mainList: [
       {
         id: "123789456",
-        name: "name1",
+        name: "tout",
         subPlaylist: ['123789456'],
       },
       {
@@ -38,7 +38,7 @@ export default new Vuex.Store({
       {
         id: "123456789",
         name: "name3",
-        subPlaylist: ["123789456","951741852"],
+        subPlaylist: ["123741852","951741852"],
       }
     ],
     memMainListID: "",
@@ -46,7 +46,22 @@ export default new Vuex.Store({
       {
         id: "123789456",
         name: "subname1",
-        subPlaylist: [],
+        subPlaylist: [
+          "/static/temp/2CELLOS - Wake Me Up - Avicii [OFFICIAL VIDEO].mp3",
+          "/static/temp/2080.mp3",
+          "/static/temp/Borderlands 2 Theme song _No place for a hero_ LYRICS.mp3",
+          "/static/temp/Dschinghis Khan - Moskau.mp3",
+          "/static/temp/Hey Pachuco-The Mask Soundtrack.mp3",
+          "/static/temp/Inglourious Basterds OST #14- End Credits.mp3",
+          "/static/temp/♪ Diggy Diggy Hole.mp3",
+          "/static/temp/BenZaie danse la marmelade de ma grand-mère.mp3",
+          "/static/temp/Caravan Palace - Lone Digger.mp3",
+          "/static/temp/Caravan Palace - Rock It For Me.mp3",
+          "/static/temp/Edith Piaf - L'homme a la moto - Lyric.mp3",
+          "/static/temp/Indochine L'Aventurier.mp3",
+          "/static/temp/NAHEULBEUK - Sauvons les rôlistes  - Clip.mp3",
+          "/static/temp/RASPUTIN - Vladimir Putin - Love The Way You Move (Funk Overload) @slocband.mp3",
+        ],
       },
       {
         id: "123741852",
