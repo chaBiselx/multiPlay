@@ -51,7 +51,7 @@
         title="Ajouter playlist"
     >
       <v-ons-action-sheet-button >
-        <v-ons-input placeholder="Input your playlist name" float
+        <v-ons-input placeholder="Nom de votre playlist" float
           v-model="namePlaylist" required maxlength="25"
         >
         </v-ons-input>

@@ -63,10 +63,10 @@
     <v-ons-action-sheet
         :visible.sync="addPlaylistVisible"
         cancelable
-        title="Ajouter playlist"
+        title="Ajouter sous-playlist"
     >
       <v-ons-action-sheet-button >
-        <v-ons-input placeholder="Input your sub-playlist name" float
+        <v-ons-input placeholder="Nom de votre sous-playlist" float
           v-model="namePlaylist" required maxlength="25"
         >
         </v-ons-input>
@@ -137,7 +137,7 @@ export default {
       store.commit('changeMainListPlaylist',array)
       this.$ons.notification.toast({
         animation: "fall",
-        message: 'Saved!',
+        message: 'Sauvegardé!',
         timeout: 2000
       }).then(i => this.shutUp = i === 0);
     },

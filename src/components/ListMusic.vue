@@ -61,7 +61,7 @@ export default {
       store.commit('changeSecondListPlaylist',array)
       this.$ons.notification.toast({
         animation: "fall",
-        message: 'Saved!',
+        message: 'Sauvegardé!',
         timeout: 2000
       }).then(i => this.shutUp = i === 0);
     },

@@ -55,10 +55,10 @@ export default {
   name: 'homePage',
   data () {
     return {
-      actualMusicTitle: "no music",
+      actualMusicTitle: "Absence de musique",
       actualMusicUrl: "",
-      actualDuration: "duration",
-      actualTime: "time",
+      actualDuration: "durée",
+      actualTime: "temps",
       player: false ,
       playlist: [],
       stackPrev: [],
