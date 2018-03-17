@@ -57,7 +57,7 @@ export default {
   name: 'homePage',
   data () {
     return {
-      actualMusicTitle: "",
+      actualMusicTitle: "no music",
       actualMusicUrl: "",
       actualDuration: "duration",
       actualTime: "time",
@@ -139,9 +139,12 @@ export default {
 
 	},
   mounted(){
-    this.randomMusic()
-    this.player = true
-    document.getElementById('audio').play()
+    if (  this.playlist.length != 0) {
+      this.randomMusic()
+      this.player = true
+      document.getElementById('audio').play()
+    }
+
   }
 }
 
