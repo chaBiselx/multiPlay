@@ -51,9 +51,6 @@
 <script>
   import store from '@/store'
 
-  const STACKLIMIT = 25
-  const NOREPEAT = 10
-
 export default {
   name: 'homePage',
   data () {
@@ -66,7 +63,8 @@ export default {
       playlist: [],
       stackPrev: [],
       prevNumber: 0,
-
+      stackLimit: store.state.stackLimit,
+      noRepeat: store.state.noRepeat,
     }
   },
   methods: {
@@ -92,11 +90,9 @@ export default {
       let boolRepeat = false
       do {
         boolRepeat = false
-        let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - NOREPEAT , 1))
-
+        let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - this.noRepeat , 1))
         let musicUrl = this.playlist[   Math.floor((Math.random() * this.playlist.length) )  ]
         for (let i of noRepeatArray) {
-          console.log("i : "+i);
           if (i == musicUrl) {
             boolRepeat = true
           }
@@ -143,7 +139,7 @@ export default {
 
     },
     verifStack(){
-      while (this.stackPrev.length > STACKLIMIT) {
+      while (this.stackPrev.length > this.stackLimit) {
         this.stackPrev.shift()
       }
     }

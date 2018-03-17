@@ -24,6 +24,8 @@ export default new Vuex.Store({
 
   },
   state:{
+    stackLimit: 25,
+    noRepeat: 10,
     mainList: [
       {
         id: "123789456",
