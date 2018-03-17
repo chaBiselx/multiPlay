@@ -93,7 +93,8 @@ export default {
         this.actualMusicUrl = this.playlist[n]
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
-      } while ( lastMusic == this.actualMusicUrl );
+        if ( this.playlist.length <= 1) { break; }
+      } while ( lastMusic == this.actualMusicUrl  );
       this.verifStack()
       return this.actualMusicUrl
     },
