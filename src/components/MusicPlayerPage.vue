@@ -52,6 +52,7 @@
   import store from '@/store'
 
   const STACKLIMIT = 25
+  const NOREPEAT = 10
 
 export default {
   name: 'homePage',
@@ -88,13 +89,28 @@ export default {
     randomMusic(){
       let lastMusic = this.actualMusicUrl
       this.stackPrev.push(lastMusic)
+      let boolRepeat = false
       do {
-        let n = Math.floor((Math.random() * this.playlist.length) )
-        this.actualMusicUrl = this.playlist[n]
+        boolRepeat = false
+        let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - NOREPEAT , 1))
+
+        let musicUrl = this.playlist[   Math.floor((Math.random() * this.playlist.length) )  ]
+        for (let i of noRepeatArray) {
+          console.log("i : "+i);
+          if (i == musicUrl) {
+            boolRepeat = true
+          }
+        }
+
+        this.actualMusicUrl = musicUrl
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
+
+
+        //no infinte boucle
         if ( this.playlist.length <= 1) { break; }
-      } while ( lastMusic == this.actualMusicUrl  );
+
+      } while ( lastMusic == this.actualMusicUrl && boolRepeat  );
       this.verifStack()
       return this.actualMusicUrl
     },
