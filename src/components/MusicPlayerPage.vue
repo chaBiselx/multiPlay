@@ -88,20 +88,24 @@ export default {
       let lastMusic = this.actualMusicUrl
       this.stackPrev.push(lastMusic)
       let boolRepeat
+      let n = 0
       do {
         boolRepeat = false
         let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - this.noRepeat , 1))
         let musicUrl = this.playlist[   Math.floor((Math.random() * this.playlist.length) )  ]
-        for (let i of noRepeatArray) {
-          if (i == musicUrl) {
-            boolRepeat = true
+        if (this.playlist.length >= this.noRepeat ) {
+          for (let i of noRepeatArray) {
+            if (i == musicUrl) {
+              boolRepeat = true
+            }
           }
         }
-        console.log(musicUrl);
+
         this.actualMusicUrl = musicUrl
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
 
+        if ( n > 20) { break; }
 
         //no infinte boucle
         if ( this.playlist.length <= 1) { break; }
