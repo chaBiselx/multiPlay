@@ -83,7 +83,7 @@ export default {
         "/static/temp/Borderlands 2 Theme song _No place for a hero_ LYRICS.mp3",
         "/static/temp/Dschinghis Khan - Moskau.mp3",
         "/static/temp/Hey Pachuco-The Mask Soundtrack.mp3",
-        "/static/temp/Inglourious Basterds OST #14- End Credits.mp3",
+        "/static/temp/End Credits.mp3",
         "/static/temp/♪ Diggy Diggy Hole.mp3",
         "/static/temp/BenZaie danse la marmelade de ma grand-mère.mp3",
         "/static/temp/Caravan Palace - Lone Digger.mp3",
