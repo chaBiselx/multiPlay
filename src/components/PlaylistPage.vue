@@ -135,6 +135,11 @@ export default {
         }
       }
       store.commit('changeMainListPlaylist',array)
+      this.$ons.notification.toast({
+        animation: "fall",
+        message: 'Saved!',
+        timeout: 2000
+      }).then(i => this.shutUp = i === 0);
     },
     goingBack(){
       this.$router.push({'name': 'HomePage'})

@@ -59,6 +59,11 @@ export default {
         }
       }
       store.commit('changeSecondListPlaylist',array)
+      this.$ons.notification.toast({
+        animation: "fall",
+        message: 'Saved!',
+        timeout: 2000
+      }).then(i => this.shutUp = i === 0);
     },
     goingBack(){
       this.$router.push({'name': 'PlaylistPage'})
