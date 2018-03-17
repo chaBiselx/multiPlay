@@ -126,7 +126,8 @@ export default {
       for (let i = 0; i < a.length; i++ ) {
           playlist.push( a[i] );
       }
-      console.log(playlist);
+      store.commit('changePlaylist',playlist)
+      this.$router.push({'name': 'MusicPlayerPage'})
 
     },
     goToSubPlaylist(){

@@ -136,6 +136,7 @@ export default {
   },
   created(){
     this.playlist = store.getters['playlist']
+
 	},
   mounted(){
     this.randomMusic()

@@ -65,7 +65,7 @@ export default new Vuex.Store({
 
   },
   getters:{
-    mainList(state){
+    playlist(state){
       return state.listMusic
     },
     launchMainList(state){
@@ -110,6 +110,9 @@ export default new Vuex.Store({
     changeSecondListPlaylist(state , array){
       let playlist = state.secondList.map(function(item) { return item.id }).indexOf(state.memSecondListID)
       state.secondList[playlist].subPlaylist = array
+    },
+    changePlaylist(state , array){
+      state.listMusic = array
     },
   }
 
