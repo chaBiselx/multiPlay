@@ -17,9 +17,6 @@
 <script>
 import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
-import PlaylistPage from './components/PlaylistPage'
-import About from './components/About'
-import MusicPlayerPage from './components/MusicPlayerPage'
 
 
 
@@ -38,9 +35,6 @@ export default {
   components: {
     HomePage,
     MenuPage,
-    PlaylistPage,
-    MusicPlayerPage,
-    About,
   }
 }
 </script>

@@ -40,6 +40,11 @@ export default {
           link: 'MusicPlayer',
           icon: 'ion-play'
         },
+        {
+          label: 'Options',
+          link: 'Option',
+          icon: 'ion-settings'
+        },
 
       ]
     }
@@ -64,6 +69,10 @@ export default {
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
           store.commit('removeMemSecondListID')
+          break;
+        case 'Option':
+          this.$router.push({'name': 'Option'})
+          store.commit('splitter/toggle')
           break;
         default:
           //redirect home

@@ -11,6 +11,7 @@ import About from '@/components/About'
 import PlaylistPage from '@/components/PlaylistPage'
 import ListMusic from '@/components/ListMusic'
 import MusicPlayerPage from '@/components/MusicPlayerPage'
+import Option from '@/components/Option'
 
 
 Vue.use(Router)
@@ -44,6 +45,12 @@ export default new Router({
       path: '/MusicPlayerPage',
       name: 'MusicPlayerPage',
       component: MusicPlayerPage,
+
+    },
+    {
+      path: '/Option',
+      name: 'Option',
+      component: Option,
 
     },
     {
