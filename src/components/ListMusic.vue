@@ -79,6 +79,15 @@ export default {
         "/static/temp/Dschinghis Khan - Moskau.mp3",
         "/static/temp/Hey Pachuco-The Mask Soundtrack.mp3",
         "/static/temp/Inglourious Basterds OST #14- End Credits.mp3",
+        "/static/temp/♪ Diggy Diggy Hole.mp3",
+        "/static/temp/BenZaie danse la marmelade de ma grand-mère.mp3",
+        "/static/temp/Caravan Palace - Lone Digger.mp3",
+        "/static/temp/Caravan Palace - Rock It For Me.mp3",
+        "/static/temp/Edith Piaf - L'homme a la moto - Lyric.mp3",
+        "/static/temp/Indochine L'Aventurier.mp3",
+        "/static/temp/NAHEULBEUK - Sauvons les rôlistes  - Clip.mp3",
+        "/static/temp/RASPUTIN - Vladimir Putin - Love The Way You Move (Funk Overload) @slocband.mp3",
+
       ]
       for(let i of test){
         let array = i.split("/")
