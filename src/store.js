@@ -28,17 +28,17 @@ export default new Vuex.Store({
       {
         id: "123789456",
         name: "name1",
-        subPlaylist: [123789456],
+        subPlaylist: ['123789456'],
       },
       {
         id: "987654321",
         name: "name2",
-        subPlaylist: [123741852],
+        subPlaylist: ['123741852'],
       },
       {
         id: "123456789",
         name: "name3",
-        subPlaylist: [123789456,951741852],
+        subPlaylist: ["123789456","951741852"],
       }
     ],
     memMainListID: "",
@@ -65,8 +65,11 @@ export default new Vuex.Store({
 
   },
   getters:{
-    nextMusic(state){
+    mainList(state){
       return state.listMusic
+    },
+    launchMainList(state){
+      return state.mainList
     },
   },
   mutations: {

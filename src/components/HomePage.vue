@@ -96,7 +96,7 @@ export default {
       if (n != '') {
         let date = new Date()
         let json = {
-          id: date.getTime(),
+          id: ""+date.getTime(),
           name: n,
           subPlaylist: [],
         }
@@ -107,7 +107,27 @@ export default {
       }
     },
     play( id ){
-      console.log("lance le lecteur de musique "+id);
+      let playlist = []
+      let mainList = this.MainList[this.MainList.map(function(item) { return item.id; }).indexOf(id)].subPlaylist
+      for (let m of mainList) {
+        let secondList = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(m)].subPlaylist
+        for (let p of secondList) {
+          playlist.push(p)
+        }
+      }
+      //remove duplicate
+      var a = [];
+      for (let i = 0; i < playlist.length; i++ ) {
+          var current = playlist[i];
+          if (a.indexOf(current) < 0) a.push(current);
+      }
+
+      playlist.length = 0;
+      for (let i = 0; i < a.length; i++ ) {
+          playlist.push( a[i] );
+      }
+      console.log(playlist);
+
     },
     goToSubPlaylist(){
       store.commit('changeMemMainListID',this.memID)

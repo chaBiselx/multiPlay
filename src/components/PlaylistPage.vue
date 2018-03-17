@@ -112,7 +112,7 @@ export default {
       if (n != '') {
         let date = new Date()
         let json = {
-          id: date.getTime(),
+          id: ""+date.getTime(),
           name: n,
           subPlaylist: [],
         }
