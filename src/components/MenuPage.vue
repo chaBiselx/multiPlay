@@ -20,7 +20,7 @@
   import About from '@/components/PlaylistPage'
 
 export default {
-  name: 'menu',
+  name: 'menuPage',
   data () {
     return {
       title:"Menu",
@@ -31,11 +31,6 @@ export default {
           icon: 'md-home'
         },
         {
-          label: 'À propos',
-          link: 'About',
-          icon: 'fa-book'
-        },
-        {
           label: 'Lecteur',
           link: 'MusicPlayer',
           icon: 'ion-play'
@@ -44,6 +39,11 @@ export default {
           label: 'Options',
           link: 'Option',
           icon: 'ion-settings'
+        },
+        {
+          label: 'À propos',
+          link: 'About',
+          icon: 'fa-book'
         },
 
       ]
