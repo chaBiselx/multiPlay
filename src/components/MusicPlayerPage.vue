@@ -45,6 +45,8 @@
 <script>
   import store from '@/store'
 
+  const STACKLIMIT = 25
+
 export default {
   name: 'homePage',
   data () {
@@ -53,6 +55,7 @@ export default {
       actualMusicUrl: "",
       player: false ,
       playlist: [],
+      stackPrev: [],
 
     }
   },
@@ -61,10 +64,8 @@ export default {
       console.log('backward');
     },
     forward(){
-      console.log('forward');
-      //document.getElementById('audio').abort()
-      this.randomMusic() //source doesn't change
-      //document.getElementById('audio').play()
+      document.getElementById('audio').setAttribute('src',this.randomMusic())
+      document.getElementById('audio').play()
     },
     go(){
       this.player = true
@@ -75,10 +76,21 @@ export default {
       document.getElementById('audio').pause()
     },
     randomMusic(){
-      let n = Math.floor((Math.random() * this.playlist.length) )
-      this.actualMusicUrl = this.playlist[n]
-      let array = this.actualMusicUrl.split("/")
-      this.actualMusicTitle = array[array.length-1]
+      let lastMusic = this.actualMusicUrl
+      do {
+        let n = Math.floor((Math.random() * this.playlist.length) )
+        this.actualMusicUrl = this.playlist[n]
+        let array = this.actualMusicUrl.split("/")
+        this.actualMusicTitle = array[array.length-1]
+      } while ( lastMusic == this.actualMusicUrl );
+      this.stackPrev.push(this.actualMusicUrl)
+      this.verifStack()
+      return this.actualMusicUrl
+    },
+    verifStack(){
+      while (this.stackPrev.length > STACKLIMIT) {
+        this.stackPrev.shift()
+      }
     }
 
 
