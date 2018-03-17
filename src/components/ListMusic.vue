@@ -20,11 +20,8 @@
       <v-ons-list-item  v-for="item in listMusic"  :key="item.link">
         <label class="label_music">
 
-          <ons-checkbox id="item.link" name="item.name"></ons-checkbox>
+          <ons-checkbox :id="item.link" :name="item.name"></ons-checkbox>
           {{item.name}}
-          <div class="left">
-            <small>{{item.artist}}</small>
-          </div>
 
         </label>
       </v-ons-list-item>
@@ -56,13 +53,12 @@ export default {
   methods: {
     savePlaylist(){
       let array = []
-      /*
-      for (let i in this.secondList ) {
-        if (document.getElementById( this.secondList[i].id ).checked) {
-          array.push(this.secondList[i].id)
+      for (let i in this.listMusic ) {
+        if (document.getElementById( this.listMusic[i].link ).checked) {
+          array.push(this.listMusic[i].link)
         }
       }
-      store.commit('changeMainListPlaylist',array)*/
+      store.commit('changeSecondListPlaylist',array)
     },
     goingBack(){
       this.$router.push({'name': 'PlaylistPage'})
@@ -70,21 +66,44 @@ export default {
     }
   },
   created(){
-    this.listMusic = [
-      {name: "name1",
-      artist:"artist",
-      link: "link1"},
-      {name: "name2",
-      artist:"artist",
-      link: "link2"},
-      {name: "name3",
-      artist:"artist",
-      link: "link3"},
-      {name: "name4",
-      artist:"artist",
-      link: "link4"},
-    ]
-	}
+    if (store.state.memSecondListID == "") {
+      this.$router.push({'name': 'HomePage'})
+      store.commit('removeMemMainListID')
+      store.commit('removeMemSecondListID')
+
+    }else{
+      let test = [
+        "/static/temp/2CELLOS - Wake Me Up - Avicii [OFFICIAL VIDEO].mp3",
+        "/static/temp/2080.mp3",
+        "/static/temp/Borderlands 2 Theme song _No place for a hero_ LYRICS.mp3",
+        "/static/temp/Dschinghis Khan - Moskau.mp3",
+        "/static/temp/Hey Pachuco-The Mask Soundtrack.mp3",
+        "/static/temp/Inglourious Basterds OST #14- End Credits.mp3",
+      ]
+      for(let i of test){
+        let array = i.split("/")
+        let name =  array[array.length-1]
+
+        let json = {
+          "link": i ,
+          "name": name,
+        }
+        this.listMusic.push(json)
+      }
+    }
+
+
+	},
+  mounted(){
+    if (store.state.memSecondListID != "") {
+      let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
+
+      for (let i in select) {
+        document.getElementById( select[i] ).checked = true
+      }
+
+    }
+  }
 }
 </script>
 
@@ -112,8 +131,5 @@ ons-list-item, ons-card {
 .label_music{
   display: block;
   width: 100%;
-}
-.label_music .left{
-  text-align: right;
 }
 </style>
