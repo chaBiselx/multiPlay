@@ -96,6 +96,8 @@ export default new Vuex.Store({
     changeNoRepeat(state , value){
       state.noRepeat = value
     },
+
+    //mainList
     addInMainList(state, json){
       state.mainList.push(json)
     },
@@ -115,6 +117,13 @@ export default new Vuex.Store({
       let playlist = state.mainList.map(function(item) { return item.id }).indexOf(state.memMainListID)
       state.mainList[playlist].subPlaylist = array
     },
+    changeMainListName(state , json ){
+      let playlist = state.mainList.map(function(item) { return item.id }).indexOf(json.id)
+      state.mainList[playlist].name = json.newName
+
+    },
+
+    //secondList
     addInSecondList(state, json){
       state.secondList.push(json)
     },
