@@ -16,3 +16,5 @@ yarn-error.log*
 platforms/
 plugins/
 www/
+
+!node_modules/cordova-android
