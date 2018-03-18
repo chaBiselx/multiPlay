@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <div class="header">
-      <img class="Mainlogo" src="/static/img/MultiPlay.png" alt="Menu">
+      <img class="Mainlogo" src="/src/assets/img/MultiPlay.png"   alt="Menu">
     </div>
 
     <v-ons-list-title>Menu</v-ons-list-title>

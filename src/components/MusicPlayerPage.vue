@@ -7,7 +7,7 @@
         </v-ons-toolbar-button>
       </div>
       <div class="center">
-        <img class="logo" src="/static/img/MultiPlay.png" alt="">
+        <img class="logo" src="/src/assets/img/MultiPlay.png" alt="">
         MultiPlay
       </div>
     </v-ons-toolbar>
