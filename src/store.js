@@ -90,6 +90,12 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    changeStackLimit(state , value){
+      state.stackLimit = value
+    },
+    changeNoRepeat(state , value){
+      state.noRepeat = value
+    },
     addInMainList(state, json){
       state.mainList.push(json)
     },
@@ -104,6 +110,10 @@ export default new Vuex.Store({
     },
     changeMemMainListID(state , id){
       state.memMainListID = id
+    },
+    changeMainListPlaylist(state , array){
+      let playlist = state.mainList.map(function(item) { return item.id }).indexOf(state.memMainListID)
+      state.mainList[playlist].subPlaylist = array
     },
     addInSecondList(state, json){
       state.secondList.push(json)
@@ -120,10 +130,6 @@ export default new Vuex.Store({
     changeMemSecondListID(state , id){
       state.memSecondListID = id
     },
-    changeMainListPlaylist(state , array){
-      let playlist = state.mainList.map(function(item) { return item.id }).indexOf(state.memMainListID)
-      state.mainList[playlist].subPlaylist = array
-    },
     changeSecondListPlaylist(state , array){
       let playlist = state.secondList.map(function(item) { return item.id }).indexOf(state.memSecondListID)
       state.secondList[playlist].subPlaylist = array
@@ -131,12 +137,7 @@ export default new Vuex.Store({
     changePlaylist(state , array){
       state.listMusic = array
     },
-    changeStackLimit(state , value){
-      state.stackLimit = value
-    },
-    changeNoRepeat(state , value){
-      state.noRepeat = value
-    },
+
   }
 
 
