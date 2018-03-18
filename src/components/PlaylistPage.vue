@@ -203,6 +203,9 @@ ons-card {
 ons-list-item, ons-card {
   cursor: pointer;
 }
+.optionButton{
+  padding: 7px 15px 7px 15px;
+}
 .logo{
   height: 30px;
   width: 30px;
