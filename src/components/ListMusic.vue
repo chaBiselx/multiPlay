@@ -6,7 +6,10 @@
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>
       </div>
-      <div class="center">MultiPlay</div>
+      <div class="center">
+        <img class="logo" src="/static/img/MultiPlay.png" alt="">
+        MultiPlay
+      </div>
       <div class="right">
         <v-ons-toolbar-button @click="goingBack()">
           <v-ons-icon icon="ion-arrow-return-left"></v-ons-icon>
@@ -145,5 +148,10 @@ ons-list-item, ons-card {
 .label_music{
   display: block;
   width: 100%;
+}
+.logo{
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
 }
 </style>

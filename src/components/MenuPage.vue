@@ -1,11 +1,10 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar modifier="transparent"></v-ons-toolbar>
     <div class="header">
-      <h1>{{title}}</h1>
+      <img class="Mainlogo" src="/static/img/MultiPlay.png" alt="Menu">
     </div>
 
-    <v-ons-list-title>Main</v-ons-list-title>
+    <v-ons-list-title>Menu</v-ons-list-title>
     <v-ons-list>
       <v-ons-list-item modifier="chevron" v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
         <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
@@ -23,7 +22,6 @@ export default {
   name: 'menuPage',
   data () {
     return {
-      title:"Menu",
       essentialLinks: [
         {
           label: 'Playlist',
@@ -92,6 +90,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
+
   text-align: center;
   margin-bottom: 20px;
   height: 60px;
@@ -107,5 +106,9 @@ ons-list-title {
 
 ons-list-item {
   cursor: pointer;
+}
+.Mainlogo{
+  width: 100px;
+  height: 100px;
 }
 </style>

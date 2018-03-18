@@ -6,7 +6,10 @@
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>
       </div>
-      <div class="center">À propos</div>
+      <div class="center">
+        <img class="logo" src="/static/img/MultiPlay.png" alt="">
+        MultiPlay
+      </div>
     </v-ons-toolbar>
 
     <div class="center text">
@@ -67,5 +70,10 @@ ons-list-item, ons-card {
 }
 .text{
   margin: 15px;
+}
+.logo{
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
 }
 </style>

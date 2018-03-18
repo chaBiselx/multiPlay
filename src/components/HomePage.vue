@@ -6,7 +6,10 @@
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>
       </div>
-      <div class="center">MultiPlay</div>
+      <div class="center">
+        <img class="logo" src="/static/img/MultiPlay.png" alt="">
+        MultiPlay
+      </div>
     </v-ons-toolbar>
 
     <v-ons-list-title>Playlist</v-ons-list-title>
@@ -176,5 +179,10 @@ ons-list-item, ons-card {
 }
 .optionButton{
   padding: 7px 15px 7px 15px;
+}
+.logo{
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
 }
 </style>
