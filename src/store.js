@@ -118,9 +118,8 @@ export default new Vuex.Store({
       state.mainList[playlist].subPlaylist = array
     },
     changeMainListName(state , json ){
-      let playlist = state.mainList.map(function(item) { return item.id }).indexOf(json.id)
-      state.mainList[playlist].name = json.newName
-
+      let id = state.mainList.map(function(item) { return item.id }).indexOf(json.id)
+      state.mainList[id].name = json.newName
     },
 
     //secondList
@@ -145,6 +144,10 @@ export default new Vuex.Store({
     },
     changePlaylist(state , array){
       state.listMusic = array
+    },
+    changeSecondListName(state , json ){
+      let id = state.secondList.map(function(item) { return item.id }).indexOf(json.id)
+      state.secondList[id].name = json.newName
     },
 
   }

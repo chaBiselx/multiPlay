@@ -43,6 +43,7 @@
         cancelable
         :title="namePlaylist"
     >
+      <v-ons-action-sheet-button @click="changeName()">Modifier le nom</v-ons-action-sheet-button>
       <v-ons-action-sheet-button @click="goToListMusic()">Voir la liste des musiques</v-ons-action-sheet-button>
       <v-ons-action-sheet-button modifier="destructive" @click="deletePlaylist()" >Supprimer</v-ons-action-sheet-button>
 
@@ -100,6 +101,19 @@ export default {
       this.actionSheetVisible = true
       this.memID = id
       this.namePlaylist =  this.secondList[this.secondList.map(function(item) { return item.id; }).indexOf(this.memID)].name
+    },
+    async changeName(){
+      let newName = ""
+      do {
+        newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Noveau nom"})
+      } while (newName == "");
+      let json = {
+        'id': this.memID,
+        'newName': newName
+      }
+      store.commit('changeSecondListName',json)
+      this.actionSheetVisible = false
+      this.memID = ""
     },
     showAddPlaylist(){
       this.namePlaylist = ""
