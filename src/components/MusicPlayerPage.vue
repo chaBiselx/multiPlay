@@ -16,7 +16,7 @@
       <div class="title">{{actualMusicTitle}}</div>
 
       <audio id="audio" controls>
-        <source :src="actualMusicUrl" type="audio/mp3 audio/ogg audio/wav">
+        <source :src="actualMusicUrl"   type="audio/mp3 audio/ogg audio/wav">
       </audio>
       <div class="center">
         <div class="float_left">
@@ -149,7 +149,7 @@ export default {
       while (this.stackPrev.length > this.stackLimit) {
         this.stackPrev.shift()
       }
-    }
+    },
 
 
   },
@@ -162,6 +162,11 @@ export default {
       this.randomMusic()
       this.player = true
       document.getElementById('audio').play()
+      let genThis = this
+      document.getElementById('audio').addEventListener("ended", function(){
+        document.getElementById('audio').setAttribute('src',genThis.nextMusic())
+        document.getElementById('audio').play()
+      });
     }
 
   }
