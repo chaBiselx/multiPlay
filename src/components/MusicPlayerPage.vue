@@ -154,7 +154,16 @@ export default {
 
   },
   created(){
-    this.playlist = store.getters['playlist']
+    if (store.getters['playlist'].length == 0) {
+      this.$router.push({'name': 'HomePage'})
+      this.$ons.notification.toast({
+        animation: "fall",
+        message: 'Aucune musique !',
+        timeout: 2000
+      }).then(i => this.shutUp = i === 0)
+    }else{
+      this.playlist = store.getters['playlist']
+    }
 
 	},
   mounted(){
