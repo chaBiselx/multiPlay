@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
+
 
 Vue.use(Vuex)
 
@@ -27,54 +32,9 @@ export default new Vuex.Store({
     stackLimit: "25",
     noRepeat: "10",
     mainList: [
-      {
-        id: "123789456",
-        name: "tout",
-        subPlaylist: ['123789456'],
-      },
-      {
-        id: "987654321",
-        name: "name2",
-        subPlaylist: ['123741852'],
-      },
-      {
-        id: "123456789",
-        name: "name3",
-        subPlaylist: ["123741852","951741852"],
-      }
     ],
     memMainListID: "",
     secondList: [
-      {
-        id: "123789456",
-        name: "subname1",
-        subPlaylist: [
-          "/static/temp/2CELLOS - Wake Me Up - Avicii [OFFICIAL VIDEO].mp3",
-          "/static/temp/2080.mp3",
-          "/static/temp/Borderlands 2 Theme song _No place for a hero_ LYRICS.mp3",
-          "/static/temp/Dschinghis Khan - Moskau.mp3",
-          "/static/temp/Hey Pachuco-The Mask Soundtrack.mp3",
-          "/static/temp/End Credits.mp3",
-          "/static/temp/♪ Diggy Diggy Hole.mp3",
-          "/static/temp/BenZaie danse la marmelade de ma grand-mère.mp3",
-          "/static/temp/Caravan Palace - Lone Digger.mp3",
-          "/static/temp/Caravan Palace - Rock It For Me.mp3",
-          "/static/temp/Edith Piaf - L'homme a la moto - Lyric.mp3",
-          "/static/temp/Indochine L'Aventurier.mp3",
-          "/static/temp/NAHEULBEUK - Sauvons les rôlistes  - Clip.mp3",
-          "/static/temp/RASPUTIN - Vladimir Putin - Love The Way You Move (Funk Overload) @slocband.mp3",
-        ],
-      },
-      {
-        id: "123741852",
-        name: "subname2",
-        subPlaylist: [],
-      },
-      {
-        id: "951741852",
-        name: "subname3",
-        subPlaylist: [],
-      },
     ],
     memSecondListID: "",
     listMusic:[],
@@ -175,16 +135,12 @@ export default new Vuex.Store({
         "secondList": sList,
         "listMusic": state.listMusic
       }
-      let txtFile = "data.json";
-      //let file = new File(txtFile);
+      let nameFile = "data.json";
       let str = JSON.stringify(json);
+      let path = "/src/data.json";
       console.log(str);
-/*
-      file.open("write"); // open file with write access
-      file.write(str);
-      file.close();
-      */
-    }
+
+    },
 
   },
   actions: { //dispatch('name')
@@ -232,6 +188,37 @@ export default new Vuex.Store({
     changeSecondListName({commit} , json ){
       commit('changeSecondListName', json)
       commit('save')
+    },
+    async loadData({commit,state}){
+      let resp =  await axios.get('/src/data.json')
+
+
+      state.stackLimit =  resp.data.stackLimit
+      state.noRepeat =    resp.data.noRepeat
+      state.listMusic =   resp.data.listMusic
+
+      let array1 = []
+      for (let i of resp.data.mainList) {
+        let tempJson = {
+          id: i.id,
+          name: i.name,
+          subPlaylist: i.subPlaylist,
+        }
+        array1.push(tempJson)
+      }
+      state.mainList = array1
+
+      let array2 = []
+      for (let i of resp.data.secondList) {
+        let tempJson = {
+          id: i.id,
+          name: i.name,
+          subPlaylist: i.subPlaylist,
+        }
+        array2.push(tempJson)
+      }
+      state.secondList = array2
+
     },
   }
 

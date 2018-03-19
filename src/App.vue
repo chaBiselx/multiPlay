@@ -35,6 +35,9 @@ export default {
   components: {
     HomePage,
     MenuPage,
+  },
+  beforeCreate(){
+    this.$store.dispatch('loadData')
   }
 }
 </script>
