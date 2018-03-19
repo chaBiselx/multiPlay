@@ -190,7 +190,7 @@ export default new Vuex.Store({
       commit('save')
     },
     async loadData({commit,state}){
-      let resp =  await axios.get('/src/data.json')
+      let resp =  await axios.get('/src/assets/data.json')
 
 
       state.stackLimit =  resp.data.stackLimit
