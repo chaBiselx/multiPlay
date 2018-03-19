@@ -96,7 +96,7 @@ export default {
         'id': this.memID,
         'newName': newName
       }
-      store.commit('changeMainListName',json)
+      store.dispatch('changeMainListName',json)
       this.actionSheetVisible = false
       this.memID = ""
     },
@@ -105,7 +105,7 @@ export default {
       this.addPlaylistVisible = true
     },
     deletePlaylist(){
-      store.commit('deleteInMainList',this.memID)
+      store.dispatch('deleteInMainList',this.memID)
       this.actionSheetVisible = false
       this.memID = ""
     },
@@ -120,7 +120,7 @@ export default {
         this.addPlaylistVisible = false
         this.namePlaylist = ""
         this.addPlaylistVisible = false
-        store.commit('addInMainList',json)
+        store.dispatch('addInMainList',json)
       }
     },
     play( id ){
@@ -143,7 +143,7 @@ export default {
       for (let i = 0; i < a.length; i++ ) {
           playlist.push( a[i] );
       }
-      store.commit('changePlaylist',playlist)
+      store.dispatch('changePlaylist',playlist)
       this.$router.push({'name': 'MusicPlayerPage'})
 
     },

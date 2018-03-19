@@ -111,7 +111,7 @@ export default {
         'id': this.memID,
         'newName': newName
       }
-      store.commit('changeSecondListName',json)
+      store.dispatch('changeSecondListName',json)
       this.actionSheetVisible = false
       this.memID = ""
     },
@@ -120,7 +120,7 @@ export default {
       this.addPlaylistVisible = true
     },
     deletePlaylist(){
-      store.commit('deleteInSecondList',this.memID)
+      store.dispatch('deleteInSecondList',this.memID)
       this.actionSheetVisible = false
       this.memID = ""
 
@@ -136,7 +136,7 @@ export default {
         this.addPlaylistVisible = false
         this.namePlaylist = ""
         this.addPlaylistVisible = false
-        store.commit('addInSecondList',json)
+        store.dispatch('addInSecondList',json)
       }
     },
     goToListMusic(){
@@ -151,7 +151,7 @@ export default {
           array.push(this.secondList[i].id)
         }
       }
-      store.commit('changeMainListPlaylist',array)
+      store.dispatch('changeMainListPlaylist',array)
       this.$ons.notification.toast({
         animation: "fall",
         message: 'Sauvegardé!',

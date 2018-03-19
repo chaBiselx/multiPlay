@@ -61,7 +61,7 @@ export default {
           array.push(this.listMusic[i].link)
         }
       }
-      store.commit('changeSecondListPlaylist',array)
+      store.dispatch('changeSecondListPlaylist',array)
       this.$ons.notification.toast({
         animation: "fall",
         message: 'Sauvegardé!',

@@ -81,7 +81,7 @@ export default new Vuex.Store({
 
 
   },
-  getters:{
+  getters:{ //getters['name']
     playlist(state){
       return state.listMusic
     },
@@ -89,7 +89,7 @@ export default new Vuex.Store({
       return state.mainList
     },
   },
-  mutations: {
+  mutations: { //commit('name')
     changeStackLimit(state , value){
       state.stackLimit = value
     },
@@ -149,7 +149,59 @@ export default new Vuex.Store({
       let id = state.secondList.map(function(item) { return item.id }).indexOf(json.id)
       state.secondList[id].name = json.newName
     },
+    save(state){
+      console.log('save');
+    }
 
+  },
+  actions: { //dispatch('name')
+    changeStackLimit({commit} , value){
+      commit('changeStackLimit', value)
+      commit('save')
+    },
+    changeNoRepeat({commit} , value){
+      commit('changeNoRepeat', value)
+      commit('save')
+    },
+
+
+    addInMainList({commit}, json){
+      commit('addInMainList', json)
+      commit('save')
+    },
+    deleteInMainList({commit} , id){
+      commit('deleteInMainList', id)
+      commit('save')
+    },
+    changeMainListPlaylist({commit} , array){
+      commit('changeMainListPlaylist', array)
+      commit('save')
+    },
+    changeMainListName({commit}, json){
+      commit('changeMainListName', json)
+      commit('save')
+    },
+
+    addInSecondList({commit}, json){
+      commit('addInSecondList', json)
+      commit('save')
+    },
+    deleteInSecondList({commit} , id){
+      commit('deleteInSecondList', id)
+      commit('save')
+    },
+    changeSecondListPlaylist({commit} , array){
+      commit('changeSecondListPlaylist', array)
+      commit('save')
+    },
+    changePlaylist({commit} , array){
+      commit('changePlaylist', array)
+      commit('save')
+    },
+    changeSecondListName({commit} , json ){
+      commit('changeSecondListName', json)
+      commit('save')
+    },
   }
 
 
