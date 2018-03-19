@@ -77,7 +77,7 @@ export default {
       namePlaylist: "",
       actionSheetVisible: false ,
       addPlaylistVisible: false ,
-      MainList: store.state.mainList,
+      MainList: [],
     }
   },
   methods: {
@@ -152,8 +152,13 @@ export default {
       this.$router.push({'name': 'PlaylistPage'})
     },
   },
-  created(){
-	}
+  async beforeCreate(){
+    let r = await this.$store.dispatch('loadData')
+    if (true) {
+      this.MainList = store.state.mainList
+    }
+  },
+
 }
 </script>
 

@@ -218,7 +218,7 @@ export default new Vuex.Store({
         array2.push(tempJson)
       }
       state.secondList = array2
-
+      return true
     },
   }
 
