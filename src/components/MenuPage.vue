@@ -16,7 +16,6 @@
 
 <script>
   import store from '@/store'
-  import About from '@/components/PlaylistPage'
 
 export default {
   name: 'menuPage',
