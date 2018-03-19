@@ -175,17 +175,23 @@ export default new Vuex.Store({
         "secondList": sList,
         "listMusic": state.listMusic
       }
-      console.log(json);
+      let txtFile = "data.json";
+      //let file = new File(txtFile);
+      let str = JSON.stringify(json);
+      console.log(str);
+/*
+      file.open("write"); // open file with write access
+      file.write(str);
+      file.close();
+      */
     }
 
   },
   actions: { //dispatch('name')
-    changeStackLimit({commit} , value){
-      commit('changeStackLimit', value)
-      commit('save')
-    },
-    changeNoRepeat({commit} , value){
-      commit('changeNoRepeat', value)
+    changeOption({commit} , value){
+      commit('changeNoRepeat', value.NoRepeat)
+      commit('changeStackLimit', value.StackLimit)
+
       commit('save')
     },
 

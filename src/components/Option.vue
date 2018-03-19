@@ -53,8 +53,11 @@ export default {
       if (this.noRepeat <1) {
         this.noRepeat=1
       }
-      store.dispatch('changeStackLimit',this.stackLimit)
-      store.dispatch('changeNoRepeat',this.noRepeat)
+      let json = {
+        "StackLimit":this.stackLimit,
+        "NoRepeat":this.noRepeat
+      }
+      store.dispatch('changeOption',json)
 
       this.$ons.notification.toast({
         animation: "fall",
