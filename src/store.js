@@ -150,7 +150,32 @@ export default new Vuex.Store({
       state.secondList[id].name = json.newName
     },
     save(state){
-      console.log('save');
+      let mList = []
+      for (let i of state.mainList) {
+        let tempJson = {
+          "id": i.id,
+          "name": i.name,
+          "subPlaylist": i.subPlaylist,
+        }
+        mList.push(tempJson)
+      }
+      let sList = []
+      for (let i of state.secondList) {
+        let tempJson = {
+          "id": i.id,
+          "name": i.name,
+          "subPlaylist": i.subPlaylist,
+        }
+        sList.push(tempJson)
+      }
+      let json = {
+        "stackLimit": state.stackLimit,
+        "noRepeat": state.noRepeat,
+        "mainList": mList,
+        "secondList": sList,
+        "listMusic": state.listMusic
+      }
+      console.log(json);
     }
 
   },
