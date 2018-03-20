@@ -153,11 +153,17 @@ export default {
     },
   },
   async beforeCreate(){
-    let r = await this.$store.dispatch('loadData')
-    if (true) {
-      this.MainList = store.state.mainList
+    if (!store.state.load) {
+      store.commit('changeLoad',true)
+      let r = await this.$store.dispatch('loadData')
     }
+
+    this.MainList = store.state.mainList
   },
+
+  mounted(){
+    this.MainList = store.state.mainList
+  }
 
 }
 </script>

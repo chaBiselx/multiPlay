@@ -29,6 +29,7 @@ export default new Vuex.Store({
 
   },
   state:{
+    load: false,
     stackLimit: "25",
     noRepeat: "10",
     mainList: [
@@ -50,6 +51,9 @@ export default new Vuex.Store({
     },
   },
   mutations: { //commit('name')
+    changeLoad(state , value){
+      state.load = value
+    },
     changeStackLimit(state , value){
       state.stackLimit = value
     },
@@ -138,8 +142,21 @@ export default new Vuex.Store({
       let nameFile = "data.json";
       let str = JSON.stringify(json);
       let path = "/src/data.json";
-      console.log(str);
+      // /*
 
+
+
+
+
+
+
+
+
+
+
+
+
+      // */
     },
 
   },
