@@ -74,10 +74,14 @@ export default {
     backward(){
       document.getElementById('audio').setAttribute('src',this.prevMusic())
       document.getElementById('audio').play()
+      console.log(this.stackPrev);
+
     },
     forward(){
       document.getElementById('audio').setAttribute('src',this.nextMusic())
       document.getElementById('audio').play()
+      console.log(this.stackPrev);
+
     },
     go(){
       this.player = true
@@ -89,7 +93,8 @@ export default {
     },
     randomMusic(){
       let lastMusic = this.actualMusicUrl
-      if (lastMusic != "") {
+
+      if (lastMusic != "" && this.stackPrev[0] != this.actualMusicUrl) {
         this.stackPrev.push(lastMusic)
       }
       let boolRepeat
@@ -139,38 +144,28 @@ export default {
 
     },
     prevMusic(){
-      //n =
-      if (this.actualNumber == 0) { //premier retour en arrière pour enregistrer
+      let ret
+      if (this.actualNumber == 0 ) { //premier retour en arrière pour enregistrer
         let lastMusic = this.actualMusicUrl
         if (lastMusic != "") {
           this.stackPrev.push(lastMusic)
           this.actualNumber++
         }
       }
-
-
       this.actualNumber++
 
       if (this.actualNumber >= this.stackPrev.length ) {
         this.actualNumber = this.stackPrev.length
       }
-
       let n = (this.stackPrev.length - this.actualNumber )
-
-
-      if (n <= 0) {
-        return this.actualMusicUrl
-
-      }else{
 
         this.actualMusicUrl = this.stackPrev[n]
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
 
-        return this.actualMusicUrl
+        ret = this.actualMusicUrl
 
-      }
-
+    return ret
 
     },
     verifStack(){
@@ -204,10 +199,7 @@ export default {
         document.getElementById('audio').setAttribute('src',genThis.nextMusic())
         document.getElementById('audio').play()
       });
-      let lastMusic = this.actualMusicUrl
-      if (lastMusic != "") {
-        this.stackPrev.push(lastMusic)
-      }
+
     }
 
   }
