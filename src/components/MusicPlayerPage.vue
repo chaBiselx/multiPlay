@@ -120,7 +120,7 @@ export default {
       return this.actualMusicUrl
     },
     nextMusic(){
-      console.log(this.stackPrev);
+      console.log(    this.actualNumber    );
       let ret
       this.actualNumber--
       if (this.actualNumber < 0 ) {
@@ -139,6 +139,13 @@ export default {
 
     },
     prevMusic(){
+      if (this.actualNumber == 0) {
+        let lastMusic = this.actualMusicUrl
+        if (lastMusic != "") {
+          this.stackPrev.push(lastMusic)
+        }
+
+      }
       this.actualNumber++
 
       if (this.actualNumber >= this.stackPrev.length ) {
