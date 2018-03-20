@@ -120,6 +120,7 @@ export default {
       return this.actualMusicUrl
     },
     nextMusic(){
+
       let ret
       this.actualNumber--
       let n = this.stackPrev.length - this.actualNumber
@@ -129,8 +130,6 @@ export default {
         ret = this.randomMusic()
 
       }else {
-        console.log(
-          "array"+this.stackPrev.length+" n "+n);
         ret = this.stackPrev[n]
         let array = ret.split("/")
         this.actualMusicTitle = array[array.length-1]
@@ -140,14 +139,16 @@ export default {
 
     },
     prevMusic(){
-
-      if (this.actualNumber == 0) {
+      //n =
+      if (this.actualNumber == 0) { //premier retour en arrière pour enregistrer
         let lastMusic = this.actualMusicUrl
         if (lastMusic != "") {
           this.stackPrev.push(lastMusic)
           this.actualNumber++
         }
       }
+
+
       this.actualNumber++
 
       if (this.actualNumber >= this.stackPrev.length ) {
@@ -203,6 +204,10 @@ export default {
         document.getElementById('audio').setAttribute('src',genThis.nextMusic())
         document.getElementById('audio').play()
       });
+      let lastMusic = this.actualMusicUrl
+      if (lastMusic != "") {
+        this.stackPrev.push(lastMusic)
+      }
     }
 
   }
