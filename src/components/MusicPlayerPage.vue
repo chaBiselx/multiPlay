@@ -89,7 +89,9 @@ export default {
     },
     randomMusic(){
       let lastMusic = this.actualMusicUrl
-      this.stackPrev.push(lastMusic)
+      if (lastMusic != "") {
+        this.stackPrev.push(lastMusic)
+      }
       let boolRepeat
       let n = 0
       do {
@@ -118,24 +120,15 @@ export default {
       return this.actualMusicUrl
     },
     nextMusic(){
-      console.log(
-        "next"
-      );
+      console.log(this.stackPrev);
       let ret
       this.actualNumber--
-      if (this.actualNumber <= 0 ) {
-        console.log(
-          "vide"
-        );
+      if (this.actualNumber < 0 ) {
+
         this.actualNumber = 0
         ret = this.randomMusic()
+
       }else {
-        console.log(
-          "non-vide"
-        );
-        console.log(this.actualNumber+" : "+this.stackPrev.length);
-
-
 
         ret = this.stackPrev[this.stackPrev.length -1 - this.actualNumber]
         let array = ret.split("/")
@@ -146,48 +139,25 @@ export default {
 
     },
     prevMusic(){
-      console.log(
-        "prev"
-      );
       this.actualNumber++
-      console.log(
-        this.actualNumber+" : "+(this.stackPrev.length -1)
-      );
 
       if (this.actualNumber >= this.stackPrev.length ) {
         this.actualNumber = this.stackPrev.length
       }
 
-
-
       let n = (this.stackPrev.length - this.actualNumber)
-      if ( n <= 0 ) {
-        console.log("n = 0");
-
-        n = 0
-      }
-      /*
-      if (n >= this.stackPrev.length -1) {
-        console.log("n = this.stackPrev.length-1");
-        n = this.stackPrev.length-1
-      }*/
-
 
 
       if (this.stackPrev[n] == "") {
-        console.log(
-          "vide"
-        );
+
         return this.actualMusicUrl
 
       }else{
-        console.log(
-          "non-vide"
-        );
 
         this.actualMusicUrl = this.stackPrev[n]
         let array = this.actualMusicUrl.split("/")
         this.actualMusicTitle = array[array.length-1]
+
         return this.actualMusicUrl
 
       }
