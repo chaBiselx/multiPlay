@@ -65,7 +65,7 @@ export default {
       player: false ,
       playlist: [],
       stackPrev: [],
-      prevNumber: 0,
+      actualNumber: 0,
       stackLimit: store.state.stackLimit,
       noRepeat: store.state.noRepeat,
     }
@@ -118,31 +118,80 @@ export default {
       return this.actualMusicUrl
     },
     nextMusic(){
+      console.log(
+        "next"
+      );
       let ret
-      if (this.prevNumber <= 0 ) {
-        this.prevNumber = 0
+      this.actualNumber--
+      if (this.actualNumber <= 0 ) {
+        console.log(
+          "vide"
+        );
+        this.actualNumber = 0
         ret = this.randomMusic()
       }else {
-        this.prevNumber--
-        ret = this.stackPrev[this.stackPrev.length - this.prevNumber - 1]
+        console.log(
+          "non-vide"
+        );
+        console.log(this.actualNumber+" : "+this.stackPrev.length);
+
+
+
+        ret = this.stackPrev[this.stackPrev.length -1 - this.actualNumber]
         let array = ret.split("/")
         this.actualMusicTitle = array[array.length-1]
+
       }
       return ret
 
     },
     prevMusic(){
-      let n = (this.stackPrev.length - this.prevNumber)-1
-      if ( n < 0 ) {
-        n = 0
-        this.prevNumber = this.stackPrev.length
-      }else{
-        this.prevNumber++
+      console.log(
+        "prev"
+      );
+      this.actualNumber++
+      console.log(
+        this.actualNumber+" : "+(this.stackPrev.length -1)
+      );
+
+      if (this.actualNumber >= this.stackPrev.length ) {
+        this.actualNumber = this.stackPrev.length
       }
-      this.actualMusicUrl = this.stackPrev[n]
-      let array = this.actualMusicUrl.split("/")
-      this.actualMusicTitle = array[array.length-1]
-      return this.actualMusicUrl
+
+
+
+      let n = (this.stackPrev.length - this.actualNumber)
+      if ( n <= 0 ) {
+        console.log("n = 0");
+
+        n = 0
+      }
+      /*
+      if (n >= this.stackPrev.length -1) {
+        console.log("n = this.stackPrev.length-1");
+        n = this.stackPrev.length-1
+      }*/
+
+
+
+      if (this.stackPrev[n] == "") {
+        console.log(
+          "vide"
+        );
+        return this.actualMusicUrl
+
+      }else{
+        console.log(
+          "non-vide"
+        );
+
+        this.actualMusicUrl = this.stackPrev[n]
+        let array = this.actualMusicUrl.split("/")
+        this.actualMusicTitle = array[array.length-1]
+        return this.actualMusicUrl
+
+      }
+
 
     },
     verifStack(){
