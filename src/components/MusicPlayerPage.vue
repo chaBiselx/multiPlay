@@ -120,17 +120,18 @@ export default {
       return this.actualMusicUrl
     },
     nextMusic(){
-      console.log(    this.actualNumber    );
       let ret
       this.actualNumber--
-      if (this.actualNumber < 0 ) {
+      let n = this.stackPrev.length - this.actualNumber
+      if (this.actualNumber < 0 || n >= this.stackPrev.length ) {
 
         this.actualNumber = 0
         ret = this.randomMusic()
 
       }else {
-
-        ret = this.stackPrev[this.stackPrev.length -1 - this.actualNumber]
+        console.log(
+          "array"+this.stackPrev.length+" n "+n);
+        ret = this.stackPrev[n]
         let array = ret.split("/")
         this.actualMusicTitle = array[array.length-1]
 
@@ -139,12 +140,13 @@ export default {
 
     },
     prevMusic(){
+
       if (this.actualNumber == 0) {
         let lastMusic = this.actualMusicUrl
         if (lastMusic != "") {
           this.stackPrev.push(lastMusic)
+          this.actualNumber++
         }
-
       }
       this.actualNumber++
 
@@ -152,11 +154,10 @@ export default {
         this.actualNumber = this.stackPrev.length
       }
 
-      let n = (this.stackPrev.length - this.actualNumber)
+      let n = (this.stackPrev.length - this.actualNumber )
 
 
-      if (this.stackPrev[n] == "") {
-
+      if (n <= 0) {
         return this.actualMusicUrl
 
       }else{
