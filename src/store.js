@@ -144,11 +144,7 @@ export default new Vuex.Store({
       let path = "/src/data.json";
       // /*
 
-
-
-
-
-
+      window.localStorage.setItem("data", str);
 
 
 
@@ -207,34 +203,35 @@ export default new Vuex.Store({
       commit('save')
     },
     async loadData({commit,state}){
-      let resp =  await axios.get('/src/assets/data.json')
+      let resp = JSON.parse(window.localStorage.getItem("data"))
+      if (resp.stackLimit != undefined) {
+        state.stackLimit =  resp.stackLimit
+        state.noRepeat =    resp.noRepeat
+        state.listMusic =   resp.listMusic
 
-
-      state.stackLimit =  resp.data.stackLimit
-      state.noRepeat =    resp.data.noRepeat
-      state.listMusic =   resp.data.listMusic
-
-      let array1 = []
-      for (let i of resp.data.mainList) {
-        let tempJson = {
-          id: i.id,
-          name: i.name,
-          subPlaylist: i.subPlaylist,
+        let array1 = []
+        for (let i of resp.mainList) {
+          let tempJson = {
+            id: i.id,
+            name: i.name,
+            subPlaylist: i.subPlaylist,
+          }
+          array1.push(tempJson)
         }
-        array1.push(tempJson)
-      }
-      state.mainList = array1
+        state.mainList = array1
 
-      let array2 = []
-      for (let i of resp.data.secondList) {
-        let tempJson = {
-          id: i.id,
-          name: i.name,
-          subPlaylist: i.subPlaylist,
+        let array2 = []
+        for (let i of resp.secondList) {
+          let tempJson = {
+            id: i.id,
+            name: i.name,
+            subPlaylist: i.subPlaylist,
+          }
+          array2.push(tempJson)
         }
-        array2.push(tempJson)
+        state.secondList = array2
       }
-      state.secondList = array2
+
       return true
     },
   }
