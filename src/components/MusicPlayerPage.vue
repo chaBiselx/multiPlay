@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
-      <div class="left">
+      <div class="left pointer">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>

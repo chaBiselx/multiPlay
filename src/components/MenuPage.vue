@@ -6,7 +6,7 @@
 
     <v-ons-list-title>Menu</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item modifier="chevron" v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
+      <v-ons-list-item class="pointer"modifier="chevron" v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
         <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
         <div class="center">{{ item.label }}</div>
       </v-ons-list-item>

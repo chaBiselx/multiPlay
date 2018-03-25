@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
-      <div class="left">
+      <div class="left pointer">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>
@@ -22,7 +22,7 @@
       <v-ons-list-item  v-for="item in secondList"  :key="item.id">
 
         <label >
-          <div class="center">
+          <div class="center pointer" >
 
             <ons-checkbox :id="item.id" ng-model="page.id"></ons-checkbox></v-ons-icon>
             {{item.name}}
@@ -184,6 +184,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
- 
+
 
 </style>

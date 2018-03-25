@@ -63,6 +63,10 @@ ons-card {
 }
 
 ons-list-item, ons-card {
+  cursor: grabbing;
+}
+
+.pointer{
   cursor: pointer;
 }
 
@@ -77,7 +81,8 @@ ons-list-item, ons-card {
 }
 
 .optionButton{
-  padding: 7px 15px 7px 15px;
+  cursor: pointer;
+  padding: 7px 15px 7px 22px;
 }
 
 .text{
