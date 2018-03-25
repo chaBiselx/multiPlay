@@ -14,6 +14,11 @@ import MusicPlayerPage from '@/components/MusicPlayerPage'
 import Option from '@/components/Option'
 
 
+// /* TEST
+import Test from '@/components/Test'
+// /*
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +58,17 @@ export default new Router({
       component: Option,
 
     },
+
+    // /* TEST
+    {
+      path: '/Test',
+      name: 'Test',
+      component: Test,
+
+    },
+
+    // /*
+
     {
       path: '*',
       redirect: '/'

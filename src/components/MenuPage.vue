@@ -42,7 +42,13 @@ export default {
           link: 'About',
           icon: 'fa-book'
         },
-
+        // /* TEST
+        {
+          label: 'test',
+          link: 'test',
+          icon: 'fa-book'
+        },
+        // /*
       ]
     }
   },
@@ -71,6 +77,12 @@ export default {
           this.$router.push({'name': 'Option'})
           store.commit('splitter/toggle')
           break;
+        // /* TEST
+        case 'test':
+          this.$router.push({'name': 'Test'})
+          store.commit('splitter/toggle')
+          break;
+        // /*
         default:
           //redirect home
           this.$router.push({'name': 'HomePage'})
