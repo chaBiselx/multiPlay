@@ -41,8 +41,49 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 ons-splitter-side[side=left][animation=overlay] {
   border-right: 1px solid #BBB;
+}
+
+img {
+  max-width: 300px;
+}
+
+ons-list-title {
+  text-transform: none;
+}
+
+ons-list-title:not(:first-of-type) {
+  margin-top: 30px;
+}
+
+ons-card {
+  text-align: center;
+}
+
+ons-list-item, ons-card {
+  cursor: pointer;
+}
+
+.header {
+  text-align: center;
+}
+
+.logo{
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+}
+
+.optionButton{
+  padding: 7px 15px 7px 15px;
+}
+
+.text{
+  margin: 15px;
+}
+.text h1{
+  text-align: center;
 }
 </style>

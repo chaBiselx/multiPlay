@@ -110,32 +110,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-img {
-  max-width: 300px;
-}
-
-ons-list-title {
-  text-transform: none;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
-  cursor: pointer;
-}
 .label_music{
   display: block;
   width: 100%;
-}
-.logo{
-  height: 30px;
-  width: 30px;
-  vertical-align: middle;
 }
 </style>

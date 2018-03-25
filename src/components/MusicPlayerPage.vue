@@ -213,29 +213,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  text-align: center;
-}
-
-img {
-  max-width: 300px;
-}
-
-ons-list-title {
-  text-transform: none;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
-  cursor: pointer;
-}
 
 .text-center {
   margin-top: 10%;
@@ -291,9 +268,5 @@ ons-list-item, ons-card {
 	margin-top: 1px;
 	background: #cc3399;
 }
-.logo{
-  height: 30px;
-  width: 30px;
-  vertical-align: middle;
-}
+
 </style>

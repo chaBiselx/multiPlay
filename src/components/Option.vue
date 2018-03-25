@@ -87,35 +87,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  text-align: center;
-}
 
-img {
-  max-width: 300px;
-}
-
-ons-list-title {
-  text-transform: none;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
-  cursor: pointer;
-}
-.text{
-  margin: 15px;
-}
-.text h1{
-  text-align: center;
-}
 .form-group{
   width: 80%;
   margin: 10px 10% 10px 10%;
@@ -137,9 +109,5 @@ input{
 .end{
   margin-top: 50px
 }
-.logo{
-  height: 30px;
-  width: 30px;
-  vertical-align: middle;
-}
+
 </style>
