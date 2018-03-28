@@ -15,7 +15,12 @@
     <div class="center text">
       <h1>Multiplay</h1>
 
-      <p>data : {{data}}</p>
+      <p>data1 : {{data1}}</p>
+      <p>data2 : {{data2}}</p>
+      <p>data3 : {{data3}}</p>
+      <p>data4 : {{data4}}</p>
+      <p>data5 : {{data5}}</p>
+
 
 
     </div>
@@ -27,7 +32,11 @@ export default {
   name: 'about',
   data () {
     return {
-      data : "",
+      data1 : "",
+      data2 : "",
+      data3 : "",
+      data4 : "",
+      data5 : "",
     }
   },
   methods: {
@@ -35,8 +44,23 @@ export default {
 
   },
   created(){
-    this.data = getExternalStorageDirectory()
-	}
+    var success = function(data) {
+       console.log(data.url);
+       // do something
+   };
+
+   var error = function(msg) {
+       console.log(msg);
+       //do something
+   };
+
+
+  this.data1 = filechooser.open({"mime": "audio/*"}, success, error);
+
+
+
+
+  }
 }
 </script>
 
