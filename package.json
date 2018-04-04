@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "com.cesidiodibenedetto.filechooser": "https://github.com/caixiangsap/filechooser.git",
     "cordova-android": "^7.0.0",
-    "cordova-plugin-file-chooser": "git+https://github.com/caixiangsap/filechooser.git",
     "onsenui": "^2.9.1",
     "vue": "^2.5.0",
     "vue-axios": "^2.0.2",
@@ -72,9 +70,6 @@
     "Opera 12.1"
   ],
   "cordova": {
-    "plugins": {
-      "com.cesidiodibenedetto.filechooser": {}
-    },
     "platforms": [
       "android"
     ]

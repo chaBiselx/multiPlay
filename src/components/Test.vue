@@ -44,18 +44,7 @@ export default {
 
   },
   created(){
-    var success = function(data) {
-       console.log(data.url);
-       // do something
-   };
 
-   var error = function(msg) {
-       console.log(msg);
-       //do something
-   };
-
-
-  this.data1 = filechooser.open({"mime": "audio/*"}, success, error);
 
 
 
