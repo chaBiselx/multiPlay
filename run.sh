@@ -2,6 +2,11 @@ npm run build
 cordova platforms remove android
 cordova platforms add android
 
+# https://ourcodeworld.com/articles/read/331/android-error-no-resource-found-that-matches-the-given-name-at-icon-with-value-drawable-icon
+
+cp ./src/assets/img/MultiPlay.png ./platforms/android/res/drawable
+mv ./platforms/android/res/drawable/MultiPlay.png ./platforms/android/res/drawable/icon.png
+
 cp ./icon/72_icon.png ./platforms/android/app/src/main/res/mipmap-hdpi
 rm -f ./platforms/android/app/src/main/res/mipmap-hdpi/icon.png
 mv ./platforms/android/app/src/main/res/mipmap-hdpi/72_icon.png ./platforms/android/app/src/main/res/mipmap-hdpi/icon.png
