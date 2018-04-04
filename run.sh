@@ -1,5 +1,6 @@
 npm run build
-cordova prepare
+cordova platforms remove android
+cordova platforms add android
 
 cp ./icon/72_icon.png ./platforms/android/app/src/main/res/mipmap-hdpi
 rm -f ./platforms/android/app/src/main/res/mipmap-hdpi/icon.png
