@@ -20,6 +20,8 @@
       <p>data3 : {{data3}}</p>
       <p>data4 : {{data4}}</p>
       <p>data5 : {{data5}}</p>
+      <p>data6 : {{data6}}</p>
+
 
 
 
@@ -32,23 +34,57 @@ export default {
   name: 'about',
   data () {
     return {
-      data1 : "",
-      data2 : "",
-      data3 : "",
-      data4 : "",
-      data5 : "",
+      data1 : [],
+      data2 : [],
+      data3 : [],
+      data4 : [],
+      data5 : [],
+      data6 : [],
     }
   },
   methods: {
+    listDir(path){
+      let test = this.data3
+      window.resolveLocalFileSystemURL(path,
+        function (fileSystem) {
+          test.push(fileSystem)
+          let reader = fileSystem.createReader()
+          reader.readEntries(
+            function (entries) {
+              test = entries[0]
+            },
+            function (err) {
+              test = err
+            }
+          );
+        }, function (err) {
+          test = err
+        }
+      );
+    },
+    onSuccessCallBack(e){
+      this.data1.push("sucess")
+      this.data5 = JSON.stringify(e)
+      this.data6 = 'e ='+e
+
+    },
+    onErrorCallBack(e){
+      this.data1.push("error")
+
+      this.data5 = JSON.stringify(e)
+    }
+
 
 
   },
-  created(){
+  async created(){
+    this.data1.push("start")
+    //this.listDir(cordova.file.externalDataDirectory)
+    let coucou = this.data6
+    await cordova.file.externalDataDirectory.getAudioList(this.onSuccessCallBack())
 
 
-
-
-
+    this.data1.push("end")
   }
 }
 </script>
