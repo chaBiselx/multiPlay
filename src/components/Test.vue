@@ -80,9 +80,10 @@ export default {
   async created(){
     this.data1.push("start")
     //this.listDir(cordova.file.externalDataDirectory)
-    let coucou = this.data6
-    await cordova.file.externalDataDirectory.getAudioList(this.onSuccessCallBack())
+    //MediaRetrieve.getAudioList(onSuccessCallBack,onErrorCallBack)
+    //MediaRetrieve.getAudioList(this.onSuccessCallBack(),this.onErrorCallBack())
 
+    this.data1.push(MediaRetrieve.getAudioList )
 
     this.data1.push("end")
   }
