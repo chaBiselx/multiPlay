@@ -43,47 +43,23 @@ export default {
     }
   },
   methods: {
-    listDir(path){
-      let test = this.data3
-      window.resolveLocalFileSystemURL(path,
-        function (fileSystem) {
-          test.push(fileSystem)
-          let reader = fileSystem.createReader()
-          reader.readEntries(
-            function (entries) {
-              test = entries[0]
-            },
-            function (err) {
-              test = err
-            }
-          );
-        }, function (err) {
-          test = err
-        }
-      );
-    },
-    onSuccessCallBack(e){
-      this.data1.push("sucess")
-      this.data5 = JSON.stringify(e)
-      this.data6 = 'e ='+e
-
-    },
-    onErrorCallBack(e){
-      this.data1.push("error")
-
-      this.data5 = JSON.stringify(e)
-    }
-
-
-
   },
   async created(){
-    this.data1.push("start")
-    //this.listDir(cordova.file.externalDataDirectory)
-    //MediaRetrieve.getAudioList(onSuccessCallBack,onErrorCallBack)
-    //MediaRetrieve.getAudioList(this.onSuccessCallBack(),this.onErrorCallBack())
+    this.data1.push("start");
+    let test = this.data3 ///******
 
-    this.data1.push(MediaRetrieve.getAudioList )
+    //let temp
+
+
+    this.data1.push(MediaRetrieve.getAudioList(
+        function(data){
+          test.push(data)
+          //test.push(data) //*****
+        }
+      )
+    )
+
+    //this.data2 = temp[0].data
 
     this.data1.push("end")
   }
