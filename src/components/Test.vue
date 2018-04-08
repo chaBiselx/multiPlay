@@ -32,7 +32,7 @@ export default {
   name: 'about',
   data () {
     return {
-      data1 : "",
+      data1 : [],
       data2 : "",
       data3 : "",
       data4 : "",
@@ -43,12 +43,16 @@ export default {
 
 
   },
-  created(){
+  async created(){
+    this.data1.push('start')
 
 
 
 
 
+
+
+    this.data1.push('end')
   }
 }
 </script>
