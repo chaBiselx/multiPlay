@@ -14,15 +14,9 @@
 
     <div class="center text">
       <h1>Multiplay</h1>
-
+      <p>Ceci est une page de test pour le développement (WIP)</p>
       <p>data1 : {{data1}}</p>
       <p>data2 : {{data2}}</p>
-      <p>data3 : {{data3}}</p>
-      <p>data4 : {{data4}}</p>
-      <p>data5 : {{data5}}</p>
-      <p>data6 : {{data6}}</p>
-
-
 
 
     </div>
@@ -36,18 +30,11 @@ export default {
     return {
       data1 : [],
       data2 : [],
-      data3 : [],
-      data4 : [],
-      data5 : [],
-      data6 : [],
     }
   },
   methods: {
   },
   async created(){
-    this.data1.push("start");
-
-
 
 
     let temp = []
@@ -57,14 +44,11 @@ export default {
         temp.push(data)
       }
     )
-
-
-    this.data2 = temp[0].data
-
+    this.data2 = temp
 
 
 
-    this.data1.push("end")
+    this.data1 = temp.length
   }
 }
 </script>
