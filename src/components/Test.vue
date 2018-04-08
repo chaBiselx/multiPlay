@@ -46,20 +46,23 @@ export default {
   },
   async created(){
     this.data1.push("start");
-    let test = this.data3 ///******
-
-    //let temp
 
 
-    this.data1.push(MediaRetrieve.getAudioList(
-        function(data){
-          test.push(data)
-          //test.push(data) //*****
-        }
-      )
+
+
+    let temp = []
+
+    MediaRetrieve.getAudioList(
+      function(data){
+        temp.push(data)
+      }
     )
 
-    //this.data2 = temp[0].data
+
+    this.data2 = temp[0].data
+
+
+
 
     this.data1.push("end")
   }
