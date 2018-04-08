@@ -15,8 +15,11 @@
     <div class="center text">
       <h1>Multiplay</h1>
       <p>Ceci est une page de test pour le développement (WIP)</p>
+      <p>data2 devrait être data </p>
       <p>data1 : {{data1}}</p>
       <p>data2 : {{data2}}</p>
+      <p>data3 : {{data3}}</p>
+
 
 
     </div>
@@ -30,25 +33,28 @@ export default {
     return {
       data1 : [],
       data2 : [],
+      data3 : [],
     }
   },
   methods: {
   },
-  async created(){
+  created(){
 
-
-    let temp = []
-
+    let rawData = []
+    let temp2 = [];
     MediaRetrieve.getAudioList(
       function(data){
-        temp.push(data)
+        let arr = []
+        rawData.push(data)
+        arr.push(JSON.parse( JSON.stringify( data ) ))
+        temp2 = arr[0].data
+        //write here because asynchonus function
       }
     )
-    this.data2 = temp
+    this.data2 = temp2
+    this.data3 = rawData
 
 
-
-    this.data1 = temp.length
   }
 }
 </script>
