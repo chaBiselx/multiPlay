@@ -1,21 +1,41 @@
-# multiplay
+# MultiPlay
 
-> A Vue.js project
+## Install
 
-## Build Setup
-
+Download zip or git clone
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+./run.sh
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Clean platforms folder, change icon.png, and launch android-studio
+
+## Overview
+
+This is a music player app for Android (5.1+) smartphones. It is built using [Apache Cordova](https://cordova.apache.org/) and [vuejs 2.0](https://vuejs.org/)
+
+## Features
+
+- Make a MainPlaylist
+- Make SubPlaylist and add SubPlaylist in a MainPlaylist
+- Make a list of all music on the phone (Work In Progress)
+- Listen MainPlaylist
+
+## Dependencies
+This app requires the following plugins:
+- [npm](https://www.npmjs.com/get-npm)
+
+## Development
+
+This app has only been tested on Android 5.1. It is currently at an early development stage, major changes may happen. Contributions and/or ideas are welcome.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+## References
+
+This project in summer creates to answer a need to need to listen to playlists of several musical genres which can evolve
