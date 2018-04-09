@@ -71,6 +71,16 @@ export default {
     goingBack(){
       this.$router.push({'name': 'PlaylistPage'})
       store.commit('removeMemSecondListID')
+    },
+    getData(rawData){
+      //this.data2 = rawData.data
+      for(let i of rawData.data){
+        let json = {
+          "link": i.path ,
+          "name": i.name,
+        }
+        this.listMusic.push(json)
+      }
     }
   },
   created(){
@@ -80,19 +90,14 @@ export default {
       store.commit('removeMemSecondListID')
 
     }else{
-      let test = [ ]
-      for(let i of test){
-        let array = i.split("/")
-        let name =  array[array.length-1]
-
-        let json = {
-          "link": i ,
-          "name": name,
+      let globalThis = this
+      MediaRetrieve.getAudioList(
+        function(data){
+          globalThis.getData(data)
+          //write here because asynchonus function
         }
-        this.listMusic.push(json)
-      }
+      )
     }
-
 
 	},
   mounted(){

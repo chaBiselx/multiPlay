@@ -37,21 +37,20 @@ export default {
     }
   },
   methods: {
+    getData(rawData){
+      this.data2 = rawData.data
+    }
   },
   created(){
-
+    let globalThis = this
     let rawData = []
-    let temp2 = [];
     MediaRetrieve.getAudioList(
       function(data){
-        let arr = []
         rawData.push(data)
-        arr.push( data )
-        temp2.push( arr[0].data )
+        globalThis.getData(data)
         //write here because asynchonus function
       }
     )
-    this.data2 = temp2
     this.data3 = rawData
 
 
