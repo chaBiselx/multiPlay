@@ -46,8 +46,8 @@ export default {
       function(data){
         let arr = []
         rawData.push(data)
-        arr.push(JSON.parse( JSON.stringify( data ) ))
-        temp2 = arr[0].data
+        arr.push( data )
+        temp2.push( arr[0].data )
         //write here because asynchonus function
       }
     )
