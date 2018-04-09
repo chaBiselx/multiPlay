@@ -106,16 +106,7 @@ export default {
     }
 
 	},
-  mounted(){/*
-    if (store.state.memSecondListID != "") {
-      let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
 
-      for (let i in select) {
-        document.getElementById( select[i] ).checked = true
-      }
-
-    }*/
-  }
 }
 </script>
 
