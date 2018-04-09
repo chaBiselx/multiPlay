@@ -81,6 +81,12 @@ export default {
         }
         this.listMusic.push(json)
       }
+
+      let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
+
+      for (let i in select) {
+        document.getElementById( select[i] ).checked = true
+      }
     }
   },
   created(){
@@ -100,7 +106,7 @@ export default {
     }
 
 	},
-  mounted(){
+  mounted(){/*
     if (store.state.memSecondListID != "") {
       let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
 
@@ -108,7 +114,7 @@ export default {
         document.getElementById( select[i] ).checked = true
       }
 
-    }
+    }*/
   }
 }
 </script>
