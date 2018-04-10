@@ -15,7 +15,6 @@
     <div class="center text">
       <h1>Multiplay</h1>
       <p>Ceci est une page de test pour le développement (WIP)</p>
-      <p>data2 devrait être data </p>
       <p>data1 : {{data1}}</p>
       <p>data2 : {{data2}}</p>
       <p>data3 : {{data3}}</p>
@@ -37,21 +36,9 @@ export default {
     }
   },
   methods: {
-    getData(rawData){
-      this.data2 = rawData.data
-    }
+
   },
   created(){
-    let globalThis = this
-    let rawData = []
-    MediaRetrieve.getAudioList(
-      function(data){
-        rawData.push(data)
-        globalThis.getData(data)
-        //write here because asynchonus function
-      }
-    )
-    this.data3 = rawData
 
 
   }

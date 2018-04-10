@@ -20,11 +20,11 @@
     <v-ons-list-title>Liste des musiques</v-ons-list-title>
     <v-ons-list>
 
-      <v-ons-list-item  v-for="item in listMusic"  :key="item.link">
+      <v-ons-list-item  v-for="item in listMusic"  :key="item.path">
         <label class="label_music">
 
-          <ons-checkbox :id="item.link" :name="item.name"></ons-checkbox>
-          {{item.name}}
+          <ons-checkbox :id="item.path" :name="item.name"></ons-checkbox>
+          {{item.path}}
 
         </label>
       </v-ons-list-item>
@@ -57,14 +57,14 @@ export default {
     savePlaylist(){
       let array = []
       for (let i in this.listMusic ) {
-        if (document.getElementById( this.listMusic[i].link ).checked) {
-          array.push(this.listMusic[i].link)
+        if (document.getElementById( this.listMusic[i].path ).checked) {
+          array.push(this.listMusic[i].path)
         }
       }
       store.dispatch('changeSecondListPlaylist',array)
       this.$ons.notification.toast({
         animation: "fall",
-        message: 'Sauvegardé!',
+        message: 'Sauvegardé !',
         timeout: 2000
       }).then(i => this.shutUp = i === 0);
     },
@@ -73,20 +73,20 @@ export default {
       store.commit('removeMemSecondListID')
     },
     getData(rawData){
-      //this.data2 = rawData.data
-      for(let i of rawData.data){
-        let json = {
-          "link": i.path ,
-          "name": i.name,
-        }
-        this.listMusic.push(json)
-      }
-
       let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
 
-      for (let i in select) {
-        document.getElementById( select[i] ).checked = true
+
+      this.listMusic = rawData.data
+
+
+
+      for (let y in select) {
+        
+
+        //document.body.getElementById( select[y] ).checked = true
       }
+
+
     }
   },
   created(){
