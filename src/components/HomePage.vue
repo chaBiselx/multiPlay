@@ -43,7 +43,7 @@
 
     <v-ons-fab
       position="bottom right"
-      :visible=true
+      visible=true
       @click="showAddPlaylist()"
     >
       <v-ons-icon icon="md-plus"></v-ons-icon>

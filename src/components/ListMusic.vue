@@ -34,7 +34,7 @@
 
       <v-ons-fab
         position="bottom left"
-        :visible=true
+        visible=true
         @click="savePlaylist()"
       >
         <v-ons-icon icon="md-save"></v-ons-icon>

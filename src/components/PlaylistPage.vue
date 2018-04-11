@@ -51,14 +51,14 @@
 
     <v-ons-fab
       position="bottom right"
-      :visible=true
+      visible=true
       @click="showAddPlaylist()"
     >
       <v-ons-icon icon="md-plus"></v-ons-icon>
     </v-ons-fab>
     <v-ons-fab
       position="bottom left"
-      :visible=true
+      visible=true
       @click="savePlaylist()"
     >
       <v-ons-icon icon="md-save"></v-ons-icon>
