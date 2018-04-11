@@ -16,29 +16,34 @@
         </v-ons-toolbar-button>
       </div>
     </v-ons-toolbar>
+    <div v-if="show">
+      <v-ons-list-title>Liste des musiques</v-ons-list-title>
+      <v-ons-list>
 
-    <v-ons-list-title>Liste des musiques</v-ons-list-title>
-    <v-ons-list>
+        <v-ons-list-item  v-for="item in listMusic"  :key="item.path">
+          <label class="label_music">
 
-      <v-ons-list-item  v-for="item in listMusic"  :key="item.path">
-        <label class="label_music">
+            <ons-checkbox :id="item.path" :name="item.name"></ons-checkbox>
+            {{item.path}}
 
-          <ons-checkbox :id="item.path" :name="item.name"></ons-checkbox>
-          {{item.path}}
+          </label>
+        </v-ons-list-item>
 
-        </label>
-      </v-ons-list-item>
-
-    </v-ons-list>
+      </v-ons-list>
 
 
-    <v-ons-fab
-      position="bottom left"
-      :visible=true
-      @click="savePlaylist()"
-    >
-      <v-ons-icon icon="md-save"></v-ons-icon>
-    </v-ons-fab>
+      <v-ons-fab
+        position="bottom left"
+        :visible=true
+        @click="savePlaylist()"
+      >
+        <v-ons-icon icon="md-save"></v-ons-icon>
+      </v-ons-fab>
+    </div>
+    <div>
+      <img class="waiting" src="@/assets/img/Loading.gif" alt="">
+    </div>
+
 
   </v-ons-page>
 </template>
@@ -51,6 +56,7 @@ export default {
   data () {
     return {
       listMusic: [],
+      show : false,
     }
   },
   methods: {
@@ -81,11 +87,11 @@ export default {
 
 
       for (let y in select) {
-        
+
 
         //document.body.getElementById( select[y] ).checked = true
       }
-
+      this.show = true
 
     }
   },
@@ -112,6 +118,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.waiting{
+  width: 80%;
+  margin: 20% 10% 10% 10%;
+}
+
 .label_music{
   cursor: pointer;
   display: block;
