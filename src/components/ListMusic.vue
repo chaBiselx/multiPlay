@@ -16,7 +16,7 @@
         </v-ons-toolbar-button>
       </div>
     </v-ons-toolbar>
-    <div v-if="show">
+    <div>
       <v-ons-list-title>Liste des musiques</v-ons-list-title>
       <v-ons-list>
 
@@ -40,9 +40,7 @@
         <v-ons-icon icon="md-save"></v-ons-icon>
       </v-ons-fab>
     </div>
-    <div>
-      <img class="waiting" src="@/assets/img/Loading.gif" alt="">
-    </div>
+
 
 
   </v-ons-page>
@@ -88,6 +86,7 @@ export default {
 
       for (let y in select) {
 
+        //this.$ref.querySelector( select[y] ).checked = true
 
         //document.body.getElementById( select[y] ).checked = true
       }
@@ -118,11 +117,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.waiting{
-  width: 80%;
-  margin: 20% 10% 10% 10%;
-}
-
 .label_music{
   cursor: pointer;
   display: block;
