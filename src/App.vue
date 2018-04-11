@@ -36,6 +36,12 @@ export default {
     HomePage,
     MenuPage,
   },
+  methods: {
+
+  },
+  beforeCreate(){
+
+  }
 
 }
 </script>

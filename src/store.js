@@ -38,13 +38,13 @@ export default new Vuex.Store({
     secondList: [
     ],
     memSecondListID: "",
-    listMusic:[],
+    playlist:[],
 
 
   },
   getters:{ //getters['name']
     playlist(state){
-      return state.listMusic
+      return state.playlist
     },
     launchMainList(state){
       return state.mainList
@@ -107,7 +107,7 @@ export default new Vuex.Store({
       state.secondList[playlist].subPlaylist = array
     },
     changePlaylist(state , array){
-      state.listMusic = array
+      state.playlist = array
     },
     changeSecondListName(state , json ){
       let id = state.secondList.map(function(item) { return item.id }).indexOf(json.id)
@@ -137,7 +137,7 @@ export default new Vuex.Store({
         "noRepeat": state.noRepeat,
         "mainList": mList,
         "secondList": sList,
-        "listMusic": state.listMusic
+        "playlist": state.playlist
       }
       let nameFile = "data.json";
       let str = JSON.stringify(json);
@@ -146,13 +146,6 @@ export default new Vuex.Store({
 
       window.localStorage.setItem("data", str);
 
-
-
-
-
-
-
-      // */
     },
 
   },
@@ -207,7 +200,7 @@ export default new Vuex.Store({
       if (resp.stackLimit != undefined) {
         state.stackLimit =  resp.stackLimit
         state.noRepeat =    resp.noRepeat
-        state.listMusic =   resp.listMusic
+        state.playlist =   resp.playlist
 
         let array1 = []
         for (let i of resp.mainList) {
