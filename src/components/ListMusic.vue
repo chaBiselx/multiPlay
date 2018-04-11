@@ -54,7 +54,6 @@ export default {
   data () {
     return {
       listMusic: [],
-      show : false,
     }
   },
   methods: {
@@ -90,7 +89,6 @@ export default {
 
         //document.body.getElementById( select[y] ).checked = true
       }
-      this.show = true
 
     }
   },
@@ -100,17 +98,18 @@ export default {
       store.commit('removeMemMainListID')
       store.commit('removeMemSecondListID')
 
-    }else{
-      let globalThis = this
-      MediaRetrieve.getAudioList(
-        function(data){
-          globalThis.getData(data)
-          //write here because asynchonus function
-        }
-      )
     }
 
 	},
+  mounted(){
+    let globalThis = this
+    MediaRetrieve.getAudioList(
+      function(data){
+        globalThis.getData(data)
+        //write here because asynchonus function
+      }
+    )
+  }
 
 }
 </script>
