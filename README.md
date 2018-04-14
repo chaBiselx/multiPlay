@@ -23,7 +23,7 @@ This is a music player app for Android (5.1+) smartphones. It is built using [Ap
 ## Dependencies
 This app requires the following plugins:
 - [npm](https://www.npmjs.com/get-npm)
-- [getExtPath](https://www.npmjs.com/package/getExtPath)
+- [cordova-plugin-media-retrieve](https://www.npmjs.com/package/cordova-plugin-media-retrieve)
 - [cordova-plugin-file](https://www.npmjs.com/package/cordova-plugin-file)
 
 ## Development
