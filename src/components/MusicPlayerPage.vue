@@ -18,7 +18,7 @@
       <audio id="audio" controls>
         <source :src="actualMusicUrl"   type="audio/mp3 audio/ogg audio/wav">
       </audio>
-      <div class="center">
+      <!--div class="center">
         <div class="float_left">
           {{actualTime}}
         </div>
@@ -28,7 +28,7 @@
         <div id="timeline">
         	<div id="playhead"></div>
         </div>
-      </div>
+      </div-->
 
       <div class="btn-list">
         <span class="btn-left">
