@@ -74,14 +74,14 @@ export default {
     backward(){
       document.getElementById('audio').setAttribute('src',this.prevMusic())
       document.getElementById('audio').play()
-      console.log(this.stackPrev);
+      this.player = true
 
     },
     forward(){
       document.getElementById('audio').setAttribute('src',this.nextMusic())
       document.getElementById('audio').play()
-      console.log(this.stackPrev);
-
+      this.player = true
+      
     },
     go(){
       this.player = true
