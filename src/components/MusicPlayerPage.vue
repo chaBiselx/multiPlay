@@ -81,7 +81,7 @@ export default {
       document.getElementById('audio').setAttribute('src',this.nextMusic())
       document.getElementById('audio').play()
       this.player = true
-      
+
     },
     go(){
       this.player = true
@@ -190,17 +190,11 @@ export default {
 
 	},
   mounted(){
-    if (  this.playlist.length != 0) {
-      this.randomMusic()
-      this.player = true
-      document.getElementById('audio').play()
-      let genThis = this
-      document.getElementById('audio').addEventListener("ended", function(){
-        document.getElementById('audio').setAttribute('src',genThis.nextMusic())
-        document.getElementById('audio').play()
-      });
-
-    }
+    this.randomMusic()
+    this.player = true
+    document.getElementById('audio').play()
+    let genThis = this
+    document.getElementById('audio').addEventListener("ended", this.forward() );
 
   }
 }
