@@ -193,8 +193,7 @@ export default {
     this.randomMusic()
     this.player = true
     document.getElementById('audio').play()
-    let genThis = this
-    document.getElementById('audio').addEventListener("ended", this.forward() );
+    document.getElementById('audio').addEventListener('ended', this.forward() );
 
   }
 }
