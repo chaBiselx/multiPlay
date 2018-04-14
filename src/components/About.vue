@@ -18,7 +18,7 @@
       et Intégrateur Système Internet/Intranet pour l'Entreprise.</p>
       <p>Ce projet avait pour but de comprendre et de dévelloper une application mobile.</p>
       <p>MultiPlay est un application permetant de créer des playlists regroupant des playlists de musique secondaire</p>
-      <p>code source du projet : <a href="https://github.com/chaBiselx/multiPlay"> ici</a></p>
+      <p>code source du projet : <a onclick="cordova.InAppBrowser.open('https://github.com/chaBiselx/multiPlay', '_system');"> ici</a></p>
 
 
     </div>

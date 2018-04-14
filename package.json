@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cordova-android": "^7.0.0",
+    "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-media-retrieve": "^0.5.4",
     "onsenui": "^2.9.1",
     "vue": "^2.5.0",
@@ -75,7 +76,8 @@
       "android"
     ],
     "plugins": {
-      "cordova-plugin-media-retrieve": {}
+      "cordova-plugin-media-retrieve": {},
+      "cordova-plugin-inappbrowser": {}
     }
   }
 }
