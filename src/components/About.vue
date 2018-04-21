@@ -22,32 +22,12 @@
       <p>code source du projet : <a onclick="cordova.InAppBrowser.open('https://github.com/chaBiselx/multiPlay', '_system');"> ici</a></p>
       <p>Trello du projet : <a onclick="cordova.InAppBrowser.open('https://trello.com/b/txZMbwSX/multiplay', '_system');"> ici</a></p>
 
-
-
     </div>
   </v-ons-page>
 </template>
 
 <script>
-export default {
-  name: 'about',
-  data () {
-    return {
-
-    }
-  },
-  methods: {
-
-
-  },
-  created(){
-
-	}
-}
+  export default {
+    name: 'about',
+  }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-
-</style>

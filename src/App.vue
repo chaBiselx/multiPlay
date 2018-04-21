@@ -15,86 +15,86 @@
 </template>
 
 <script>
-import HomePage from './components/HomePage'
-import MenuPage from './components/MenuPage'
+  import HomePage from './components/HomePage'
+  import MenuPage from './components/MenuPage'
 
 
 
-export default {
-  name: 'app',
-  computed: {
-    menuIsOpen: {
-      get () {
-        return this.$store.state.splitter.open
-      },
-      set (newValue) {
-        this.$store.commit('splitter/toggle', newValue)
+  export default {
+    name: 'app',
+    computed: {
+      menuIsOpen: {
+        get () {
+          return this.$store.state.splitter.open
+        },
+        set (newValue) {
+          this.$store.commit('splitter/toggle', newValue)
+        }
       }
-    }
-  },
-  components: {
-    HomePage,
-    MenuPage,
-  },
-  methods: {
+    },
+    components: {
+      HomePage,
+      MenuPage,
+    },
+    methods: {
 
-  },
-  beforeCreate(){
+    },
+    beforeCreate(){
+
+    }
 
   }
-
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-ons-splitter-side[side=left][animation=overlay] {
-  border-right: 1px solid #BBB;
-}
+  ons-splitter-side[side=left][animation=overlay] {
+    border-right: 1px solid #BBB;
+  }
 
-img {
-  max-width: 300px;
-}
+  img {
+    max-width: 300px;
+  }
 
-ons-list-title {
-  text-transform: none;
-}
+  ons-list-title {
+    text-transform: none;
+  }
 
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
+  ons-list-title:not(:first-of-type) {
+    margin-top: 30px;
+  }
 
-ons-card {
-  text-align: center;
-}
+  ons-card {
+    text-align: center;
+  }
 
-ons-list-item, ons-card {
-  cursor: grabbing;
-}
+  ons-list-item, ons-card {
+    cursor: grabbing;
+  }
 
-.pointer{
-  cursor: pointer;
-}
+  .pointer{
+    cursor: pointer;
+  }
 
-.header {
-  text-align: center;
-}
+  .header {
+    text-align: center;
+  }
 
-.logo{
-  height: 30px;
-  width: 30px;
-  vertical-align: middle;
-}
+  .logo{
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+  }
 
-.optionButton{
-  cursor: pointer;
-  padding: 7px 15px 7px 22px;
-}
+  .optionButton{
+    cursor: pointer;
+    padding: 7px 15px 7px 22px;
+  }
 
-.text{
-  margin: 15px;
-}
-.text h1{
-  text-align: center;
-}
+  .text{
+    margin: 15px;
+  }
+  .text h1{
+    text-align: center;
+  }
 </style>

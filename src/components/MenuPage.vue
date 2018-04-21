@@ -17,79 +17,76 @@
 <script>
   import store from '@/store'
 
-export default {
-  name: 'menuPage',
-  data () {
-    return {
-      essentialLinks: [
-        {
-          label: 'Playlist',
-          link: 'Home',
-          icon: 'md-home'
-        },
-        {
-          label: 'Lecteur',
-          link: 'MusicPlayer',
-          icon: 'ion-play'
-        },
-        {
-          label: 'Options',
-          link: 'Option',
-          icon: 'ion-settings'
-        },
-        {
-          label: 'À propos',
-          link: 'About',
-          icon: 'fa-book'
-        },
-      ]
-    }
-  },
-  methods: {
-    goTo (url) {
-      switch (url) {
-        case 'MusicPlayer':
-          this.$router.push({'name': 'MusicPlayerPage'})
-          store.commit('splitter/toggle')
-          store.commit('removeMemMainListID')
-          store.commit('removeMemSecondListID')
-          break;
-        case 'About':
-          this.$router.push({'name': 'About'})
-          store.commit('splitter/toggle')
-          store.commit('removeMemMainListID')
-          store.commit('removeMemSecondListID')
-          break;
-        case 'Home':
-          this.$router.push({'name': 'HomePage'})
-          store.commit('splitter/toggle')
-          store.commit('removeMemMainListID')
-          store.commit('removeMemSecondListID')
-          break;
-        case 'Option':
-          this.$router.push({'name': 'Option'})
-          store.commit('splitter/toggle')
-          break;
-        default:
-          //redirect home
-          this.$router.push({'name': 'HomePage'})
-          store.commit('splitter/toggle')
-          store.commit('removeMemMainListID')
-          store.commit('removeMemSecondListID')
-
-
+  export default {
+    name: 'menuPage',
+    data () {
+      return {
+        essentialLinks: [
+          {
+            label: 'Playlist',
+            link: 'Home',
+            icon: 'md-home'
+          },
+          {
+            label: 'Lecteur',
+            link: 'MusicPlayer',
+            icon: 'ion-play'
+          },
+          {
+            label: 'Options',
+            link: 'Option',
+            icon: 'ion-settings'
+          },
+          {
+            label: 'À propos',
+            link: 'About',
+            icon: 'fa-book'
+          },
+        ]
       }
+    },
+    methods: {
+      goTo (url) {
+        switch (url) {
+          case 'MusicPlayer':
+            this.$router.push({'name': 'MusicPlayerPage'})
+            store.commit('splitter/toggle')
+            store.commit('removeMemMainListID')
+            store.commit('removeMemSecondListID')
+            break;
+          case 'About':
+            this.$router.push({'name': 'About'})
+            store.commit('splitter/toggle')
+            store.commit('removeMemMainListID')
+            store.commit('removeMemSecondListID')
+            break;
+          case 'Home':
+            this.$router.push({'name': 'HomePage'})
+            store.commit('splitter/toggle')
+            store.commit('removeMemMainListID')
+            store.commit('removeMemSecondListID')
+            break;
+          case 'Option':
+            this.$router.push({'name': 'Option'})
+            store.commit('splitter/toggle')
+            break;
+          default:
+            //redirect home
+            this.$router.push({'name': 'HomePage'})
+            store.commit('splitter/toggle')
+            store.commit('removeMemMainListID')
+            store.commit('removeMemSecondListID')
 
+        }
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.Mainlogo{
-  width: 100px;
-  height: 100px;
-}
+  .Mainlogo{
+    width: 100px;
+    height: 100px;
+  }
 </style>

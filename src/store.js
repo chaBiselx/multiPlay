@@ -32,11 +32,9 @@ export default new Vuex.Store({
     load: false,
     stackLimit: "25",
     noRepeat: "10",
-    mainList: [
-    ],
+    mainList: [],
     memMainListID: "",
-    secondList: [
-    ],
+    secondList: [],
     memSecondListID: "",
     playlist:[],
     listMusic: [],
