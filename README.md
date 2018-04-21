@@ -25,6 +25,7 @@ This app requires the following plugins:
 - [npm](https://www.npmjs.com/get-npm)
 - [cordova-plugin-media-retrieve](https://www.npmjs.com/package/cordova-plugin-media-retrieve)
 - [cordova-plugin-file](https://www.npmjs.com/package/cordova-plugin-file)
+- [cordova-plugin-inappbrowser](https://www.npmjs.com/package/cordova-plugin-inappbrowser)
 
 ## Development
 
