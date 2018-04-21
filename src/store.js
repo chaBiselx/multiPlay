@@ -122,7 +122,14 @@ export default new Vuex.Store({
       state.secondList[id].name = json.newName
     },
     setListMusic( state , list ){
-      state.listMusic = list
+      for (let i of list) {
+        let json = {
+          "name": i.name,
+          "id": i.name.trim(),
+          "path": i.path,
+        }
+        state.listMusic.push( json )
+      }
     },
     save(state){
       let mList = []
