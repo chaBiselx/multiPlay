@@ -39,7 +39,7 @@ export default new Vuex.Store({
     ],
     memSecondListID: "",
     playlist:[],
-
+    listMusic: [],
 
   },
   getters:{ //getters['name']
@@ -48,6 +48,16 @@ export default new Vuex.Store({
     },
     launchMainList(state){
       return state.mainList
+    },
+    getListMusic(state){
+      return state.listMusic
+    },
+    emptyListMusic(state){
+      if (state.listMusic.length > 0 ) {
+        return true
+      } else {
+        return false
+      }
     },
   },
   mutations: { //commit('name')
@@ -113,6 +123,9 @@ export default new Vuex.Store({
       let id = state.secondList.map(function(item) { return item.id }).indexOf(json.id)
       state.secondList[id].name = json.newName
     },
+    setListMusic( state , list ){
+      state.listMusic = list
+    },
     save(state){
       let mList = []
       for (let i of state.mainList) {
@@ -150,6 +163,9 @@ export default new Vuex.Store({
 
   },
   actions: { //dispatch('name')
+    setListMusic( {commit} , list ){
+      commit('setListMusic', list)
+    },
     changeOption({commit} , value){
       commit('changeNoRepeat', value.NoRepeat)
       commit('changeStackLimit', value.StackLimit)

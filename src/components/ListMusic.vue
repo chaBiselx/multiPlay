@@ -8,7 +8,8 @@
       </div>
       <div class="center">
         <img class="logo" src="@/assets/img/MultiPlay.png" alt="">
-        MultiPlay
+        {{test}}
+        <!--MultiPlay-->
       </div>
       <div class="right">
         <v-ons-toolbar-button @click="goingBack()">
@@ -24,7 +25,7 @@
           <label class="label_music">
 
             <ons-checkbox :id="item.path" :name="item.name"></ons-checkbox>
-            {{item.path}}
+            {{item.name}}
 
           </label>
         </v-ons-list-item>
@@ -54,6 +55,7 @@ export default {
   data () {
     return {
       listMusic: [],
+      test: "tata",
     }
   },
   methods: {
@@ -76,12 +78,12 @@ export default {
       store.commit('removeMemSecondListID')
     },
     getData(rawData){
+      store.dispatch( 'setListMusic' , rawData.data )
+      this.loadList()
+    },
+    loadList(){
       let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
-
-
-      this.listMusic = rawData.data
-
-
+      this.listMusic = store.getters['getListMusic']
 
       for (let y in select) {
 
@@ -89,7 +91,6 @@ export default {
 
         //document.body.getElementById( select[y] ).checked = true
       }
-
     }
   },
   created(){
@@ -97,18 +98,23 @@ export default {
       this.$router.push({'name': 'HomePage'})
       store.commit('removeMemMainListID')
       store.commit('removeMemSecondListID')
-
     }
 
 	},
   mounted(){
-    let globalThis = this
-    MediaRetrieve.getAudioList(
-      function(data){
-        globalThis.getData(data)
-        //write here because asynchonus function
-      }
-    )
+    if (!store.getters['emptyListMusic']) {
+
+      let globalThis = this
+      MediaRetrieve.getAudioList(
+        function(data){
+          globalThis.getData(data)
+          //write here because asynchonus function
+        }
+      )
+    }else{
+      this.loadList()
+    }
+
   }
 
 }
