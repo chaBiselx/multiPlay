@@ -8,8 +8,7 @@
       </div>
       <div class="center">
         <img class="logo" src="@/assets/img/MultiPlay.png" alt="">
-        {{test}}
-        <!--MultiPlay-->
+        MultiPlay
       </div>
       <div class="right">
         <v-ons-toolbar-button @click="goingBack()">
@@ -55,7 +54,6 @@ export default {
   data () {
     return {
       listMusic: [],
-      test: "tata",
     }
   },
   methods: {
