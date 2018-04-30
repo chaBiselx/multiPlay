@@ -17,7 +17,7 @@
       <p>Cette application est un projet étudiant réalisé en 2018 par Charles BISELX en License professionnelle Concepteur
       et Intégrateur Système Internet/Intranet pour l'Entreprise.</p>
       <p>Ce projet avait pour but de comprendre et de dévelloper une application mobile.</p>
-      <p>MultiPlay est un application permetant de créer des playlists regroupant des playlists secondaires de musique (actuellement compatible au format MP3/Ogg/Wav) </p>
+      <p>MultiPlay est un application permetant de créer des playlists regroupant des playlists secondaires de musique (actuellement compatible au format mp3/Ogg/Wav) </p>
       <p>Je continue à améliorer le projet quotidiennement, car c'est avant tout pour répondre à mes besoins</p>
       <p>code source du projet : <a onclick="cordova.InAppBrowser.open('https://github.com/chaBiselx/multiPlay', '_system');"> ici</a></p>
       <p>Trello du projet : <a onclick="cordova.InAppBrowser.open('https://trello.com/b/txZMbwSX/multiplay', '_system');"> ici</a></p>

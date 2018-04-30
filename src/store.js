@@ -123,12 +123,14 @@ export default new Vuex.Store({
     },
     setListMusic( state , list ){
       for (let i of list) {
-        let json = {
-          "name": i.name,
-          "id": i.name.replace(/\s/g,''),
-          "path": i.path,
+        if (i.name.endsWith('.mp3') || i.name.endsWith('.wav') || i.name.endsWith('.ogg')) {
+          let json = {
+            "name": i.name,
+            "id": i.name.replace(/\s/g,''),
+            "path": i.path,
+          }
+          state.listMusic.push( json )
         }
-        state.listMusic.push( json )
       }
     },
     save(state){
