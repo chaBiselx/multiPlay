@@ -56,7 +56,7 @@ export default {
       let array = []
       for (let i in this.listMusic ) {
         if (document.getElementById( this.listMusic[i].id ).checked) {
-          array.push(this.listMusic[i].id)
+          array.push(this.listMusic[i].path)
         }
       }
       store.dispatch('changeSecondListPlaylist',array)

@@ -113,7 +113,7 @@
 
           this.actualMusicUrl = musicUrl
           let array = this.actualMusicUrl.split("/")
-          this.actualMusicTitle = array[array.length-1]
+          this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
 
           if ( n > 20) { break; }
 
@@ -137,7 +137,7 @@
         }else {
           ret = this.stackPrev[n]
           let array = ret.split("/")
-          this.actualMusicTitle = array[array.length-1]
+          this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
 
         }
         return ret
@@ -161,7 +161,7 @@
 
           this.actualMusicUrl = this.stackPrev[n]
           let array = this.actualMusicUrl.split("/")
-          this.actualMusicTitle = array[array.length-1]
+          this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
 
           ret = this.actualMusicUrl
 
