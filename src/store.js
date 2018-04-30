@@ -125,7 +125,7 @@ export default new Vuex.Store({
       for (let i of list) {
         let json = {
           "name": i.name,
-          "id": i.name.trim(),
+          "id": i.name.replace(/\s/g,''),
           "path": i.path,
         }
         state.listMusic.push( json )
