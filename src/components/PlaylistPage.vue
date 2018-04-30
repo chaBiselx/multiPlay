@@ -7,6 +7,9 @@
         </v-ons-toolbar-button>
       </div>
       <div class="right">
+        <v-ons-toolbar-button @click="savePlaylist()">
+          <v-ons-icon icon="md-save"></v-ons-icon>
+        </v-ons-toolbar-button>
         <v-ons-toolbar-button @click="goingBack()">
           <v-ons-icon icon="ion-arrow-return-left"></v-ons-icon>
         </v-ons-toolbar-button>
@@ -55,13 +58,6 @@
       @click="showAddPlaylist()"
     >
       <v-ons-icon icon="md-plus"></v-ons-icon>
-    </v-ons-fab>
-    <v-ons-fab
-      position="bottom left"
-      visible=true
-      @click="savePlaylist()"
-    >
-      <v-ons-icon icon="md-save"></v-ons-icon>
     </v-ons-fab>
 
     <v-ons-action-sheet
