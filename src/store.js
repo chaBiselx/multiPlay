@@ -125,7 +125,7 @@ export default new Vuex.Store({
       for (let i of list) {
         if (i.name.endsWith('.mp3') || i.name.endsWith('.wav') || i.name.endsWith('.ogg')) {
           let json = {
-            "name": i.name,
+            "name": i.name.replace(i.name.substr(i.name.lastIndexOf('.')), ''),
             "id": i.name.replace(/\s/g,''),
             "path": i.path,
           }
