@@ -26,7 +26,7 @@
         <v-ons-list-item  v-for="item in listMusic"  :key="item.path">
           <label class="label_music">
 
-            <ons-checkbox :id="item.id" ></ons-checkbox>
+            <ons-checkbox :id="item.path" ></ons-checkbox>
             {{item.name}}
 
           </label>
@@ -55,7 +55,7 @@ export default {
     savePlaylist(){
       let array = []
       for (let i in this.listMusic ) {
-        if (document.getElementById( this.listMusic[i].id ).checked) {
+        if (document.getElementById( this.listMusic[i].path ).checked) {
           array.push(this.listMusic[i].path)
         }
       }
