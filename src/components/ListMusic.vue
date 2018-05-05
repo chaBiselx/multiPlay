@@ -75,14 +75,13 @@ export default {
       this.loadList()
     },
     loadList(){
-      let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
       this.listMusic = store.getters['getListMusic']
+    },
+    loadCheck(){
+      let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
 
       for (let y in select) {
-
-        //this.$ref.querySelector( select[y] ).checked = true
-
-        //document.body.getElementById( select[y] ).checked = true
+        document.getElementById( select[y] ).checked = true
       }
     }
   },
@@ -94,7 +93,7 @@ export default {
     }
 
 	},
-  mounted(){
+  beforeMount(){
     if (!store.getters['emptyListMusic']) {
 
       let globalThis = this
@@ -107,7 +106,9 @@ export default {
     }else{
       this.loadList()
     }
-
+  },
+  mounted(){
+    this.loadCheck()
   }
 
 }
