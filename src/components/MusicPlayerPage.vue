@@ -190,12 +190,9 @@
 
   	},
     mounted(){
-      this.randomMusic()
-      this.player = true
-      document.getElementById('audio').play()
-      document.getElementById('audio').addEventListener('ended', this.forward() );
+      this.forward()
+    },
 
-    }
   }
 
 </script>
