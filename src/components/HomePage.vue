@@ -19,10 +19,12 @@
 
         <div class="center">
           <v-ons-icon class="buttonPlay" icon="ion-play" @click="play(item.id)"></v-ons-icon>
-          {{item.name}}
+          <span @click='option(item.id)'>
+            {{item.name}}
+          </span>
         </div>
-        <div class="right optionButton" @click="option(item.id)">
-          >
+        <div class="right optionButton" @click="goToSubPlaylist(item.id)">
+          <v-ons-icon icon="ion-ios-arrow-forward"></v-ons-icon>
         </div>
       </v-ons-list-item>
 
@@ -36,7 +38,6 @@
         :title='namePlaylist'
     >
       <v-ons-action-sheet-button @click="changeName()">Modifier le nom</v-ons-action-sheet-button>
-      <v-ons-action-sheet-button @click="goToSubPlaylist()">Modifier sous-playlist</v-ons-action-sheet-button>
       <v-ons-action-sheet-button modifier="destructive" @click="deletePlaylist()" >Supprimer</v-ons-action-sheet-button>
 
     </v-ons-action-sheet>
@@ -46,7 +47,7 @@
       visible=true
       @click="showAddPlaylist()"
     >
-      <v-ons-icon icon="md-plus"></v-ons-icon>
+      <v-ons-icon icon="ion-plus"></v-ons-icon>
     </v-ons-fab>
 
     <v-ons-action-sheet
@@ -147,7 +148,8 @@
         this.$router.push({'name': 'MusicPlayerPage'})
 
       },
-      goToSubPlaylist(){
+      goToSubPlaylist(id){
+        this.memID = id
         store.commit('changeMemMainListID',this.memID)
         this.$router.push({'name': 'PlaylistPage'})
       },
@@ -176,7 +178,6 @@
     overflow: scroll;
   }
   .buttonPlay{
-    cursor: pointer;
     padding: 7px 17px 7px 0;
   }
 </style>

@@ -26,7 +26,7 @@
         <v-ons-list-item  v-for="item in listMusic"  :key="item.path">
           <label class="label_music">
 
-            <ons-checkbox :id="item.path" ></ons-checkbox>
+            <ons-checkbox class='checkbox' :id="item.path" ></ons-checkbox>
             {{item.name}}
 
           </label>

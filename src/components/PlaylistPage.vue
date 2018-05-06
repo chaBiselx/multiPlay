@@ -24,16 +24,14 @@
     <v-ons-list id='listID'>
       <v-ons-list-item  v-for="item in secondList"  :key="item.id">
 
-        <label >
-          <div class="center pointer" >
-
-            <ons-checkbox :id="item.id" ng-model="page.id"></ons-checkbox></v-ons-icon>
+        <div class="center pointer" >
+          <ons-checkbox class="checkbox" :id="item.id" ng-model="page.id"></ons-checkbox>
+          <span @click='option(item.id)'>
             {{item.name}}
-
-          </div>
-        </label>
-        <div class="right optionButton" @click="option(item.id)">
-          >
+          </span>
+        </div>
+        <div class="right optionButton" @click="goToListMusic(item.id)">
+          <v-ons-icon icon="ion-ios-arrow-forward"></v-ons-icon>
         </div>
       </v-ons-list-item>
 
@@ -47,7 +45,6 @@
         :title="namePlaylist"
     >
       <v-ons-action-sheet-button @click="changeName()">Modifier le nom</v-ons-action-sheet-button>
-      <v-ons-action-sheet-button @click="goToListMusic()">Voir la liste des musiques</v-ons-action-sheet-button>
       <v-ons-action-sheet-button modifier="destructive" @click="deletePlaylist()" >Supprimer</v-ons-action-sheet-button>
 
     </v-ons-action-sheet>
@@ -57,7 +54,7 @@
       visible=true
       @click="showAddPlaylist()"
     >
-      <v-ons-icon icon="md-plus"></v-ons-icon>
+      <v-ons-icon icon="ion-plus"></v-ons-icon>
     </v-ons-fab>
 
     <v-ons-action-sheet
@@ -134,7 +131,8 @@
           store.dispatch('addInSecondList',json)
         }
       },
-      goToListMusic(){
+      goToListMusic(id){
+        this.memID = id
         store.commit('changeMemSecondListID',this.memID)
         this.$router.push({'name': 'ListMusic'})
       },
