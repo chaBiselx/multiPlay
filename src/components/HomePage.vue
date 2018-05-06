@@ -91,7 +91,7 @@
       async changeName(){
         let newName = ""
         do {
-          newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Noveau nom"})
+          newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Nouveau nom"})
         } while (newName == "");
         let json = {
           'id': this.memID,
