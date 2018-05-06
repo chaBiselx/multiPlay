@@ -190,7 +190,11 @@
 
   	},
     mounted(){
+      let globalThis = this
       this.forward()
+      document.getElementById('audio').addEventListener('ended' , () => {
+        globalThis.forward()
+      } )
     },
 
   }
