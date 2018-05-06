@@ -85,7 +85,7 @@
       option(id){
         this.actionSheetVisible = true
         this.memID = id
-        this.namePlaylist =  this.MainList[this.MainList.map(function(item) { return item.id; }).indexOf(this.memID)].name
+        this.namePlaylist =  this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(this.memID)].name
 
       },
       async changeName(){
@@ -126,9 +126,9 @@
       },
       play( id ){
         let playlist = []
-        let mainList = this.MainList[this.MainList.map(function(item) { return item.id; }).indexOf(id)].subPlaylist
+        let mainList = this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(id)].subPlaylist
         for (let m of mainList) {
-          let secondList = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(m)].subPlaylist
+          let secondList = store.state.secondList[store.state.secondList.map((item) => { return item.id; }).indexOf(m)].subPlaylist
           for (let p of secondList) {
             playlist.push(p)
           }

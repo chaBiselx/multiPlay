@@ -93,7 +93,7 @@
       option(id){
         this.actionSheetVisible = true
         this.memID = id
-        this.namePlaylist =  this.secondList[this.secondList.map(function(item) { return item.id; }).indexOf(this.memID)].name
+        this.namePlaylist =  this.secondList[this.secondList.map((item) => { return item.id; }).indexOf(this.memID)].name
       },
       async changeName(){
         let newName = ""
@@ -164,7 +164,7 @@
   	},
     mounted(){
       if (store.state.memMainListID != "") {
-        let select = store.state.mainList[store.state.mainList.map(function(item) { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
+        let select = store.state.mainList[store.state.mainList.map((item) => { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
         for (let i in select) {
           document.getElementById( select[i] ).checked = true
         }
