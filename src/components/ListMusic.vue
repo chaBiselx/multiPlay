@@ -26,7 +26,7 @@
         <v-ons-list-item  v-for="item in listMusic"  :key="item.path">
           <label class="label_music">
 
-            <ons-checkbox :id="item.path" ></ons-checkbox>
+            <ons-checkbox class='checkbox' :id="item.path" ></ons-checkbox>
             {{item.name}}
 
           </label>
@@ -78,7 +78,7 @@ export default {
       this.listMusic = store.getters['getListMusic']
     },
     loadCheck(){
-      let select = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
+      let select = store.state.secondList[store.state.secondList.map((item) => { return item.id; }).indexOf(store.state.memSecondListID)].subPlaylist
 
       for (let y in select) {
         document.getElementById( select[y] ).checked = true
@@ -95,10 +95,9 @@ export default {
 	},
   beforeMount(){
     if (!store.getters['emptyListMusic']) {
-
       let globalThis = this
       MediaRetrieve.getAudioList(
-        function(data){
+        (data) => {
           globalThis.getData(data)
           //write here because asynchonus function
         }

@@ -75,7 +75,7 @@ export default new Vuex.Store({
     },
     deleteInMainList(state , id){
       // get index of object with id
-      let removeIndex = state.mainList.map(function(item) { return item.id; }).indexOf(id)
+      let removeIndex = state.mainList.map((item) => { return item.id; }).indexOf(id)
       // remove object
       state.mainList.splice(removeIndex, 1)
     },
@@ -86,11 +86,11 @@ export default new Vuex.Store({
       state.memMainListID = id
     },
     changeMainListPlaylist(state , array){
-      let playlist = state.mainList.map(function(item) { return item.id }).indexOf(state.memMainListID)
+      let playlist = state.mainList.map((item) => { return item.id }).indexOf(state.memMainListID)
       state.mainList[playlist].subPlaylist = array
     },
     changeMainListName(state , json ){
-      let id = state.mainList.map(function(item) { return item.id }).indexOf(json.id)
+      let id = state.mainList.map((item) => { return item.id }).indexOf(json.id)
       state.mainList[id].name = json.newName
     },
 
@@ -100,7 +100,7 @@ export default new Vuex.Store({
     },
     deleteInSecondList(state , id){
       // get index of object with id
-      let removeIndex = state.secondList.map(function(item) { return item.id; }).indexOf(id)
+      let removeIndex = state.secondList.map((item) => { return item.id; }).indexOf(id)
       // remove object
       state.secondList.splice(removeIndex, 1)
     },
@@ -111,14 +111,14 @@ export default new Vuex.Store({
       state.memSecondListID = id
     },
     changeSecondListPlaylist(state , array){
-      let playlist = state.secondList.map(function(item) { return item.id }).indexOf(state.memSecondListID)
+      let playlist = state.secondList.map((item) => { return item.id }).indexOf(state.memSecondListID)
       state.secondList[playlist].subPlaylist = array
     },
     changePlaylist(state , array){
       state.playlist = array
     },
     changeSecondListName(state , json ){
-      let id = state.secondList.map(function(item) { return item.id }).indexOf(json.id)
+      let id = state.secondList.map((item) =>{ return item.id }).indexOf(json.id)
       state.secondList[id].name = json.newName
     },
     setListMusic( state , list ){

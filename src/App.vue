@@ -90,6 +90,9 @@
     cursor: pointer;
     padding: 7px 15px 7px 22px;
   }
+  .checkbox{
+    padding-right: 15px;
+  }
 
   .text{
     margin: 15px;

@@ -19,10 +19,12 @@
 
         <div class="center">
           <v-ons-icon class="buttonPlay" icon="ion-play" @click="play(item.id)"></v-ons-icon>
-          {{item.name}}
+          <span @click='option(item.id)'>
+            {{item.name}}
+          </span>
         </div>
-        <div class="right optionButton" @click="option(item.id)">
-          >
+        <div class="right optionButton" @click="goToSubPlaylist(item.id)">
+          <v-ons-icon icon="ion-ios-arrow-forward"></v-ons-icon>
         </div>
       </v-ons-list-item>
 
@@ -36,7 +38,6 @@
         :title='namePlaylist'
     >
       <v-ons-action-sheet-button @click="changeName()">Modifier le nom</v-ons-action-sheet-button>
-      <v-ons-action-sheet-button @click="goToSubPlaylist()">Modifier sous-playlist</v-ons-action-sheet-button>
       <v-ons-action-sheet-button modifier="destructive" @click="deletePlaylist()" >Supprimer</v-ons-action-sheet-button>
 
     </v-ons-action-sheet>
@@ -46,7 +47,7 @@
       visible=true
       @click="showAddPlaylist()"
     >
-      <v-ons-icon icon="md-plus"></v-ons-icon>
+      <v-ons-icon icon="ion-plus"></v-ons-icon>
     </v-ons-fab>
 
     <v-ons-action-sheet
@@ -84,13 +85,13 @@
       option(id){
         this.actionSheetVisible = true
         this.memID = id
-        this.namePlaylist =  this.MainList[this.MainList.map(function(item) { return item.id; }).indexOf(this.memID)].name
+        this.namePlaylist =  this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(this.memID)].name
 
       },
       async changeName(){
         let newName = ""
         do {
-          newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Noveau nom"})
+          newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Nouveau nom"})
         } while (newName == "");
         let json = {
           'id': this.memID,
@@ -125,9 +126,9 @@
       },
       play( id ){
         let playlist = []
-        let mainList = this.MainList[this.MainList.map(function(item) { return item.id; }).indexOf(id)].subPlaylist
+        let mainList = this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(id)].subPlaylist
         for (let m of mainList) {
-          let secondList = store.state.secondList[store.state.secondList.map(function(item) { return item.id; }).indexOf(m)].subPlaylist
+          let secondList = store.state.secondList[store.state.secondList.map((item) => { return item.id; }).indexOf(m)].subPlaylist
           for (let p of secondList) {
             playlist.push(p)
           }
@@ -147,7 +148,8 @@
         this.$router.push({'name': 'MusicPlayerPage'})
 
       },
-      goToSubPlaylist(){
+      goToSubPlaylist(id){
+        this.memID = id
         store.commit('changeMemMainListID',this.memID)
         this.$router.push({'name': 'PlaylistPage'})
       },
@@ -176,7 +178,6 @@
     overflow: scroll;
   }
   .buttonPlay{
-    cursor: pointer;
     padding: 7px 17px 7px 0;
   }
 </style>
