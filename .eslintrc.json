@@ -1,0 +1,30 @@
+{
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+        "ecmaVersion": 2017
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "plugins": [
+    "import",
+    "prettier",
+    "vue"
+  ],
+  "rules": {
+      "prettier/prettier": ["error", {
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "all",
+          "semi": false
+
+      }],
+      "require-await": "error",
+      "import/no-extraneous-dependencies": "off",
+      "no-console": ["error", { "allow": ["warn", "error"] }],
+      "no-unused-vars": ["error", { "ignoreRestSiblings": true }]
+  }
+}
