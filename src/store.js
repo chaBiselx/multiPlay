@@ -5,7 +5,6 @@ import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios, axios)
 
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -14,216 +13,209 @@ export default new Vuex.Store({
       namespaced: true,
       state: {
         open: false,
-
       },
       mutations: {
-        toggle (state, shouldOpen) {
+        toggle(state, shouldOpen) {
           if (typeof shouldOpen === 'boolean') {
             state.open = shouldOpen
           } else {
             state.open = !state.open
           }
         },
-      }
+      },
     },
-
   },
-  state:{
+  state: {
     load: false,
-    stackLimit: "25",
-    noRepeat: "10",
+    stackLimit: '25',
+    noRepeat: '10',
     mainList: [],
-    memMainListID: "",
+    memMainListID: '',
     secondList: [],
-    memSecondListID: "",
-    playlist:[],
+    memSecondListID: '',
+    playlist: [],
     listMusic: [],
-
   },
-  getters:{ //getters['name']
-    playlist(state){
+  getters: {
+    //getters['name']
+    playlist(state) {
       return state.playlist
     },
-    launchMainList(state){
+    launchMainList(state) {
       return state.mainList
     },
-    getListMusic(state){
+    getListMusic(state) {
       return state.listMusic
     },
-    emptyListMusic(state){
-      if (state.listMusic.length > 0 ) {
+    emptyListMusic(state) {
+      if (state.listMusic.length > 0) {
         return true
       } else {
         return false
       }
     },
   },
-  mutations: { //commit('name')
-    changeLoad(state , value){
+  mutations: {
+    //commit('name')
+    changeLoad(state, value) {
       state.load = value
     },
-    changeStackLimit(state , value){
+    changeStackLimit(state, value) {
       state.stackLimit = value
     },
-    changeNoRepeat(state , value){
+    changeNoRepeat(state, value) {
       state.noRepeat = value
     },
 
     //mainList
-    addInMainList(state, json){
+    addInMainList(state, json) {
       state.mainList.push(json)
     },
-    deleteInMainList(state , id){
+    deleteInMainList(state, id) {
       // get index of object with id
       let removeIndex = state.mainList.map((item) => { return item.id; }).indexOf(id)
       // remove object
       state.mainList.splice(removeIndex, 1)
     },
-    removeMemMainListID(state){
-      state.memMainListID = ""
+    removeMemMainListID(state) {
+      state.memMainListID = ''
     },
-    changeMemMainListID(state , id){
+    changeMemMainListID(state, id) {
       state.memMainListID = id
     },
-    changeMainListPlaylist(state , array){
+    changeMainListPlaylist(state, array) {
       let playlist = state.mainList.map((item) => { return item.id }).indexOf(state.memMainListID)
       state.mainList[playlist].subPlaylist = array
     },
-    changeMainListName(state , json ){
+    changeMainListName(state, json) {
       let id = state.mainList.map((item) => { return item.id }).indexOf(json.id)
       state.mainList[id].name = json.newName
     },
 
     //secondList
-    addInSecondList(state, json){
+    addInSecondList(state, json) {
       state.secondList.push(json)
     },
-    deleteInSecondList(state , id){
+    deleteInSecondList(state, id) {
       // get index of object with id
       let removeIndex = state.secondList.map((item) => { return item.id; }).indexOf(id)
       // remove object
       state.secondList.splice(removeIndex, 1)
     },
-    removeMemSecondListID(state){
-      state.memSecondListID = ""
+    removeMemSecondListID(state) {
+      state.memSecondListID = ''
     },
-    changeMemSecondListID(state , id){
+    changeMemSecondListID(state, id) {
       state.memSecondListID = id
     },
-    changeSecondListPlaylist(state , array){
+    changeSecondListPlaylist(state, array) {
       let playlist = state.secondList.map((item) => { return item.id }).indexOf(state.memSecondListID)
       state.secondList[playlist].subPlaylist = array
     },
-    changePlaylist(state , array){
+    changePlaylist(state, array) {
       state.playlist = array
     },
-    changeSecondListName(state , json ){
+    changeSecondListName(state, json) {
       let id = state.secondList.map((item) =>{ return item.id }).indexOf(json.id)
       state.secondList[id].name = json.newName
     },
-    setListMusic( state , list ){
+    setListMusic(state, list) {
       for (let i of list) {
         if (i.name.endsWith('.mp3') || i.name.endsWith('.wav') || i.name.endsWith('.ogg')) {
           let json = {
-            "name": i.name.replace(i.name.substr(i.name.lastIndexOf('.')), ''),
-            "id": i.name.replace(/\s/g,''),
-            "path": i.path,
+            name: i.name.replace(i.name.substr(i.name.lastIndexOf('.')), ''),
+            id: i.name.replace(/\s/g, ''),
+            path: i.path,
           }
-          state.listMusic.push( json )
+          state.listMusic.push(json)
         }
       }
     },
-    save(state){
+    save(state) {
       let mList = []
       for (let i of state.mainList) {
         let tempJson = {
-          "id": i.id,
-          "name": i.name,
-          "subPlaylist": i.subPlaylist,
+          id: i.id,
+          name: i.name,
+          subPlaylist: i.subPlaylist,
         }
         mList.push(tempJson)
       }
       let sList = []
       for (let i of state.secondList) {
         let tempJson = {
-          "id": i.id,
-          "name": i.name,
-          "subPlaylist": i.subPlaylist,
+          id: i.id,
+          name: i.name,
+          subPlaylist: i.subPlaylist,
         }
         sList.push(tempJson)
       }
       let json = {
-        "stackLimit": state.stackLimit,
-        "noRepeat": state.noRepeat,
-        "mainList": mList,
-        "secondList": sList,
-        "playlist": state.playlist
+        stackLimit: state.stackLimit,
+        noRepeat: state.noRepeat,
+        mainList: mList,
+        secondList: sList,
+        playlist: state.playlist,
       }
-      let nameFile = "data.json";
-      let str = JSON.stringify(json);
-      let path = "/src/data.json";
-      // /*
+      let str = JSON.stringify(json)
 
-      window.localStorage.setItem("data", str);
-
+      window.localStorage.setItem('data', str)
     },
-
   },
-  actions: { //dispatch('name')
-    setListMusic( {commit} , list ){
+  actions: {
+    //dispatch('name')
+    setListMusic({ commit }, list) {
       commit('setListMusic', list)
     },
-    changeOption({commit} , value){
+    changeOption({ commit }, value) {
       commit('changeNoRepeat', value.NoRepeat)
       commit('changeStackLimit', value.StackLimit)
 
       commit('save')
     },
-
-
-    addInMainList({commit}, json){
+    addInMainList({ commit }, json) {
       commit('addInMainList', json)
       commit('save')
     },
-    deleteInMainList({commit} , id){
+    deleteInMainList({ commit }, id) {
       commit('deleteInMainList', id)
       commit('save')
     },
-    changeMainListPlaylist({commit} , array){
+    changeMainListPlaylist({ commit }, array) {
       commit('changeMainListPlaylist', array)
       commit('save')
     },
-    changeMainListName({commit}, json){
+    changeMainListName({ commit }, json) {
       commit('changeMainListName', json)
       commit('save')
     },
 
-    addInSecondList({commit}, json){
+    addInSecondList({ commit }, json) {
       commit('addInSecondList', json)
       commit('save')
     },
-    deleteInSecondList({commit} , id){
+    deleteInSecondList({ commit }, id) {
       commit('deleteInSecondList', id)
       commit('save')
     },
-    changeSecondListPlaylist({commit} , array){
+    changeSecondListPlaylist({ commit }, array) {
       commit('changeSecondListPlaylist', array)
       commit('save')
     },
-    changePlaylist({commit} , array){
+    changePlaylist({ commit }, array) {
       commit('changePlaylist', array)
       commit('save')
     },
-    changeSecondListName({commit} , json ){
+    changeSecondListName({ commit }, json) {
       commit('changeSecondListName', json)
       commit('save')
     },
-    async loadData({commit,state}){
-      let resp = JSON.parse(window.localStorage.getItem("data"))
+    loadData({ state }) {
+      let resp = JSON.parse(window.localStorage.getItem('data'))
       if (resp.stackLimit != undefined) {
-        state.stackLimit =  resp.stackLimit
-        state.noRepeat =    resp.noRepeat
-        state.playlist =   resp.playlist
+        state.stackLimit = resp.stackLimit
+        state.noRepeat = resp.noRepeat
+        state.playlist = resp.playlist
 
         let array1 = []
         for (let i of resp.mainList) {
@@ -250,7 +242,5 @@ export default new Vuex.Store({
 
       return true
     },
-  }
-
-
+  },
 })

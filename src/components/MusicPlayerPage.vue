@@ -52,212 +52,181 @@
 </template>
 
 <script>
-  import store from '@/store'
-
-  export default {
-    name: 'homePage',
-    data () {
-      return {
-        actualMusicTitle: "Absence de musique",
-        actualMusicUrl: "",
-        actualDuration: "durée",
-        actualTime: "temps",
-        player: false ,
-        playlist: [],
-        stackPrev: [],
-        actualNumber: 0,
-        stackLimit: store.state.stackLimit,
-        noRepeat: store.state.noRepeat,
-      }
+import store from '@/store'
+export default {
+  name: 'homePage',
+  data () {
+    return {
+      actualMusicTitle: "Absence de musique",
+      actualMusicUrl: "",
+      actualDuration: "durée",
+      actualTime: "temps",
+      player: false ,
+      playlist: [],
+      stackPrev: [],
+      actualNumber: 0,
+      stackLimit: store.state.stackLimit,
+      noRepeat: store.state.noRepeat,
+    }
+  },
+  methods: {
+    backward(){
+      document.getElementById('audio').setAttribute('src',this.prevMusic())
+      document.getElementById('audio').play()
+      this.player = true
     },
-    methods: {
-      backward(){
-        document.getElementById('audio').setAttribute('src',this.prevMusic())
-        document.getElementById('audio').play()
-        this.player = true
-
-      },
-      forward(){
-        document.getElementById('audio').setAttribute('src',this.nextMusic())
-        document.getElementById('audio').play()
-        this.player = true
-
-      },
-      go(){
-        this.player = true
-        document.getElementById('audio').play()
-      },
-      stop(){
-        this.player = false
-        document.getElementById('audio').pause()
-      },
-      randomMusic(){
-        let lastMusic = this.actualMusicUrl
-
-        if (lastMusic != "" && this.stackPrev[0] != this.actualMusicUrl) {
-          this.stackPrev.push(lastMusic)
-        }
-        let boolRepeat
-        let n = 0
-        do {
-          boolRepeat = false
-          let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - this.noRepeat , 1))
-          let musicUrl = this.playlist[   Math.floor((Math.random() * this.playlist.length) )  ]
-          if (this.playlist.length >= this.noRepeat ) {
-            for (let i of noRepeatArray) {
-              if (i == musicUrl) {
-                boolRepeat = true
-              }
+    forward(){
+      document.getElementById('audio').setAttribute('src',this.nextMusic())
+      document.getElementById('audio').play()
+      this.player = true
+    },
+    go(){
+      this.player = true
+      document.getElementById('audio').play()
+    },
+    stop(){
+      this.player = false
+      document.getElementById('audio').pause()
+    },
+    randomMusic(){
+      let lastMusic = this.actualMusicUrl
+      if (lastMusic != "" && this.stackPrev[0] != this.actualMusicUrl) {
+        this.stackPrev.push(lastMusic)
+      }
+      let boolRepeat
+      let n = 0
+      do {
+        boolRepeat = false
+        let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - this.noRepeat , 1))
+        let musicUrl = this.playlist[   Math.floor((Math.random() * this.playlist.length) )  ]
+        if (this.playlist.length >= this.noRepeat ) {
+          for (let i of noRepeatArray) {
+            if (i == musicUrl) {
+              boolRepeat = true
             }
           }
-
-          this.actualMusicUrl = musicUrl
-          let array = this.actualMusicUrl.split("/")
-          this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
-
-          if ( n > 20) { break; }
-
-          //no infinte boucle
-          if ( this.playlist.length <= 1) { break; }
-
-        } while ( lastMusic == this.actualMusicUrl || boolRepeat  );
-        this.verifStack()
-        return this.actualMusicUrl
-      },
-      nextMusic(){
-
-        let ret
-        this.actualNumber--
-        let n = this.stackPrev.length - this.actualNumber
-        if (this.actualNumber < 0 || n >= this.stackPrev.length ) {
-
-          this.actualNumber = 0
-          ret = this.randomMusic()
-
-        }else {
-          ret = this.stackPrev[n]
-          let array = ret.split("/")
-          this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
-
         }
-        return ret
-
-      },
-      prevMusic(){
-        let ret
-        if (this.actualNumber == 0 ) { //premier retour en arrière pour enregistrer
-          let lastMusic = this.actualMusicUrl
-          if (lastMusic != "") {
-            this.stackPrev.push(lastMusic)
-            this.actualNumber++
-          }
-        }
-        this.actualNumber++
-
-        if (this.actualNumber >= this.stackPrev.length ) {
-          this.actualNumber = this.stackPrev.length
-        }
-        let n = (this.stackPrev.length - this.actualNumber )
-
-          this.actualMusicUrl = this.stackPrev[n]
-          let array = this.actualMusicUrl.split("/")
-          this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
-
-          ret = this.actualMusicUrl
-
-      return ret
-
-      },
-      verifStack(){
-        while (this.stackPrev.length > this.stackLimit) {
-          this.stackPrev.shift()
-        }
-      },
-
-
+        this.actualMusicUrl = musicUrl
+        let array = this.actualMusicUrl.split("/")
+        this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
+        if ( n > 20) { break; }
+        //no infinte boucle
+        if ( this.playlist.length <= 1) { break; }
+      } while ( lastMusic == this.actualMusicUrl || boolRepeat  );
+      this.verifStack()
+      return this.actualMusicUrl
     },
-    created(){
-      if (store.getters['playlist'].length == 0) {
-        this.$router.push({'name': 'HomePage'})
-        this.$ons.notification.toast({
-          animation: "fall",
-          message: 'Aucune musique !',
-          timeout: 2000
-        }).then(i => this.shutUp = i === 0)
-      }else{
-        this.playlist = store.getters['playlist']
+    nextMusic(){
+      let ret
+      this.actualNumber--
+      let n = this.stackPrev.length - this.actualNumber
+      if (this.actualNumber < 0 || n >= this.stackPrev.length ) {
+        this.actualNumber = 0
+        ret = this.randomMusic()
+      }else {
+        ret = this.stackPrev[n]
+        let array = ret.split("/")
+        this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
       }
-
-  	},
-    mounted(){
-      let globalThis = this
-      this.forward()
-      document.getElementById('audio').addEventListener('ended' , () => {
-        globalThis.forward()
-      } )
+      return ret
     },
-
-  }
-
+    prevMusic(){
+      let ret
+      if (this.actualNumber == 0 ) { //premier retour en arrière pour enregistrer
+        let lastMusic = this.actualMusicUrl
+        if (lastMusic != "") {
+          this.stackPrev.push(lastMusic)
+          this.actualNumber++
+        }
+      }
+      this.actualNumber++
+      if (this.actualNumber >= this.stackPrev.length ) {
+        this.actualNumber = this.stackPrev.length
+      }
+      let n = (this.stackPrev.length - this.actualNumber )
+        this.actualMusicUrl = this.stackPrev[n]
+        let array = this.actualMusicUrl.split("/")
+        this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
+        ret = this.actualMusicUrl
+      return ret
+    },
+    verifStack(){
+      while (this.stackPrev.length > this.stackLimit) {
+        this.stackPrev.shift()
+      }
+    },
+  },
+  created(){
+    if (store.getters['playlist'].length == 0) {
+      this.$router.push({'name': 'HomePage'})
+      this.$ons.notification.toast({
+        animation: "fall",
+        message: 'Aucune musique !',
+        timeout: 2000
+      }).then(i => this.shutUp = i === 0)
+    }else{
+      this.playlist = store.getters['playlist']
+    }
+	},
+  mounted(){
+    let globalThis = this
+    this.forward()
+    document.getElementById('audio').addEventListener('ended' , () => {
+      globalThis.forward()
+    } )
+  },
+}
 </script>
 
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .text-center {
-    margin-top: 10%;
-    text-align: center;
-  }
-  .btn-list{
-    margin-top: 18%;
-    margin-left:  10%;
-    margin-right: 10%;
-    border: solid;
-    border-width: thin;
-    border-color: #cc3399;
-    border-radius: 10px;
-
-  }
-  .buttonMusic{
-    padding: 10%;
-    font-size: 6vw;
-    width: 20px;
-    height: 30px;
-
-  }
-  .title{
-    height: 3em;
-  }
-  .float_left{
-    float: left;
-    padding-left: 10%;
-  }
-  .float_right{
-    float: right;
-    padding-right: 10%
-  }
-
-  #timeline{
-  	width: 76%;
-  	height: 15px;
-  	background: lightgrey;
-  	margin-top: 10px;
-
-    margin-left: 12%;
-    margin-right: 12%;
-
-  	float: left;
-  	border-radius: 15px;
-
-  }
-
-  #playhead{
-  	width: 13px;
-  	height: 13px;
-  	border-radius: 50%;
-  	margin-top: 1px;
-  	background: #cc3399;
-  }
-
+.text-center {
+  margin-top: 10%;
+  text-align: center;
+}
+.btn-list {
+  margin-top: 18%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid;
+  border-width: thin;
+  border-color: #cc3399;
+  border-radius: 10px;
+}
+.buttonMusic {
+  padding: 10%;
+  font-size: 6vw;
+  width: 20px;
+  height: 30px;
+}
+.title {
+  height: 3em;
+}
+.float_left {
+  float: left;
+  padding-left: 10%;
+}
+.float_right {
+  float: right;
+  padding-right: 10%;
+}
+#timeline {
+  width: 76%;
+  height: 15px;
+  background: lightgrey;
+  margin-top: 10px;
+  margin-left: 12%;
+  margin-right: 12%;
+  float: left;
+  border-radius: 15px;
+}
+#playhead {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  margin-top: 1px;
+  background: #cc3399;
+}
 </style>

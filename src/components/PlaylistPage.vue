@@ -75,100 +75,97 @@
 </template>
 
 <script>
-  import store from '@/store'
-
-  export default {
-    name: 'playlistPage',
-    data () {
-      return {
-        memID : "",
-        namePlaylist: "",
-        actionSheetVisible: false ,
-        addPlaylistVisible: false ,
-        secondList: store.state.secondList,
-
-      }
+import store from '@/store'
+export default {
+  name: 'playlistPage',
+  data () {
+    return {
+      memID : "",
+      namePlaylist: "",
+      actionSheetVisible: false ,
+      addPlaylistVisible: false ,
+      secondList: store.state.secondList,
+    }
+  },
+  methods: {
+    option(id){
+      this.actionSheetVisible = true
+      this.memID = id
+      this.namePlaylist =  this.secondList[this.secondList.map((item) => { return item.id; }).indexOf(this.memID)].name
     },
-    methods: {
-      option(id){
-        this.actionSheetVisible = true
-        this.memID = id
-        this.namePlaylist =  this.secondList[this.secondList.map((item) => { return item.id; }).indexOf(this.memID)].name
-      },
-      async changeName(){
-        let newName = ""
-        do {
-          newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Nouveau nom"})
-        } while (newName == "");
+    async changeName(){
+      let newName = ""
+      do {
+        newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Nouveau nom"})
+      } while (newName == "");
+      let json = {
+        'id': this.memID,
+        'newName': newName
+      }
+      store.dispatch('changeSecondListName',json)
+      this.actionSheetVisible = false
+      this.memID = ""
+    },
+    showAddPlaylist(){
+      this.namePlaylist = ""
+      this.addPlaylistVisible = true
+    },
+    deletePlaylist(){
+      store.dispatch('deleteInSecondList',this.memID)
+      this.actionSheetVisible = false
+      this.memID = ""
+    },
+    addPlaylist(n){
+      if (n != '') {
+        let date = new Date()
         let json = {
-          'id': this.memID,
-          'newName': newName
+          id: ""+date.getTime(),
+          name: n,
+          subPlaylist: [],
         }
-        store.dispatch('changeSecondListName',json)
-        this.actionSheetVisible = false
-        this.memID = ""
-      },
-      showAddPlaylist(){
+        this.addPlaylistVisible = false
         this.namePlaylist = ""
-        this.addPlaylistVisible = true
-      },
-      deletePlaylist(){
-        store.dispatch('deleteInSecondList',this.memID)
-        this.actionSheetVisible = false
-        this.memID = ""
-      },
-      addPlaylist(n){
-        if (n != '') {
-          let date = new Date()
-          let json = {
-            id: ""+date.getTime(),
-            name: n,
-            subPlaylist: [],
-          }
-          this.addPlaylistVisible = false
-          this.namePlaylist = ""
-          this.addPlaylistVisible = false
-          store.dispatch('addInSecondList',json)
-        }
-      },
-      goToListMusic(id){
-        this.memID = id
-        store.commit('changeMemSecondListID',this.memID)
-        this.$router.push({'name': 'ListMusic'})
-      },
-      savePlaylist(){
-        let array = []
-
-        for (let i in this.secondList ) {
-          if (document.getElementById( this.secondList[i].id ).checked) {
-            array.push(this.secondList[i].id)
-          }
-        }
-        store.dispatch('changeMainListPlaylist',array)
-        this.$ons.notification.toast({
-          animation: "fall",
-          message: 'Sauvegardé!',
-          timeout: 2000
-        }).then(i => this.shutUp = i === 0);
-      },
-      goingBack(){
-        this.$router.push({'name': 'HomePage'})
-        store.commit('removeMemMainListID')
+        this.addPlaylistVisible = false
+        store.dispatch('addInSecondList',json)
       }
     },
-    created(){
-      if (store.state.memMainListID == "") {
-        this.$router.push({'name': 'HomePage'})
-        store.commit('removeMemMainListID')
-      }
-  	},
-    mounted(){
-      if (store.state.memMainListID != "") {
-        let select = store.state.mainList[store.state.mainList.map((item) => { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
-        for (let i in select) {
-          document.getElementById( select[i] ).checked = true
+    goToListMusic(id){
+      this.memID = id
+      store.commit('changeMemSecondListID',this.memID)
+      this.$router.push({'name': 'ListMusic'})
+    },
+    savePlaylist(){
+      let array = []
+      for (let i in this.secondList ) {
+        if (document.getElementById( this.secondList[i].id ).checked) {
+          array.push(this.secondList[i].id)
         }
+      }
+      store.dispatch('changeMainListPlaylist',array)
+      this.$ons.notification.toast({
+        animation: "fall",
+        message: 'Sauvegardé!',
+        timeout: 2000
+      }).then(i => this.shutUp = i === 0);
+    },
+    goingBack(){
+      this.$router.push({'name': 'HomePage'})
+      store.commit('removeMemMainListID')
+    }
+  },
+  created(){
+    if (store.state.memMainListID == "") {
+      this.$router.push({'name': 'HomePage'})
+      store.commit('removeMemMainListID')
+    }
+	},
+  mounted(){
+    if (store.state.memMainListID != "") {
+      let select = store.state.mainList[store.state.mainList.map((item) => { return item.id; }).indexOf(store.state.memMainListID)].subPlaylist
+      for (let i in select) {
+        document.getElementById(select[i]).checked = true
       }
     }
-  }
+  },
+}
 </script>

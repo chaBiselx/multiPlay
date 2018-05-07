@@ -115,9 +115,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .label_music{
-    cursor: pointer;
-    display: block;
-    width: 100%;
-  }
+.label_music {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
 </style>

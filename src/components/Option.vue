@@ -34,77 +34,73 @@
 </template>
 
 <script>
-  import store from '@/store'
-
-  export default {
-    name: 'about',
-    data () {
-      return {
-        stackLimit: "",
-        noRepeat: ""
+import store from '@/store'
+export default {
+  name: 'about',
+  data() {
+    return {
+      stackLimit: '',
+      noRepeat: '',
+    }
+  },
+  methods: {
+    saveOption() {
+      if (this.stackLimit <1) {
+        this.stackLimit = 1
       }
-    },
-    methods: {
-      saveOption(){
-        if (this.stackLimit <1) {
-          this.stackLimit=1
-        }
-        if (this.noRepeat <1) {
-          this.noRepeat=1
-        }
-        let json = {
-          "StackLimit":this.stackLimit,
-          "NoRepeat":this.noRepeat
-        }
-        store.dispatch('changeOption',json)
-
-        this.$ons.notification.toast({
-          animation: "fall",
-          message: 'Sauvegardé!',
-          timeout: 2000
-        }).then(i => this.shutUp = i === 0);
-      },
-      async init(){
-        //don't delete or modify
-        //default value
-        let r = await this.$ons.notification.confirm('Tous les paramètres vont être réinitialiser!',{"title":"ATTENTION"})
-        if (r == 1) {
-          this.stackLimit = "25"
-          this.noRepeat = "10"
-          this.saveOption();
-        }
-
+      if (this.noRepeat <1) {
+        this.noRepeat=1
       }
-
+      let json = {
+        "StackLimit":this.stackLimit,
+        "NoRepeat":this.noRepeat
+      }
+      store.dispatch('changeOption',json)
+      this.$ons.notification.toast({
+        animation: "fall",
+        message: 'Sauvegardé!',
+        timeout: 2000
+      }).then(i => this.shutUp = i === 0);
     },
-    created(){
-      this.stackLimit = store.state.stackLimit
-      this.noRepeat = store.state.noRepeat
-  	}
-  }
+    async init(){
+      //don't delete or modify
+      //default value
+      let r = await this.$ons.notification.confirm('Tous les paramètres vont être réinitialiser!',{"title":"ATTENTION"})
+      if (r == 1) {
+        this.stackLimit = "25"
+        this.noRepeat = "10"
+        this.saveOption();
+      }
+    }
+  },
+  created(){
+    this.stackLimit = store.state.stackLimit
+    this.noRepeat = store.state.noRepeat
+	}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .form-group{
-    width: 80%;
-    margin: 10px 10% 10px 10%;
-  }
-  .form-group label{
-    display: block
-  }
-  input{
-    height: 1.1em;
-    margin-top: 5px;
-    width: 60%;
-  }
-  .finalButton{
-    display: block;
-    width: 70%;
-    margin: 10px 15% 10px 15%;
-    text-align: center;
-  }
-  .end{
-    margin-top: 50px
-  }
+.form-group {
+  width: 80%;
+  margin: 10px 10% 10px 10%;
+}
+.form-group label {
+  display: block;
+}
+input {
+  height: 1.1em;
+  margin-top: 5px;
+  width: 60%;
+}
+.finalButton {
+  display: block;
+  width: 70%;
+  margin: 10px 15% 10px 15%;
+  text-align: center;
+}
+.end {
+  margin-top: 50px;
+}
 </style>

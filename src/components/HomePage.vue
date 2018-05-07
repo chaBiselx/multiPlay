@@ -68,116 +68,109 @@
 </template>
 
 <script>
-  import store from '@/store'
-
-  export default {
-    name: 'homePage',
-    data () {
-      return {
-        memID : "",
-        namePlaylist: "",
-        actionSheetVisible: false ,
-        addPlaylistVisible: false ,
-        MainList: [],
-      }
-    },
-    methods: {
-      option(id){
-        this.actionSheetVisible = true
-        this.memID = id
-        this.namePlaylist =  this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(this.memID)].name
-
-      },
-      async changeName(){
-        let newName = ""
-        do {
-          newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Nouveau nom"})
-        } while (newName == "");
-        let json = {
-          'id': this.memID,
-          'newName': newName
-        }
-        store.dispatch('changeMainListName',json)
-        this.actionSheetVisible = false
-        this.memID = ""
-      },
-      showAddPlaylist(){
-        this.namePlaylist = ""
-        this.addPlaylistVisible = true
-      },
-      deletePlaylist(){
-        store.dispatch('deleteInMainList',this.memID)
-        this.actionSheetVisible = false
-        this.memID = ""
-      },
-      addPlaylist(n){
-        if (n != '') {
-          let date = new Date()
-          let json = {
-            id: ""+date.getTime(),
-            name: n,
-            subPlaylist: [],
-          }
-          this.addPlaylistVisible = false
-          this.namePlaylist = ""
-          this.addPlaylistVisible = false
-          store.dispatch('addInMainList',json)
-        }
-      },
-      play( id ){
-        let playlist = []
-        let mainList = this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(id)].subPlaylist
-        for (let m of mainList) {
-          let secondList = store.state.secondList[store.state.secondList.map((item) => { return item.id; }).indexOf(m)].subPlaylist
-          for (let p of secondList) {
-            playlist.push(p)
-          }
-        }
-        //remove duplicate
-        var a = [];
-        for (let i = 0; i < playlist.length; i++ ) {
-            var current = playlist[i];
-            if (a.indexOf(current) < 0) a.push(current);
-        }
-
-        playlist.length = 0;
-        for (let i = 0; i < a.length; i++ ) {
-            playlist.push( a[i] );
-        }
-        store.dispatch('changePlaylist',playlist)
-        this.$router.push({'name': 'MusicPlayerPage'})
-
-      },
-      goToSubPlaylist(id){
-        this.memID = id
-        store.commit('changeMemMainListID',this.memID)
-        this.$router.push({'name': 'PlaylistPage'})
-      },
-    },
-    async beforeCreate(){
-      if (!store.state.load) {
-        store.commit('changeLoad',true)
-        let r = await this.$store.dispatch('loadData')
-      }
-
-      this.MainList = store.state.mainList
-    },
-
-    mounted(){
-      this.MainList = store.state.mainList
+import store from '@/store'
+export default {
+  name: 'homePage',
+  data () {
+    return {
+      memID : "",
+      namePlaylist: "",
+      actionSheetVisible: false ,
+      addPlaylistVisible: false ,
+      MainList: [],
     }
-
+  },
+  methods: {
+    option(id){
+      this.actionSheetVisible = true
+      this.memID = id
+      this.namePlaylist =  this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(this.memID)].name
+      },
+    async changeName(){
+      let newName = ""
+      do {
+        newName = await this.$ons.notification.prompt('Entrez le nouveau nom!',{"title":"Nouveau nom"})
+      } while (newName == "");
+      let json = {
+        'id': this.memID,
+        'newName': newName
+      }
+      store.dispatch('changeMainListName',json)
+      this.actionSheetVisible = false
+      this.memID = ""
+    },
+    showAddPlaylist(){
+      this.namePlaylist = ""
+      this.addPlaylistVisible = true
+    },
+    deletePlaylist(){
+      store.dispatch('deleteInMainList',this.memID)
+      this.actionSheetVisible = false
+      this.memID = ""
+    },
+    addPlaylist(n){
+      if (n != '') {
+        let date = new Date()
+        let json = {
+          id: ""+date.getTime(),
+          name: n,
+          subPlaylist: [],
+        }
+        this.addPlaylistVisible = false
+        this.namePlaylist = ""
+        this.addPlaylistVisible = false
+        store.dispatch('addInMainList',json)
+      }
+    },
+    play( id ){
+      let playlist = []
+      let mainList = this.MainList[this.MainList.map((item) => { return item.id; }).indexOf(id)].subPlaylist
+      for (let m of mainList) {
+        let secondList = store.state.secondList[store.state.secondList.map((item) => { return item.id; }).indexOf(m)].subPlaylist
+        for (let p of secondList) {
+          playlist.push(p)
+        }
+      }
+      //remove duplicate
+      var a = [];
+      for (let i = 0; i < playlist.length; i++ ) {
+          var current = playlist[i];
+          if (a.indexOf(current) < 0) a.push(current);
+      }
+      playlist.length = 0;
+      for (let i = 0; i < a.length; i++ ) {
+          playlist.push( a[i] );
+      }
+      store.dispatch('changePlaylist',playlist)
+      this.$router.push({'name': 'MusicPlayerPage'})
+    },
+    goToSubPlaylist(id){
+      this.memID = id
+      store.commit('changeMemMainListID',this.memID)
+      this.$router.push({'name': 'PlaylistPage'})
+    },
+  },
+  async beforeCreate(){
+    if (!store.state.load) {
+      store.commit('changeLoad',true)
+      let r = await this.$store.dispatch('loadData')
+    }
+    this.MainList = store.state.mainList
+  },
+  mounted(){
+    this.MainList = store.state.mainList
   }
+}
 </script>
 
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .center{
-    overflow: scroll;
-  }
-  .buttonPlay{
-    padding: 7px 17px 7px 0;
-  }
+.center {
+  overflow: scroll;
+}
+.buttonPlay {
+  padding: 7px 17px 7px 0;
+}
 </style>
