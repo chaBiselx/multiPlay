@@ -101,6 +101,27 @@ export default {
       noRepeat: store.state.noRepeat,
     }
   },
+  created() {
+    if (store.getters['playlist'].length == 0) {
+      this.$router.push({ name: 'HomePage' })
+      this.$ons.notification
+        .toast({
+          animation: 'fall',
+          message: 'Aucune musique !',
+          timeout: 2000,
+        })
+        .then(i => (this.shutUp = i === 0))
+    } else {
+      this.playlist = store.getters['playlist']
+    }
+  },
+  mounted() {
+    let globalThis = this
+    this.forward()
+    document.getElementById('audio').addEventListener('ended', () => {
+      globalThis.forward()
+    })
+  },
   methods: {
     backward() {
       document.getElementById('audio').setAttribute('src', this.prevMusic())
@@ -211,27 +232,6 @@ export default {
         this.stackPrev.shift()
       }
     },
-  },
-  created() {
-    if (store.getters['playlist'].length == 0) {
-      this.$router.push({ name: 'HomePage' })
-      this.$ons.notification
-        .toast({
-          animation: 'fall',
-          message: 'Aucune musique !',
-          timeout: 2000,
-        })
-        .then(i => (this.shutUp = i === 0))
-    } else {
-      this.playlist = store.getters['playlist']
-    }
-  },
-  mounted() {
-    let globalThis = this
-    this.forward()
-    document.getElementById('audio').addEventListener('ended', () => {
-      globalThis.forward()
-    })
   },
 }
 </script>
