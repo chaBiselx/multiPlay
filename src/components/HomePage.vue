@@ -156,7 +156,6 @@ export default {
         }
         this.addPlaylistVisible = false
         this.namePlaylist = ''
-        this.addPlaylistVisible = false
         store.dispatch('addInMainList', json)
       }
     },
