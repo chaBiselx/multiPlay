@@ -72,6 +72,10 @@ export default {
       noRepeat: '',
     }
   },
+  created() {
+    this.stackLimit = store.state.stackLimit
+    this.noRepeat = store.state.noRepeat
+  },
   methods: {
     saveOption() {
       if (this.stackLimit < 1) {
@@ -106,10 +110,6 @@ export default {
         this.saveOption()
       }
     },
-  },
-  created() {
-    this.stackLimit = store.state.stackLimit
-    this.noRepeat = store.state.noRepeat
   },
 }
 </script>

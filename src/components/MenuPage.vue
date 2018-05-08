@@ -1,13 +1,28 @@
 <template>
   <v-ons-page>
     <div class="header">
-      <img class="Mainlogo" src="@/assets/img/MultiPlay.png"   alt="Menu">
+      <img
+        class="Mainlogo"
+        src="@/assets/img/MultiPlay.png"
+        alt="Menu"
+      >
     </div>
 
     <v-ons-list-title>Menu</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item class="pointer"modifier="chevron" v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
-        <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
+      <v-ons-list-item
+        v-for="item in essentialLinks"
+        :key="item.link"
+        class="pointer"
+        modifier="chevron"
+        @click="goTo(item.link)"
+      >
+        <div class="left">
+          <v-ons-icon
+            :icon="item.icon"
+            fixed-width
+          />
+        </div>
         <div class="center">{{ item.label }}</div>
       </v-ons-list-item>
     </v-ons-list>
@@ -17,61 +32,61 @@
 <script>
 import store from '@/store'
 export default {
-  name: 'menuPage',
-  data () {
+  name: 'MenuPage',
+  data() {
     return {
       essentialLinks: [
         {
           label: 'Playlist',
           link: 'Home',
-          icon: 'md-home'
+          icon: 'md-home',
         },
         {
           label: 'Lecteur',
           link: 'MusicPlayer',
-          icon: 'ion-play'
+          icon: 'ion-play',
         },
         {
           label: 'Options',
           link: 'Option',
-          icon: 'ion-settings'
+          icon: 'ion-settings',
         },
         {
           label: 'À propos',
           link: 'About',
-          icon: 'fa-book'
+          icon: 'fa-book',
         },
-      ]
+      ],
     }
   },
   methods: {
-    goTo (url) {
+    goTo(url) {
       switch (url) {
         case 'MusicPlayer':
-          this.$router.push({'name': 'MusicPlayerPage'})
+          this.$router.push({ name: 'MusicPlayerPage' })
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
           store.commit('removeMemSecondListID')
-          break;
+          break
         case 'About':
-          this.$router.push({'name': 'About'})
+          this.$router.push({ name: 'About' })
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
           store.commit('removeMemSecondListID')
-          break;
+          break
         case 'Home':
-          this.$router.push({'name': 'HomePage'})
+          this.$router.push({ name: 'HomePage' })
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
           store.commit('removeMemSecondListID')
-          break;
+          break
         case 'Option':
-          this.$router.push({'name': 'Option'})
+          this.$router.push({ name: 'Option' })
           store.commit('splitter/toggle')
-          break;
+          break
         default:
           //redirect home
-          this.$router.push({'name': 'HomePage'})
+          this.$router.push({ name: 'HomePage' })
           store.commit('splitter/toggle')
           store.commit('removeMemMainListID')
           store.commit('removeMemSecondListID')
