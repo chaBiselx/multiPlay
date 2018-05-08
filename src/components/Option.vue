@@ -3,29 +3,58 @@
     <v-ons-toolbar class="home-toolbar">
       <div class="left pointer">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
-          <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
+          <v-ons-icon icon="md-menu"/>
         </v-ons-toolbar-button>
       </div>
       <div class="center">
-        <img class="logo" src="@/assets/img/MultiPlay.png" alt="">
+        <img
+          class="logo"
+          src="@/assets/img/MultiPlay.png"
+          alt=""
+        >
         MultiPlay
       </div>
     </v-ons-toolbar>
 
     <div class="center text">
       <h1>Option</h1>
-      <form class="" action="index.html" method="post">
+      <form
+        action="index.html"
+        method="post"
+      >
         <div class="form-group center">
           <label for="stackLimit"> Nombre de retour en arrière dans la playlist possible</label>
-          <input type="number" name="stackLimit" v-model="stackLimit" min="1">
+          <input
+            v-model="stackLimit"
+            type="number"
+            name="stackLimit"
+            min="1"
+          >
         </div>
         <div class="form-group center">
           <label for="noRepeat"> Nombre de musique avant une possibilité de réécouter la musique actuelle</label>
-          <input type="number" name="noRepeat" v-model="noRepeat" min="1">
+          <input
+            v-model="noRepeat"
+            type="number"
+            name="noRepeat"
+            min="1"
+          >
         </div>
         <div class="form-group end">
-          <ons-button class="finalButton"  type="submit" @click="saveOption()">Sauvegarder</ons-button >
-          <ons-button class="finalButton"  type="button" @click="init()">Réinitialiser</ons-button >
+          <ons-button
+            class="finalButton"
+            type="submit"
+            @click="saveOption()"
+          >
+            Sauvegarder
+          </ons-button >
+          <ons-button
+            class="finalButton"
+            type="button"
+            @click="init()"
+          >
+            Réinitialiser
+          </ons-button >
         </div>
       </form>
 
@@ -36,7 +65,7 @@
 <script>
 import store from '@/store'
 export default {
-  name: 'about',
+  name: 'About',
   data() {
     return {
       stackLimit: '',
@@ -45,38 +74,43 @@ export default {
   },
   methods: {
     saveOption() {
-      if (this.stackLimit <1) {
+      if (this.stackLimit < 1) {
         this.stackLimit = 1
       }
-      if (this.noRepeat <1) {
-        this.noRepeat=1
+      if (this.noRepeat < 1) {
+        this.noRepeat = 1
       }
       let json = {
-        "StackLimit":this.stackLimit,
-        "NoRepeat":this.noRepeat
+        StackLimit: this.stackLimit,
+        NoRepeat: this.noRepeat,
       }
-      store.dispatch('changeOption',json)
-      this.$ons.notification.toast({
-        animation: "fall",
-        message: 'Sauvegardé!',
-        timeout: 2000
-      }).then(i => this.shutUp = i === 0);
+      store.dispatch('changeOption', json)
+      this.$ons.notification
+        .toast({
+          animation: 'fall',
+          message: 'Sauvegardé!',
+          timeout: 2000,
+        })
+        .then(i => (this.shutUp = i === 0))
     },
-    async init(){
+    async init() {
       //don't delete or modify
       //default value
-      let r = await this.$ons.notification.confirm('Tous les paramètres vont être réinitialiser!',{"title":"ATTENTION"})
+      let r = await this.$ons.notification.confirm(
+        'Tous les paramètres vont être réinitialiser!',
+        { title: 'ATTENTION' },
+      )
       if (r == 1) {
-        this.stackLimit = "25"
-        this.noRepeat = "10"
-        this.saveOption();
+        this.stackLimit = '25'
+        this.noRepeat = '10'
+        this.saveOption()
       }
-    }
+    },
   },
-  created(){
+  created() {
     this.stackLimit = store.state.stackLimit
     this.noRepeat = store.state.noRepeat
-	}
+  },
 }
 </script>
 

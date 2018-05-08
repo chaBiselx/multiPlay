@@ -102,6 +102,16 @@ export default {
       MainList: [],
     }
   },
+  async beforeCreate() {
+    if (!store.state.load) {
+      store.commit('changeLoad', true)
+      await this.$store.dispatch('loadData')
+    }
+    this.MainList = store.state.mainList
+  },
+  mounted() {
+    this.MainList = store.state.mainList
+  },
   methods: {
     option(id) {
       this.actionSheetVisible = true
@@ -189,16 +199,6 @@ export default {
       store.commit('changeMemMainListID', this.memID)
       this.$router.push({ name: 'PlaylistPage' })
     },
-  },
-  async beforeCreate() {
-    if (!store.state.load) {
-      store.commit('changeLoad', true)
-      await this.$store.dispatch('loadData')
-    }
-    this.MainList = store.state.mainList
-  },
-  mounted(){
-    this.MainList = store.state.mainList
   },
 }
 </script>
