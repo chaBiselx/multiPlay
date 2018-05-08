@@ -148,17 +148,16 @@ export default {
     },
     async changeName() {
       let newName = ''
-      do {
-        newName = await this.$ons.notification.prompt(
-          'Entrez le nouveau nom!',
-          { title: 'Nouveau nom' },
-        )
-      } while (newName == '')
-      let json = {
-        id: this.memID,
-        newName: newName,
+      newName = await this.$ons.notification.prompt('Entrez le nouveau nom!', {
+        title: 'Nouveau nom',
+      })
+      if (newName != '' && newName != null) {
+        let json = {
+          id: this.memID,
+          newName: newName,
+        }
+        store.dispatch('changeSecondListName', json)
       }
-      store.dispatch('changeSecondListName', json)
       this.actionSheetVisible = false
       this.memID = ''
     },
