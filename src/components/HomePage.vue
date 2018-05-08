@@ -81,6 +81,7 @@
           float
           maxlength="25"
           required
+          @keydown.enter="addPlaylist(namePlaylist)"
         />
       </v-ons-action-sheet-button>
       <v-ons-action-sheet-button @click="addPlaylist(namePlaylist)">valider</v-ons-action-sheet-button>
