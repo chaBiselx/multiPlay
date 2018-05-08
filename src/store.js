@@ -28,6 +28,7 @@ export default new Vuex.Store({
   state: {
     load: false,
     stackLimit: '25',
+    nightMod: false,
     noRepeat: '10',
     mainList: [],
     memMainListID: '',
@@ -57,6 +58,9 @@ export default new Vuex.Store({
   },
   mutations: {
     //commit('name')
+    changeNightMod(state) {
+      state.nightMod = !state.nightMod
+    },
     changeLoad(state, value) {
       state.load = value
     },

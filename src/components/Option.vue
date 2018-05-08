@@ -26,6 +26,7 @@
           <label for="stackLimit"> Nombre de retour en arrière dans la playlist possible</label>
           <input
             v-model="stackLimit"
+            class="input__text"
             type="number"
             name="stackLimit"
             min="1"
@@ -35,11 +36,27 @@
           <label for="noRepeat"> Nombre de musique avant une possibilité de réécouter la musique actuelle</label>
           <input
             v-model="noRepeat"
+            class="input__text"
             type="number"
             name="noRepeat"
             min="1"
           >
         </div>
+        <div class="form-group center">
+          <ons-button
+            class="finalButton"
+            type="button"
+            @click="changeNightMod()"
+          >
+            nightMod
+          </ons-button >
+          <div
+            :class="{ 'test-night': nightMod}"
+          >
+            {{ nightMod }}
+          </div>
+        </div>
+
         <div class="form-group end">
           <ons-button
             class="finalButton"
@@ -55,19 +72,6 @@
           >
             Réinitialiser
           </ons-button >
-          <ons-button
-            class="finalButton"
-            type="button"
-            @click="changeNightMod()"
-          >
-            nightMod
-          </ons-button >
-          <div
-            :class="{ 'finalButton-night': nightMod}"
-            class="static"
-          >
-            {{ nightMod }}
-          </div>
         </div>
       </form>
 
@@ -126,6 +130,7 @@ export default {
     },
     changeNightMod() {
       this.nightMod = !this.nightMod
+      //store.commit('changeNightMod')
     },
   },
 }
