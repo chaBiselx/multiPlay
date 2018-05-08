@@ -71,7 +71,8 @@ export default {
   beforeMount() {
     if (!store.getters['emptyListMusic']) {
       let globalThis = this
-      MediaRetrieve.getAudioList(data => {
+      MediaRetrieve.getAudioList(data => { //eslint-disable-line
+        //doesn't need to import MediaRetrieve
         globalThis.getData(data)
         //write here because asynchonus function
       })
