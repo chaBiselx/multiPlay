@@ -3,20 +3,30 @@
     <v-ons-toolbar class="home-toolbar">
       <div class="left pointer">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
-          <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
+          <v-ons-icon icon="md-menu"/>
         </v-ons-toolbar-button>
       </div>
       <div class="center">
-        <img class="logo" src="@/assets/img/MultiPlay.png" alt="">
+        <img
+          class="logo"
+          src="@/assets/img/MultiPlay.png"
+          alt=""
+        >
         MultiPlay
       </div>
     </v-ons-toolbar>
 
     <div class="text-center">
-      <div class="title">{{actualMusicTitle}}</div>
+      <div class="title">{{ actualMusicTitle }}</div>
 
-      <audio id="audio" controls>
-        <source :src="actualMusicUrl"   type="audio/mp3 audio/ogg audio/wav">
+      <audio
+        id="audio"
+        controls
+      >
+        <source
+          :src="actualMusicUrl"
+          type="audio/mp3 audio/ogg audio/wav"
+        >
       </audio>
       <!--div class="center">
         <div class="float_left">
@@ -26,22 +36,44 @@
           {{actualDuration}}
         </div>
         <div id="timeline">
-        	<div id="playhead"></div>
+          <div id="playhead"></div>
         </div>
       </div-->
 
       <div class="btn-list">
         <span class="btn-left">
-          <v-ons-icon class="buttonMusic" icon="ion-skip-backward" @click="backward()"></v-ons-icon>
+          <v-ons-icon
+            class="buttonMusic"
+            icon="ion-skip-backward"
+            @click="backward()"
+          />
         </span>
-        <span class="btn-center" v-if="!player">
-          <v-ons-icon class="buttonMusic" icon="ion-play" @click="go()"></v-ons-icon>
+        <span
+          v-if="!player"
+          class="btn-center"
+        >
+          <v-ons-icon
+            class="buttonMusic"
+            icon="ion-play"
+            @click="go()"
+          />
         </span>
-        <span class="btn-center" v-else>
-          <v-ons-icon class="buttonMusic" icon="ion-pause" @click="stop()"></v-ons-icon>
+        <span
+          v-else
+          class="btn-center"
+        >
+          <v-ons-icon
+            class="buttonMusic"
+            icon="ion-pause"
+            @click="stop()"
+          />
         </span>
         <span class="btn-right">
-          <v-ons-icon class="buttonMusic" icon="ion-skip-forward" @click="forward()"></v-ons-icon>
+          <v-ons-icon
+            class="buttonMusic"
+            icon="ion-skip-forward"
+            @click="forward()"
+          />
         </span>
       </div>
 
@@ -54,14 +86,14 @@
 <script>
 import store from '@/store'
 export default {
-  name: 'homePage',
-  data () {
+  name: 'HomePage',
+  data() {
     return {
-      actualMusicTitle: "Absence de musique",
-      actualMusicUrl: "",
-      actualDuration: "durée",
-      actualTime: "temps",
-      player: false ,
+      actualMusicTitle: 'Absence de musique',
+      actualMusicUrl: '',
+      actualDuration: 'durée',
+      actualTime: 'temps',
+      player: false,
       playlist: [],
       stackPrev: [],
       actualNumber: 0,
@@ -70,36 +102,40 @@ export default {
     }
   },
   methods: {
-    backward(){
-      document.getElementById('audio').setAttribute('src',this.prevMusic())
+    backward() {
+      document.getElementById('audio').setAttribute('src', this.prevMusic())
       document.getElementById('audio').play()
       this.player = true
     },
-    forward(){
-      document.getElementById('audio').setAttribute('src',this.nextMusic())
+    forward() {
+      document.getElementById('audio').setAttribute('src', this.nextMusic())
       document.getElementById('audio').play()
       this.player = true
     },
-    go(){
+    go() {
       this.player = true
       document.getElementById('audio').play()
     },
-    stop(){
+    stop() {
       this.player = false
       document.getElementById('audio').pause()
     },
-    randomMusic(){
+    randomMusic() {
       let lastMusic = this.actualMusicUrl
-      if (lastMusic != "" && this.stackPrev[0] != this.actualMusicUrl) {
+      if (lastMusic != '' && this.stackPrev[0] != this.actualMusicUrl) {
         this.stackPrev.push(lastMusic)
       }
       let boolRepeat
       let n = 0
       do {
         boolRepeat = false
-        let noRepeatArray = this.stackPrev.slice(Math.max(this.stackPrev.length - this.noRepeat , 1))
-        let musicUrl = this.playlist[   Math.floor((Math.random() * this.playlist.length) )  ]
-        if (this.playlist.length >= this.noRepeat ) {
+        let noRepeatArray = this.stackPrev.slice(
+          Math.max(this.stackPrev.length - this.noRepeat, 1),
+        )
+        let musicUrl = this.playlist[
+          Math.floor(Math.random() * this.playlist.length)
+        ]
+        if (this.playlist.length >= this.noRepeat) {
           for (let i of noRepeatArray) {
             if (i == musicUrl) {
               boolRepeat = true
@@ -107,73 +143,95 @@ export default {
           }
         }
         this.actualMusicUrl = musicUrl
-        let array = this.actualMusicUrl.split("/")
-        this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
-        if ( n > 20) { break; }
+        let array = this.actualMusicUrl.split('/')
+        this.actualMusicTitle = array[array.length - 1].replace(
+          array[array.length - 1].substr(
+            array[array.length - 1].lastIndexOf('.'),
+          ),
+          '',
+        )
+        if (n > 20) {
+          break
+        }
         //no infinte boucle
-        if ( this.playlist.length <= 1) { break; }
-      } while ( lastMusic == this.actualMusicUrl || boolRepeat  );
+        if (this.playlist.length <= 1) {
+          break
+        }
+      } while (lastMusic == this.actualMusicUrl || boolRepeat)
       this.verifStack()
       return this.actualMusicUrl
     },
-    nextMusic(){
+    nextMusic() {
       let ret
       this.actualNumber--
       let n = this.stackPrev.length - this.actualNumber
-      if (this.actualNumber < 0 || n >= this.stackPrev.length ) {
+      if (this.actualNumber < 0 || n >= this.stackPrev.length) {
         this.actualNumber = 0
         ret = this.randomMusic()
-      }else {
+      } else {
         ret = this.stackPrev[n]
-        let array = ret.split("/")
-        this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
+        let array = ret.split('/')
+        this.actualMusicTitle = array[array.length - 1].replace(
+          array[array.length - 1].substr(
+            array[array.length - 1].lastIndexOf('.'),
+          ),
+          '',
+        )
       }
       return ret
     },
-    prevMusic(){
+    prevMusic() {
       let ret
-      if (this.actualNumber == 0 ) { //premier retour en arrière pour enregistrer
+      if (this.actualNumber == 0) {
+        //premier retour en arrière pour enregistrer
         let lastMusic = this.actualMusicUrl
-        if (lastMusic != "") {
+        if (lastMusic != '') {
           this.stackPrev.push(lastMusic)
           this.actualNumber++
         }
       }
       this.actualNumber++
-      if (this.actualNumber >= this.stackPrev.length ) {
+      if (this.actualNumber >= this.stackPrev.length) {
         this.actualNumber = this.stackPrev.length
       }
-      let n = (this.stackPrev.length - this.actualNumber )
-        this.actualMusicUrl = this.stackPrev[n]
-        let array = this.actualMusicUrl.split("/")
-        this.actualMusicTitle = array[array.length-1].replace(array[array.length-1].substr(array[array.length-1].lastIndexOf('.')), '')
-        ret = this.actualMusicUrl
+      let n = this.stackPrev.length - this.actualNumber
+      this.actualMusicUrl = this.stackPrev[n]
+      let array = this.actualMusicUrl.split('/')
+      this.actualMusicTitle = array[array.length - 1].replace(
+        array[array.length - 1].substr(
+          array[array.length - 1].lastIndexOf('.'),
+        ),
+        '',
+      )
+      ret = this.actualMusicUrl
       return ret
     },
-    verifStack(){
+    verifStack() {
       while (this.stackPrev.length > this.stackLimit) {
         this.stackPrev.shift()
       }
     },
   },
-  created(){
+  created() {
     if (store.getters['playlist'].length == 0) {
-      this.$router.push({'name': 'HomePage'})
-      this.$ons.notification.toast({
-        animation: "fall",
-        message: 'Aucune musique !',
-        timeout: 2000
-      }).then(i => this.shutUp = i === 0)
-    }else{
+      this.$router.push({ name: 'HomePage' })
+      this.$ons.notification
+        .toast({
+          animation: 'fall',
+          message: 'Aucune musique !',
+          timeout: 2000,
+        })
+        .then(i => (this.shutUp = i === 0))
+    } else {
       this.playlist = store.getters['playlist']
     }
-	},
-  mounted(){
+  },
+  mounted() {
     let globalThis = this
     this.forward()
-    document.getElementById('audio').addEventListener('ended' , () => {
+    document.getElementById('audio').addEventListener('ended', () => {
       globalThis.forward()
-    } )
+    })
   },
 }
 </script>

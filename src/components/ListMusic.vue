@@ -61,6 +61,27 @@ export default {
       listMusic: [],
     }
   },
+  created() {
+    if (store.state.memSecondListID == '') {
+      this.$router.push({ name: 'HomePage' })
+      store.commit('removeMemMainListID')
+      store.commit('removeMemSecondListID')
+    }
+  },
+  beforeMount() {
+    if (!store.getters['emptyListMusic']) {
+      let globalThis = this
+      MediaRetrieve.getAudioList(data => {
+        globalThis.getData(data)
+        //write here because asynchonus function
+      })
+    } else {
+      this.loadList()
+    }
+  },
+  mounted() {
+    this.loadCheck()
+  },
   methods: {
     savePlaylist() {
       let array = []
@@ -103,27 +124,6 @@ export default {
         document.getElementById(select[y]).checked = true
       }
     },
-  },
-  created() {
-    if (store.state.memSecondListID == '') {
-      this.$router.push({ name: 'HomePage' })
-      store.commit('removeMemMainListID')
-      store.commit('removeMemSecondListID')
-    }
-  },
-  beforeMount() {
-    if (!store.getters['emptyListMusic']) {
-      let globalThis = this
-      MediaRetrieve.getAudioList(data => {
-        globalThis.getData(data)
-        //write here because asynchonus function
-      })
-    } else {
-      this.loadList()
-    }
-  },
-  mounted() {
-    this.loadCheck()
   },
 }
 </script>
