@@ -113,6 +113,27 @@ export default {
       secondList: store.state.secondList,
     }
   },
+  created() {
+    if (store.state.memMainListID == '') {
+      this.$router.push({ name: 'HomePage' })
+      store.commit('removeMemMainListID')
+    }
+  },
+  mounted() {
+    if (store.state.memMainListID != '') {
+      let select =
+        store.state.mainList[
+          store.state.mainList
+            .map(item => {
+              return item.id
+            })
+            .indexOf(store.state.memMainListID)
+        ].subPlaylist
+      for (let i in select) {
+        document.getElementById(select[i]).checked = true
+      }
+    }
+  },
   methods: {
     option(id) {
       this.actionSheetVisible = true
@@ -189,27 +210,6 @@ export default {
       this.$router.push({ name: 'HomePage' })
       store.commit('removeMemMainListID')
     },
-  },
-  created() {
-    if (store.state.memMainListID == '') {
-      this.$router.push({ name: 'HomePage' })
-      store.commit('removeMemMainListID')
-    }
-  },
-  mounted() {
-    if (store.state.memMainListID != '') {
-      let select =
-        store.state.mainList[
-          store.state.mainList
-            .map(item => {
-              return item.id
-            })
-            .indexOf(store.state.memMainListID)
-        ].subPlaylist
-      for (let i in select) {
-        document.getElementById(select[i]).checked = true
-      }
-    }
   },
 }
 </script>
