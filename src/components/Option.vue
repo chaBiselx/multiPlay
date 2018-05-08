@@ -55,6 +55,19 @@
           >
             Réinitialiser
           </ons-button >
+          <ons-button
+            class="finalButton"
+            type="button"
+            @click="changeNightMod()"
+          >
+            nightMod
+          </ons-button >
+          <div
+            :class="{ 'finalButton-night': nightMod}"
+            class="static"
+          >
+            {{ nightMod }}
+          </div>
         </div>
       </form>
 
@@ -70,6 +83,7 @@ export default {
     return {
       stackLimit: '',
       noRepeat: '',
+      nightMod: true,
     }
   },
   created() {
@@ -110,6 +124,9 @@ export default {
         this.saveOption()
       }
     },
+    changeNightMod() {
+      this.nightMod = !this.nightMod
+    },
   },
 }
 </script>
@@ -133,6 +150,9 @@ input {
   width: 70%;
   margin: 10px 15% 10px 15%;
   text-align: center;
+}
+.finalButton-night {
+  background-color: red;
 }
 .end {
   margin-top: 50px;
