@@ -50,11 +50,6 @@
           >
             {{ textNightMod }}
           </ons-button >
-          <div
-            :class="{ 'test-night': nightMod}"
-          >
-            {{ nightMod }}
-          </div>
         </div>
 
         <div class="form-group end">
@@ -151,7 +146,7 @@ export default {
 <style scoped>
 .form-group {
   width: 80%;
-  margin: 10px 10% 10px 10%;
+  margin: 15px 10% 10px 10%;
 }
 .form-group label {
   display: block;
@@ -171,6 +166,6 @@ input {
   background-color: red;
 }
 .end {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 </style>
