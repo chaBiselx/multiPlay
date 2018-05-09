@@ -48,7 +48,7 @@
             type="button"
             @click="changeNightMod()"
           >
-            nightMod
+            {{ textNightMod }}
           </ons-button >
           <div
             :class="{ 'test-night': nightMod}"
@@ -88,12 +88,14 @@ export default {
       stackLimit: '',
       noRepeat: '',
       nightMod: '',
+      textNightMod: '',
     }
   },
   async beforeCreate() {
     this.nightMod = await store.state.nightMod
     this.stackLimit = await store.state.stackLimit
     this.noRepeat = await store.state.noRepeat
+    this.switchNightMod()
   },
   methods: {
     saveOption() {
@@ -132,6 +134,14 @@ export default {
     changeNightMod() {
       this.nightMod = !this.nightMod
       store.commit('changeNightMod', this.nightMod)
+      this.switchNightMod()
+    },
+    switchNightMod() {
+      if (this.nightMod == true) {
+        this.textNightMod = 'Mode jour'
+      } else {
+        this.textNightMod = 'Mode nuit'
+      }
     },
   },
 }
