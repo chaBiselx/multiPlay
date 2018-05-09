@@ -122,4 +122,7 @@ ons-list-item {
 .text h1 {
   text-align: center;
 }
+a {
+  text-decoration: underline;
+}
 </style>
