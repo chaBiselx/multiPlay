@@ -21,15 +21,25 @@
 <script>
 import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
+import store from '@/store'
+
 export default {
   name: 'App',
   components: {
     HomePage,
     MenuPage,
   },
+  /*
+  props: {
+    nightMod: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  */
   data() {
     return {
-      nightMod: true,
+      nightMod: '',
     }
   },
   computed: {
@@ -42,6 +52,14 @@ export default {
       },
     },
   },
+  async beforeCreate() {
+    this.nightMod = await store.state.nightMod
+  },
+  method: {
+    updateNightMod(value) {
+      this.nightMod = value
+    },
+  },
 }
 </script>
 
@@ -51,6 +69,7 @@ export default {
   background-color: rgb(24, 44, 68) !important;
   border-color: transparent !important;
   color: grey !important;
+  border-color: none !important;
 }
 .nightMod-background ons-list {
   background-color: rgb(24, 44, 68) !important;

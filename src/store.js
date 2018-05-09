@@ -58,8 +58,8 @@ export default new Vuex.Store({
   },
   mutations: {
     //commit('name')
-    changeNightMod(state) {
-      state.nightMod = !state.nightMod
+    changeNightMod(state, bool) {
+      state.nightMod = bool
     },
     changeLoad(state, value) {
       state.load = value
@@ -183,6 +183,7 @@ export default new Vuex.Store({
         sList.push(tempJson)
       }
       let json = {
+        nightMod: state.nightMod,
         stackLimit: state.stackLimit,
         noRepeat: state.noRepeat,
         mainList: mList,
@@ -245,6 +246,7 @@ export default new Vuex.Store({
     loadData({ state }) {
       let resp = JSON.parse(window.localStorage.getItem('data'))
       if (resp.stackLimit != undefined) {
+        state.nightMod = resp.nightMod
         state.stackLimit = resp.stackLimit
         state.noRepeat = resp.noRepeat
         state.playlist = resp.playlist

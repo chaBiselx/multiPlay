@@ -87,12 +87,13 @@ export default {
     return {
       stackLimit: '',
       noRepeat: '',
-      nightMod: true,
+      nightMod: '',
     }
   },
-  created() {
-    this.stackLimit = store.state.stackLimit
-    this.noRepeat = store.state.noRepeat
+  async beforeCreate() {
+    this.nightMod = await store.state.nightMod
+    this.stackLimit = await store.state.stackLimit
+    this.noRepeat = await store.state.noRepeat
   },
   methods: {
     saveOption() {
@@ -130,7 +131,7 @@ export default {
     },
     changeNightMod() {
       this.nightMod = !this.nightMod
-      //store.commit('changeNightMod')
+      store.commit('changeNightMod', this.nightMod)
     },
   },
 }
