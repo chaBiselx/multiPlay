@@ -50,15 +50,19 @@ export default {
       set(newValue) {
         this.$store.commit('splitter/toggle', newValue)
       },
+    }, //*************************
+    nightModFunction: {
+      get() {
+        return this.$store.state.nightMod
+      },
+      set(newValue) {
+        this.nightMod = newValue
+        this.$store.commit('changeNightMod', newValue)
+      },
     },
-  },
+  }, //*************************
   async beforeCreate() {
     this.nightMod = await store.state.nightMod
-  },
-  method: {
-    updateNightMod(value) {
-      this.nightMod = value
-    },
   },
 }
 </script>
