@@ -23,6 +23,15 @@
         method="post"
       >
         <div class="form-group center">
+          <ons-button
+            class="finalButton"
+            type="button"
+            @click="changeNightMod()"
+          >
+            {{ textNightMod }}
+          </ons-button >
+        </div>
+        <div class="form-group center">
           <label for="stackLimit"> Nombre de retour en arrière dans la playlist possible</label>
           <input
             v-model="stackLimit"
@@ -41,15 +50,6 @@
             name="noRepeat"
             min="1"
           >
-        </div>
-        <div class="form-group center">
-          <ons-button
-            class="finalButton"
-            type="button"
-            @click="changeNightMod()"
-          >
-            {{ textNightMod }}
-          </ons-button >
         </div>
 
         <div class="form-group end">
