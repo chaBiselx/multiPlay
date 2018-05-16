@@ -40,6 +40,14 @@
             min="1"
           >
         </div>
+        <div class="form-group center">
+          <label for="FolderMusic"> Nom du dossier contenant les musiques (effectif au démarrage)</label>
+          <input
+            v-model="FolderMusic"
+            type="text"
+            name="FolderMusic"
+          >
+        </div>
         <div class="form-group end">
           <ons-button
             class="finalButton"
@@ -70,11 +78,15 @@ export default {
     return {
       stackLimit: '',
       noRepeat: '',
+      FolderMusic: 'Music',
     }
   },
   created() {
     this.stackLimit = store.state.stackLimit
     this.noRepeat = store.state.noRepeat
+    if (store.state.FolderMusic.length > 0) {
+      this.FolderMusic = store.state.FolderMusic
+    }
   },
   methods: {
     saveOption() {
@@ -84,9 +96,13 @@ export default {
       if (this.noRepeat < 1) {
         this.noRepeat = 1
       }
+      if (this.FolderMusic.length < 1) {
+        this.FolderMusic = 'Music'
+      }
       let json = {
         StackLimit: this.stackLimit,
         NoRepeat: this.noRepeat,
+        FolderMusic: this.FolderMusic,
       }
       store.dispatch('changeOption', json)
       this.$ons.notification
@@ -107,6 +123,7 @@ export default {
       if (r == 1) {
         this.stackLimit = '25'
         this.noRepeat = '10'
+        this.FolderMusic = 'Music'
         this.saveOption()
       }
     },
