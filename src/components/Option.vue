@@ -75,7 +75,6 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex' //***********************
 import store from '@/store'
 export default {
   name: 'About',
@@ -129,7 +128,7 @@ export default {
     },
     changeNightMod() {
       this.nightMod = !this.nightMod
-      let toto = mapState(['nightModFunction']) //*****************
+      this.$toto(this.nightMod)
       this.switchNightMod()
     },
     switchNightMod() {

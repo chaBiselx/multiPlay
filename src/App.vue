@@ -22,6 +22,12 @@
 import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
 import store from '@/store'
+import Vue from 'vue'
+
+Vue.prototype.$toto = toto => {
+  this.nightMod = toto
+  console.log(toto)//eslint-disable-line
+}
 
 export default {
   name: 'App',
@@ -29,14 +35,6 @@ export default {
     HomePage,
     MenuPage,
   },
-  /*
-  props: {
-    nightMod: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  */
   data() {
     return {
       nightMod: '',
