@@ -144,7 +144,9 @@ export default {
     },
     changeNightMod() {
       this.nightMod = !this.nightMod
+      store.commit('changeNightMod', this.nightMod)
       this.$emit('interface', this.nightMod)
+
       this.switchNightMod()
     },
     switchNightMod() {
