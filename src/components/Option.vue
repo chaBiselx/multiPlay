@@ -144,7 +144,6 @@ export default {
     },
     changeNightMod() {
       this.nightMod = !this.nightMod
-      this.$toto(this.nightMod)
       this.switchNightMod()
     },
     switchNightMod() {

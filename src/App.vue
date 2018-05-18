@@ -22,12 +22,6 @@
 import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
 import store from '@/store'
-import Vue from 'vue'
-
-Vue.prototype.$toto = toto => {
-  this.nightMod = toto
-  console.log(toto)//eslint-disable-line
-}
 
 export default {
   name: 'App',
@@ -48,17 +42,8 @@ export default {
       set(newValue) {
         this.$store.commit('splitter/toggle', newValue)
       },
-    }, //*************************
-    nightModFunction: {
-      get() {
-        return this.$store.state.nightMod
-      },
-      set(newValue) {
-        this.nightMod = newValue
-        this.$store.commit('changeNightMod', newValue)
-      },
     },
-  }, //*************************
+  },
   async beforeCreate() {
     this.nightMod = await store.state.nightMod
   },
