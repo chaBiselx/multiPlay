@@ -12,7 +12,7 @@
       </v-ons-splitter-side>
 
       <v-ons-splitter-content>
-        <router-view/>
+        <router-view @interface="nightMod = $event"/>
       </v-ons-splitter-content>
     </v-ons-splitter>
   </v-ons-page>
@@ -29,10 +29,13 @@ export default {
     HomePage,
     MenuPage,
   },
-  data() {
-    return {
-      nightMod: '',
-    }
+  props: {
+    nightMod: {
+      type: Boolean,
+      default() {
+        return false
+      },
+    },
   },
   computed: {
     menuIsOpen: {
