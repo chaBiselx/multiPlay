@@ -29,7 +29,7 @@
 
         <v-ons-list-item
           v-for="item in listMusic"
-          :key="item.path"
+          :key="item.name"
         >
           <label class="label_music">
 

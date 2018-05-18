@@ -29,6 +29,7 @@ export default new Vuex.Store({
     load: false,
     stackLimit: '25',
     nightMod: false,
+    FolderMusic: 'Music',
     noRepeat: '10',
     mainList: [],
     memMainListID: '',
@@ -69,6 +70,9 @@ export default new Vuex.Store({
     },
     changeNoRepeat(state, value) {
       state.noRepeat = value
+    },
+    changeFolderMusic(state, value) {
+      state.FolderMusic = value
     },
 
     //mainList
@@ -148,18 +152,20 @@ export default new Vuex.Store({
       state.secondList[id].name = json.newName
     },
     setListMusic(state, list) {
+      let folder = state.FolderMusic + '/'
       for (let i of list) {
         if (
           i.name.endsWith('.mp3') ||
           i.name.endsWith('.wav') ||
           i.name.endsWith('.ogg')
         ) {
-          let json = {
-            name: i.name.replace(i.name.substr(i.name.lastIndexOf('.')), ''),
-            id: i.name.replace(/\s/g, ''),
-            path: i.path,
+          if (i.path.includes(folder)) {
+            let json = {
+              name: i.name.replace(i.name.substr(i.name.lastIndexOf('.')), ''),
+              path: i.path,
+            }
+            state.listMusic.push(json)
           }
-          state.listMusic.push(json)
         }
       }
     },
@@ -186,6 +192,7 @@ export default new Vuex.Store({
         nightMod: state.nightMod,
         stackLimit: state.stackLimit,
         noRepeat: state.noRepeat,
+        FolderMusic: state.FolderMusic,
         mainList: mList,
         secondList: sList,
         playlist: state.playlist,
@@ -203,6 +210,7 @@ export default new Vuex.Store({
     changeOption({ commit }, value) {
       commit('changeNoRepeat', value.NoRepeat)
       commit('changeStackLimit', value.StackLimit)
+      commit('changeFolderMusic', value.FolderMusic)
 
       commit('save')
     },
@@ -250,6 +258,7 @@ export default new Vuex.Store({
         state.stackLimit = resp.stackLimit
         state.noRepeat = resp.noRepeat
         state.playlist = resp.playlist
+        state.FolderMusic = resp.FolderMusic
 
         let array1 = []
         for (let i of resp.mainList) {
