@@ -55,6 +55,7 @@
           <label for="FolderMusic"> Nom du dossier contenant les musiques (effectif au démarrage)</label>
           <input
             v-model="FolderMusic"
+            class="input__text"
             type="text"
             name="FolderMusic"
           >
