@@ -47,8 +47,8 @@ export default {
       },
     },
   },
-  async beforeCreate() {
-    this.nightMod = await store.state.nightMod
+  mounted() {
+    this.nightMod = store.state.nightMod
   },
 }
 </script>
