@@ -144,6 +144,7 @@ export default {
     },
     changeNightMod() {
       this.nightMod = !this.nightMod
+      this.$emit('interface', this.nightMod)
       this.switchNightMod()
     },
     switchNightMod() {
