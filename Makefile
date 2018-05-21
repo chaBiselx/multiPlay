@@ -8,8 +8,9 @@ help:
 
 install:
 	@echo "Installing dependencies"
+	npm install cordova
+	npm install gradle
 	npm install
-
 
 run-dev:
 	npm run dev
