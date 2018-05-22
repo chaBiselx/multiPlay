@@ -21,7 +21,6 @@
 
       <audio
         id="audio"
-        controls
       >
         <source
           :src="actualMusicUrl"
