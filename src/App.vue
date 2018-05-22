@@ -85,6 +85,10 @@ export default {
   background-color: rgb(4, 14, 28) !important;
   border: none !important;
 }
+.nightMod-background .logo,
+.nightMod-background .Mainlogo {
+  filter: brightness(60%);
+}
 ons-splitter-side[side='left'][animation='overlay'] {
   border-right: 1px solid #bbb;
 }
