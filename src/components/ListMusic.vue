@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
-      <div class="left pointer">
+      <div class="left">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
           <v-ons-icon icon="md-menu"/>
         </v-ons-toolbar-button>
@@ -132,7 +132,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .label_music {
-  cursor: pointer;
   display: block;
   width: 100%;
 }

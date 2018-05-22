@@ -104,15 +104,8 @@ ons-list-title:not(:first-of-type) {
 ons-card {
   text-align: center;
 }
-ons-list-item,
-ons-card {
-  cursor: grabbing;
-}
 ons-list-item {
   border: none;
-}
-.pointer {
-  cursor: pointer;
 }
 .header {
   text-align: center;
@@ -123,7 +116,6 @@ ons-list-item {
   vertical-align: middle;
 }
 .optionButton {
-  cursor: pointer;
   padding: 7px 15px 7px 22px;
 }
 .checkbox {
