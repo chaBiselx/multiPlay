@@ -252,6 +252,14 @@ export default {
   border-color: #cc3399;
   border-radius: 10px;
 }
+@media screen and (orientation: landscape) {
+  .btn-list {
+    margin-top: 7%;
+  }
+  .text-center {
+    margin-top: 5%;
+  }
+}
 .buttonMusic {
   padding: 10%;
   font-size: 6vw;
