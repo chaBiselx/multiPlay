@@ -130,6 +130,10 @@ ons-list-item {
 .important {
   color: #c80a0c !important;
 }
+.action-sheet-title {
+  color: #9e9e9e !important;
+  font-weight: bold !important;
+}
 a {
   text-decoration: underline;
 }
