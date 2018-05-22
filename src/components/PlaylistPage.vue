@@ -67,7 +67,7 @@
         modifier="destructive"
         @click="deletePlaylist()"
       >
-        Supprimer
+        <span class="important">Supprimer</span>
       </v-ons-action-sheet-button>
 
     </v-ons-action-sheet>

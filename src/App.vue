@@ -127,6 +127,9 @@ ons-list-item {
 .text h1 {
   text-align: center;
 }
+.important {
+  color: #c80a0c !important;
+}
 a {
   text-decoration: underline;
 }
