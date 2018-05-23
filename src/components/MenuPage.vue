@@ -13,7 +13,7 @@
       <v-ons-list-item
         v-for="item in essentialLinks"
         :key="item.link"
-        class="pointer"
+        class="title"
         modifier="chevron"
         @click="goTo(item.link)"
       >

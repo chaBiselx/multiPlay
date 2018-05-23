@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
-      <div class="left pointer">
+      <div class="left">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
           <v-ons-icon icon="md-menu"/>
         </v-ons-toolbar-button>
@@ -21,7 +21,6 @@
 
       <audio
         id="audio"
-        controls
       >
         <source
           :src="actualMusicUrl"
@@ -252,6 +251,14 @@ export default {
   border-width: thin;
   border-color: #cc3399;
   border-radius: 10px;
+}
+@media screen and (orientation: landscape) {
+  .btn-list {
+    margin-top: 7%;
+  }
+  .text-center {
+    margin-top: 5%;
+  }
 }
 .buttonMusic {
   padding: 10%;

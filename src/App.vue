@@ -85,6 +85,10 @@ export default {
   background-color: rgb(4, 14, 28) !important;
   border: none !important;
 }
+.nightMod-background .logo,
+.nightMod-background .Mainlogo {
+  filter: brightness(60%);
+}
 ons-splitter-side[side='left'][animation='overlay'] {
   border-right: 1px solid #bbb;
 }
@@ -100,15 +104,8 @@ ons-list-title:not(:first-of-type) {
 ons-card {
   text-align: center;
 }
-ons-list-item,
-ons-card {
-  cursor: grabbing;
-}
 ons-list-item {
   border: none;
-}
-.pointer {
-  cursor: pointer;
 }
 .header {
   text-align: center;
@@ -119,7 +116,6 @@ ons-list-item {
   vertical-align: middle;
 }
 .optionButton {
-  cursor: pointer;
   padding: 7px 15px 7px 22px;
 }
 .checkbox {
@@ -130,6 +126,13 @@ ons-list-item {
 }
 .text h1 {
   text-align: center;
+}
+.important {
+  color: #c80a0c !important;
+}
+.action-sheet-title {
+  color: #9e9e9e !important;
+  font-weight: bold !important;
 }
 a {
   text-decoration: underline;

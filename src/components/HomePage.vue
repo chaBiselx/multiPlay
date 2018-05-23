@@ -1,7 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
-      <div class="left pointer">
+      <div class="left">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
           <v-ons-icon icon="md-menu"/>
         </v-ons-toolbar-button>
@@ -56,7 +56,7 @@
         modifier="destructive"
         @click="deletePlaylist()"
       >
-        Supprimer
+        <span class="important">Supprimer</span>
       </v-ons-action-sheet-button>
 
     </v-ons-action-sheet>
