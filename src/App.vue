@@ -56,24 +56,24 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .nightMod-background div {
-  background-color: rgb(24, 44, 68) !important;
+  background-color: rgb(20, 40, 60) !important;
   border-color: transparent !important;
   color: grey !important;
   border-color: none !important;
 }
 .nightMod-background ons-list {
-  background-color: rgb(24, 44, 68) !important;
+  background-color: rgb(20, 40, 60) !important;
   background-image: none !important;
 }
 .nightMod-background ons-icon {
   color: grey !important;
 }
 .nightMod-background ons-button {
-  background-color: rgb(14, 34, 58) !important;
+  background-color: rgb(10, 30, 50) !important;
   color: darkGrey !important;
 }
 .nightMod-background .input__text {
-  background-color: rgb(14, 34, 58) !important;
+  background-color: rgb(10, 30, 50) !important;
   color: darkGrey !important;
   border-color: black !important;
 }
@@ -88,6 +88,24 @@ export default {
 .nightMod-background .logo,
 .nightMod-background .Mainlogo {
   filter: brightness(60%);
+}
+.nightMod-background .span__switch .switch__touch {
+  background-color: transparent !important;
+}
+.nightMod-background .span__switch .switch__toggle {
+  background-color: rgb(14, 24, 38) !important;
+  box-shadow: inset 0 0 0 2px rgb(14, 24, 38) !important;
+}
+.nightMod-background .span__switch :checked + .switch__toggle {
+  background-color: rgb(4, 14, 14) !important;
+  box-shadow: inset 0 0 0 2px rgb(4, 14, 14) !important;
+}
+.nightMod-background .span__switch .switch__handle {
+  background-color: rgb(30, 50, 70) !important;
+}
+:checked + .switch__toggle {
+  background-color: #0076ff !important;
+  box-shadow: inset 0 0 0 2px #0076ff !important;
 }
 ons-splitter-side[side='left'][animation='overlay'] {
   border-right: 1px solid #bbb;
@@ -122,7 +140,8 @@ ons-list-item {
   padding-right: 15px;
 }
 .text {
-  margin: 15px;
+  padding: 15px;
+  margin: 0;
 }
 .text h1 {
   text-align: center;
