@@ -37,7 +37,10 @@
             (peut augmenter la consommation de l'appareil hors charge)
           </div>
           <div class="span__switch">
-            <ons-switch checked/>
+            <ons-switch
+              :checked="lockSwitch"
+              @change="changeSwitchLock"
+            />
           </div>
         </div>
         <div class="form-group center">
@@ -102,6 +105,7 @@ export default {
       FolderMusic: 'Music',
       nightMod: '',
       textNightMod: '',
+      lockSwitch: false,
     }
   },
   async beforeCreate() {
@@ -112,8 +116,12 @@ export default {
     if (store.state.FolderMusic.length > 0) {
       this.FolderMusic = store.state.FolderMusic
     }
+    this.lockSwitch = store.state.lockSwitch
   },
   methods: {
+    changeSwitchLock(event) {
+      this.lockSwitch = event.value
+    },
     saveOption() {
       if (this.stackLimit < 1) {
         this.stackLimit = 1
@@ -128,6 +136,7 @@ export default {
         StackLimit: this.stackLimit,
         NoRepeat: this.noRepeat,
         FolderMusic: this.FolderMusic,
+        lockSwitch: this.lockSwitch,
       }
       store.dispatch('changeOption', json)
       this.$ons.notification
