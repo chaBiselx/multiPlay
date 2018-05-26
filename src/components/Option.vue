@@ -36,9 +36,9 @@
             desactivation du verrouillage du téléphone sur le lecteur losque l'appareil est en charge <br>
             (peut augmenter la consommation de l'appareil hors charge)
           </div>
-          <span class="span__switch">
+          <div class="span__switch">
             <ons-switch checked/>
-          </span>
+          </div>
         </div>
         <div class="form-group center">
           <label for="stackLimit"> Nombre de retour en arrière dans la playlist possible</label>
