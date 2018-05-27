@@ -64,12 +64,12 @@
           >
         </div>
         <div class="form-group center">
-          <label for="FolderMusic"> Nom du dossier contenant les musiques (effectif au démarrage)</label>
+          <label for="folderMusic"> Nom du dossier contenant les musiques (effectif au démarrage)</label>
           <input
-            v-model="FolderMusic"
+            v-model="folderMusic"
             class="input__text"
             type="text"
-            name="FolderMusic"
+            name="folderMusic"
           >
         </div>
         <div class="form-group end">
@@ -102,7 +102,7 @@ export default {
     return {
       stackLimit: '',
       noRepeat: '',
-      FolderMusic: 'Music',
+      folderMusic: 'Music',
       nightMod: '',
       textNightMod: '',
       lockSwitch: false,
@@ -113,8 +113,8 @@ export default {
     this.stackLimit = await store.state.stackLimit
     this.noRepeat = await store.state.noRepeat
     this.switchNightMod()
-    if (store.state.FolderMusic.length > 0) {
-      this.FolderMusic = store.state.FolderMusic
+    if (store.state.folderMusic.length > 0) {
+      this.folderMusic = store.state.folderMusic
     }
     this.lockSwitch = store.state.lockSwitch
   },
@@ -129,13 +129,13 @@ export default {
       if (this.noRepeat < 1) {
         this.noRepeat = 1
       }
-      if (this.FolderMusic.length < 1) {
-        this.FolderMusic = 'Music'
+      if (this.folderMusic.length < 1) {
+        this.folderMusic = 'Music'
       }
       let json = {
-        StackLimit: this.stackLimit,
-        NoRepeat: this.noRepeat,
-        FolderMusic: this.FolderMusic,
+        stackLimit: this.stackLimit,
+        noRepeat: this.noRepeat,
+        folderMusic: this.folderMusic,
         lockSwitch: this.lockSwitch,
       }
       store.dispatch('changeOption', json)
@@ -157,7 +157,7 @@ export default {
       if (r == 1) {
         this.stackLimit = '25'
         this.noRepeat = '10'
-        this.FolderMusic = 'Music'
+        this.folderMusic = 'Music'
         this.saveOption()
       }
     },

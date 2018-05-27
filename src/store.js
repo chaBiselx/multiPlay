@@ -30,7 +30,7 @@ export default new Vuex.Store({
     lockSwitch: false,
     stackLimit: '25',
     nightMod: false,
-    FolderMusic: 'Music',
+    folderMusic: 'Music',
     noRepeat: '10',
     mainList: [],
     memMainListID: '',
@@ -73,7 +73,7 @@ export default new Vuex.Store({
       state.noRepeat = value
     },
     changeFolderMusic(state, value) {
-      state.FolderMusic = value
+      state.folderMusic = value
     },
     changeLockSwitch(state, value) {
       state.lockSwitch = value
@@ -156,7 +156,7 @@ export default new Vuex.Store({
       state.secondList[id].name = json.newName
     },
     setListMusic(state, list) {
-      let folder = state.FolderMusic + '/'
+      let folder = state.folderMusic + '/'
       for (let i of list) {
         if (
           i.name.endsWith('.mp3') ||
@@ -197,7 +197,7 @@ export default new Vuex.Store({
         stackLimit: state.stackLimit,
         lockSwitch: state.lockSwitch,
         noRepeat: state.noRepeat,
-        FolderMusic: state.FolderMusic,
+        folderMusic: state.folderMusic,
         mainList: mList,
         secondList: sList,
         playlist: state.playlist,
@@ -213,9 +213,9 @@ export default new Vuex.Store({
       commit('setListMusic', list)
     },
     changeOption({ commit }, value) {
-      commit('changeNoRepeat', value.NoRepeat)
-      commit('changeStackLimit', value.StackLimit)
-      commit('changeFolderMusic', value.FolderMusic)
+      commit('changeNoRepeat', value.noRepeat)
+      commit('changeStackLimit', value.stackLimit)
+      commit('changeFolderMusic', value.folderMusic)
       commit('changeLockSwitch', value.lockSwitch)
 
       commit('save')
@@ -264,7 +264,7 @@ export default new Vuex.Store({
         state.stackLimit = resp.stackLimit
         state.noRepeat = resp.noRepeat
         state.playlist = resp.playlist
-        state.FolderMusic = resp.FolderMusic
+        state.folderMusic = resp.folderMusic
         state.lockSwitch = resp.lockSwitch
 
         let array1 = []
