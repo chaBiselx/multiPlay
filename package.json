@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "cordova-android": "^7.1.0",
+    "cordova-android": "^7.0.0",
+    "cordova-plugin-battery-status": "~2.0.2",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-media-retrieve": "^0.5.4",
     "onsenui": "^2.10.0",
@@ -81,7 +82,8 @@
     ],
     "plugins": {
       "cordova-plugin-media-retrieve": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-battery-status": {}
     }
   }
 }

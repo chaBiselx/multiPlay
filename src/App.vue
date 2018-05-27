@@ -103,6 +103,9 @@ export default {
 .nightMod-background .span__switch .switch__handle {
   background-color: rgb(30, 50, 70) !important;
 }
+:checked + .switch__toggle > .switch__handle {
+  background-color: #0076ff !important;
+}
 :checked + .switch__toggle {
   background-color: #0076ff !important;
   box-shadow: inset 0 0 0 2px #0076ff !important;
