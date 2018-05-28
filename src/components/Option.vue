@@ -37,9 +37,8 @@
             (peut augmenter la consommation de l'appareil hors charge)
           </div>
           <div class="span__switch">
-            <ons-switch
-              :checked="lockSwitch"
-              @change="changeSwitchLock"
+            <v-ons-switch
+              v-model="lockSwitch"
             />
           </div>
         </div>
@@ -119,9 +118,6 @@ export default {
     this.lockSwitch = store.state.lockSwitch
   },
   methods: {
-    changeSwitchLock(event) {
-      this.lockSwitch = event.value
-    },
     saveOption() {
       if (this.stackLimit < 1) {
         this.stackLimit = 1
@@ -132,6 +128,7 @@ export default {
       if (this.folderMusic.length < 1) {
         this.folderMusic = 'Music'
       }
+      console.log(this.lockSwitch)
       let json = {
         stackLimit: this.stackLimit,
         noRepeat: this.noRepeat,
