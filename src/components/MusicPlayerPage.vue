@@ -120,14 +120,8 @@ export default {
     document.getElementById('audio').addEventListener('ended', () => {
       globalThis.forward()
     })
+
     if (store.state.lockSwitch) {
-      globalThis.$ons.notification
-        .toast({
-          animation: 'fall',
-          message: store.state.lockSwitch,
-          timeout: 2000,
-        })
-        .then(i => (globalThis.shutUp = i === 0))
       // window.addEventListener(
       //   'batterystatus',
       //   status => {
