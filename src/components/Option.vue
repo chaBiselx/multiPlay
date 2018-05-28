@@ -128,7 +128,6 @@ export default {
       if (this.folderMusic.length < 1) {
         this.folderMusic = 'Music'
       }
-      console.log(this.lockSwitch)
       let json = {
         stackLimit: this.stackLimit,
         noRepeat: this.noRepeat,
