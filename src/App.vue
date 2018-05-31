@@ -101,14 +101,15 @@ export default {
   box-shadow: inset 0 0 0 2px rgb(4, 14, 14) !important;
 }
 .nightMod-background .span__switch .switch__handle {
-  background-color: rgb(30, 50, 70) !important;
+  background-color: rgb(28, 38, 48) !important;
 }
-:checked + .switch__toggle > .switch__handle {
+
+.switch__handle {
   background-color: #0076ff !important;
 }
 :checked + .switch__toggle {
-  background-color: #0076ff !important;
-  box-shadow: inset 0 0 0 2px #0076ff !important;
+  background-color: #4da0ff !important;
+  box-shadow: inset 0 0 0 2px #005fcc !important;
 }
 ons-splitter-side[side='left'][animation='overlay'] {
   border-right: 1px solid #bbb;
