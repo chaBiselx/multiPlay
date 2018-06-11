@@ -1,3 +1,5 @@
+<p align="center"><img src="https://i.imgur.com/WCDHIhU.png"></p>
+
 # MultiPlay
 
 ## Install
