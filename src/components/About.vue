@@ -26,6 +26,8 @@
       <p>code source du projet : <a onclick="cordova.InAppBrowser.open('https://github.com/chaBiselx/multiPlay', '_system');"> ici</a></p>
       <p>Trello du projet : <a onclick="cordova.InAppBrowser.open('https://trello.com/b/txZMbwSX/multiplay', '_system');"> ici</a></p>
       <p>Cette œuvre est mise à disposition sous Apache License</p>
+      <p>Le logo à été designé par  <a onclick="cordova.InAppBrowser.open('https://github.com/ggabogarcia', '_system');"> Gabriel Garcia</a> et protégé par
+      <a onclick="cordova.InAppBrowser.open('https://creativecommons.org/licenses/by/4.0/', '_system');">Creative Commons Attribution 4.0 International License</a></p>
 
     </div>
   </v-ons-page>
