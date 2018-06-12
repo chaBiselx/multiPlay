@@ -1,7 +1,5 @@
 <p align="center"><img src="https://i.imgur.com/WCDHIhU.png"></p>
 
-# MultiPlay
-
 ## Install
 
 Download zip or git clone
@@ -40,6 +38,9 @@ This app has only been tested on Android 5.1. It is currently at an early develo
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+### Contribution
+Logo by [Gabriel Garcia](https://github.com/ggabogarcia)
 
 ## References
 
