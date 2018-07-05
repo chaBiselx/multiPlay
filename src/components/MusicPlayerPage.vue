@@ -283,7 +283,9 @@ export default {
   height: 30px;
 }
 .title {
-  height: 3em;
+  font-size: 1.5em;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 .float_left {
   float: left;
