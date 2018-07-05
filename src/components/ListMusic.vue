@@ -69,18 +69,7 @@ export default {
     }
   },
   beforeMount() {
-    if (!store.getters['emptyListMusic']) {
-      let globalThis = this
-      MediaRetrieve.getAudioList(data => { //eslint-disable-line
-        //doesn't need to import MediaRetrieve
-        globalThis.getData(data)
-        //write here because asynchonus function
-      })
-    } else {
-      this.loadList()
-    }
-  },
-  mounted() {
+    this.loadList()
     this.loadCheck()
   },
   methods: {
@@ -103,10 +92,6 @@ export default {
     goingBack() {
       this.$router.push({ name: 'PlaylistPage' })
       store.commit('removeMemSecondListID')
-    },
-    getData(rawData) {
-      store.dispatch('setListMusic', rawData.data)
-      this.loadList()
     },
     loadList() {
       this.listMusic = store.getters['getListMusic']

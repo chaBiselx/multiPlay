@@ -134,6 +134,13 @@ export default {
         document.getElementById(select[i]).checked = true
       }
     }
+
+    const globalThis = this
+    MediaRetrieve.getAudioList(data => { //eslint-disable-line
+      //doesn't need to import MediaRetrieve
+      globalThis.getData(data)
+      //write here because asynchonus function
+    })
   },
   methods: {
     option(id) {
@@ -209,6 +216,9 @@ export default {
     goingBack() {
       this.$router.push({ name: 'HomePage' })
       store.commit('removeMemMainListID')
+    },
+    getData(rawData) {
+      store.dispatch('setListMusic', rawData.data)
     },
   },
 }
