@@ -68,7 +68,7 @@ export default {
       store.commit('removeMemSecondListID')
     }
   },
-  beforeMount() {
+  mounted() {
     this.loadList()
     this.loadCheck()
   },
