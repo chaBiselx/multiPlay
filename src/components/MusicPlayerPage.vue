@@ -268,6 +268,11 @@ export default {
   border-color: #cc3399;
   border-radius: 10px;
 }
+.title {
+  font-size: 1em;
+  margin-right: 5%;
+  margin-left: 5%;
+}
 @media screen and (orientation: landscape) {
   .btn-list {
     margin-top: 7%;
@@ -275,17 +280,15 @@ export default {
   .text-center {
     margin-top: 5%;
   }
+  .title {
+    font-size: 1.7em;
+  }
 }
 .buttonMusic {
   padding: 10%;
   font-size: 6vw;
   width: 20px;
   height: 30px;
-}
-.title {
-  font-size: 1.5em;
-  margin-right: 5%;
-  margin-left: 5%;
 }
 .float_left {
   float: left;
